@@ -1,17 +1,13 @@
-import { useGetSidebarQuery } from '../store/api';
 import { PORTAL_NAME, PORTAL_VERSION } from '../config/branding';
+import { useSidebarItem } from '../hooks/useSidebarItem';
 
 type InfoStripProps = {
   pathname: string;
 };
 
 export function InfoStrip({ pathname }: InfoStripProps) {
-  const { data: sections } = useGetSidebarQuery();
-
   const slug = pathname.replace(/^\/+/, '').split('/')[0];
-  const matchedItem = sections
-    ?.flatMap((section) => section.items)
-    .find((item) => item.slug === slug);
+  const matchedItem = useSidebarItem(slug);
 
   const breadcrumb = matchedItem
     ? `${PORTAL_NAME} > ${matchedItem.label}`

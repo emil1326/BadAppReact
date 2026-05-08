@@ -1,15 +1,10 @@
 import { useParams } from 'react-router-dom';
-import { useGetSidebarQuery } from '../store/api';
+import { useSidebarItem } from '../hooks/useSidebarItem';
 import { PageShell } from '../layout/PageShell';
 
 export function StubPage() {
   const { slug } = useParams<{ slug: string }>();
-  const { data: sections } = useGetSidebarQuery();
-
-  const matchedItem = sections
-    ?.flatMap((section) => section.items)
-    .find((item) => item.slug === slug);
-
+  const matchedItem = useSidebarItem(slug);
   const title = matchedItem?.label ?? slug ?? 'Page';
 
   return (
