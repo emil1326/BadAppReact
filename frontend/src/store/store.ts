@@ -5,12 +5,14 @@ import type { Reducer } from 'redux';
 import { api } from './api';
 import { authReducer } from './slices/authSlice';
 import { flowReducer } from './slices/flowSlice';
+import { profileReducer } from './slices/profileSlice';
 import { uiReducer } from './slices/uiSlice';
 import { localStorageAdapter } from './persistStorage';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   flow: flowReducer,
+  profile: profileReducer,
   ui: uiReducer,
   [api.reducerPath]: api.reducer,
 });
@@ -20,7 +22,10 @@ type StoreState = ReturnType<typeof rootReducer>;
 const persistConfig: PersistConfig<StoreState> = {
   key: 'root',
   storage: localStorageAdapter,
-  whitelist: ['auth', 'flow', 'ui'],
+  // `ui` is intentionally NOT persisted — `logoutLocked` resets to its
+  // factory default (`true`) on every page load, so the user has to unblock
+  // logout each session regardless of browser cache state.
+  whitelist: ['auth', 'flow', 'profile'],
 };
 
 const persistedReducer = persistReducer(

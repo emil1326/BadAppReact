@@ -1,0 +1,98 @@
+.intro {
+  margin: 0 0 8px;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.section {
+  margin-bottom: 8px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 240px 1fr 80px;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.input,
+.select {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 2px 4px;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel-bg);
+  width: 100%;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.saveIndicator {
+  text-align: right;
+  font-size: 10px;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.saveIndicator.dirty {
+  color: var(--color-error);
+}
+
+.modeRow {
+  /* No visual emphasis. The whole point is that this row blends in. */
+}
+
+.readOnlyValue {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+}
+
+.maskedValue {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 6px;
+  color: var(--color-muted);
+}
+
+.modeButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.modeButton {
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  padding: 2px 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.modeButton:hover:not(:disabled) {
+  background: var(--color-button-bg-hover);
+}
+
+.modeButton.active {
+  background: var(--color-info-strip);
+  color: #ffffff;
+  border-color: #1a2230;
+}
+
+.modeButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { PageShell } from '../layout/PageShell';
 import { useStartBourseFlowMutation } from '../store/api';
 import { useTimer } from '../hooks/useTimer';
+import { useSubmitGate } from '../hooks/useSubmitGate';
 import { formatNumberFr } from '../utils/format';
 import { ClothOverlay } from '../components/ClothOverlay';
 import styles from './EtatDeComptePage.module.css';
@@ -11,6 +12,7 @@ const BALANCE_DUE_DATE = '15 mars 2026';
 
 export function EtatDeComptePage() {
   const { isActive } = useTimer();
+  const { canSubmit } = useSubmitGate();
   const [startFlow, { isLoading }] = useStartBourseFlowMutation();
   const navigate = useNavigate();
 
