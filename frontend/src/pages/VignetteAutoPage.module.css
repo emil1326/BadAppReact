@@ -1,0 +1,104 @@
+.intro {
+  margin: 0 0 12px;
+  background: #fff8e0;
+  border: 1px solid #d4ad3a;
+  padding: 8px;
+  font-size: 11px;
+}
+
+.intro strong {
+  color: var(--color-error);
+}
+
+.wheelArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-panel-bg);
+  border: 1px solid var(--color-border);
+  margin-bottom: 8px;
+}
+
+.wheelHolder {
+  width: 320px;
+  max-width: 100%;
+}
+
+.spinButton {
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  padding: 8px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.spinButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinButton:hover:not(:disabled) {
+  background: var(--color-button-bg-hover);
+}
+
+.resultPanel {
+  margin-bottom: 8px;
+}
+
+.resultLabel {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.disclaimer {
+  margin-top: 12px;
+  font-size: 10px;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: 480px;
+  max-width: calc(100vw - 32px);
+}
+
+.modal .colnet-panel__header {
+  background: var(--color-error);
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.modalText {
+  margin: 0 0 8px;
+}
+
+.modalButton {
+  margin-top: 12px;
+  background: var(--color-error);
+  color: #ffffff;
+  border: 1px solid #6b1313;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.modalButton:hover {
+  background: #aa0000;
+}

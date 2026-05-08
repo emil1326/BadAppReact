@@ -1,0 +1,19 @@
+[
+  { "date": "2003-09-12", "objet": "Mise en service du portail COLNET - Bienvenue dans le système intégré", "from": "Direction des services informatiques" },
+  { "date": "2005-01-18", "objet": "Compatibilité des navigateurs - Internet Explorer 6 ou supérieur recommandé", "from": "Service informatique" },
+  { "date": "2007-08-22", "objet": "Politique de confidentialité de l'information - Acceptation requise", "from": "Bureau du Registraire" },
+  { "date": "2009-11-04", "objet": "Réinitialisation des mots de passe - Présentez-vous au comptoir avec une pièce d'identité", "from": "Service informatique" },
+  { "date": "2011-06-30", "objet": "Lancement du portail mobile - Application Java Mobile désormais disponible", "from": null },
+  { "date": "2013-03-12", "objet": "Migration vers le système comptable v3.2 - Période transitoire du 1er au 30 juin", "from": "Service des finances" },
+  { "date": "2015-09-08", "objet": "Réforme de la grille horaire - Nouvelles plages disponibles dès l'automne 2016", "from": "Direction des études" },
+  { "date": "2017-04-25", "objet": "Mise à jour de la politique de stationnement - Vignettes obligatoires en tout temps", "from": "Service de la sécurité" },
+  { "date": "2018-10-19", "objet": "Éliminer le papier d'ici 2020 - Adoption progressive du portail numérique", "from": null },
+  { "date": "2019-12-02", "objet": "Implantation du module bilan-santé - Formulaire annuel obligatoire", "from": "Vie étudiante" },
+  { "date": "2020-03-14", "objet": "Suspension temporaire des activités sur place - Consignes officielles", "from": "Direction générale" },
+  { "date": "2021-08-30", "objet": "Retour partiel en présentiel - Consulter le calendrier des cohortes", "from": "Direction des études" },
+  { "date": "2022-11-21", "objet": "Modernisation de COLNET - Phase 1 - Refonte graphique partielle", "from": "Direction des services informatiques" },
+  { "date": "2023-07-15", "objet": "Mise en service du nouveau filtre anti-pourriel - Vérifier vos paramètres", "from": "Service informatique" },
+  { "date": "2024-02-09", "objet": "Adoption de la plateforme Microsoft Teams pour les communications internes", "from": null },
+  { "date": "2025-06-03", "objet": "Lancement du module d'orientation IA - Recommandations de programmes personnalisées", "from": "Centre d'aide à la réussite" },
+  { "date": "2026-02-27", "objet": "Période de réinscription Hiver 2026 - Date limite : 15 mars", "from": "Bureau du Registraire" }
+]

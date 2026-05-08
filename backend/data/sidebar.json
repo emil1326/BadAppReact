@@ -1,0 +1,44 @@
+[
+  {
+    "title": "MON DOSSIER",
+    "items": [
+      { "label": "Accueil", "slug": "accueil" },
+      { "label": "Agenda", "slug": "agenda" },
+      { "label": "Aide à l'orientation", "slug": "aide-orientation" },
+      { "label": "Bibliothèque", "slug": "bibliotheque" },
+      { "label": "Bulletin", "slug": "bulletin" },
+      { "label": "Carte étudiante", "slug": "carte-etudiante" },
+      { "label": "Casier", "slug": "casier" },
+      { "label": "Chang. programme", "slug": "chang-programme" },
+      { "label": "Cheminement", "slug": "cheminement" },
+      { "label": "Choix de cours", "slug": "choix-de-cours" },
+      { "label": "Consentements", "slug": "consentements" },
+      { "label": "Courriels", "slug": "courriels" },
+      { "label": "Cours", "slug": "cours" },
+      { "label": "Documents", "slug": "documents" },
+      { "label": "Dossier personnel", "slug": "dossier-personnel" },
+      { "label": "État de compte", "slug": "etat-de-compte" },
+      { "label": "Favoris", "slug": "favoris" },
+      { "label": "Fréquentation scolaire", "slug": "frequentation-scolaire" },
+      { "label": "Horaire", "slug": "horaire" },
+      { "label": "Inscriptions", "slug": "inscriptions" },
+      { "label": "Modification d'horaire", "slug": "modification-horaire" },
+      { "label": "Notes personnelles", "slug": "notes-personnelles" },
+      { "label": "Offres d'emploi", "slug": "offres-emploi" },
+      { "label": "Options", "slug": "options" },
+      { "label": "Plateforme d'apprentissage", "slug": "plateforme-apprentissage" },
+      { "label": "Prêts et réservations", "slug": "prets-reservations" },
+      { "label": "Prise de rendez-vous", "slug": "prise-rendez-vous" },
+      { "label": "Services adaptés", "slug": "services-adaptes" },
+      { "label": "Vignette auto", "slug": "vignette-auto" }
+    ]
+  },
+  {
+    "title": "MON COLLÈGE",
+    "items": [
+      { "label": "Documents publics", "slug": "documents-publics" },
+      { "label": "Liens", "slug": "liens" },
+      { "label": "Personnel", "slug": "personnel" }
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+.intro {
+  margin: 0 0 8px;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.dateColumn {
+  width: 90px;
+  white-space: nowrap;
+}
+
+.titleColumn {
+  width: 220px;
+}
+
+.employerColumn {
+  width: 180px;
+}
+
+.locationColumn {
+  width: 140px;
+}
+
+.salaryColumn {
+  width: 130px;
+  white-space: nowrap;
+}
+
+.requirements {
+  font-size: 10px;
+}

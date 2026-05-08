@@ -1,0 +1,15 @@
+{
+  "newMessageCount": 14,
+  "semester": "Hiver 2026",
+  "program": {
+    "code": "240.A0",
+    "name": "INFORMATIQUE DE GESTION"
+  },
+  "courses": [
+    { "code": "240A0-INT", "title": "Introduction au génie logiciel" },
+    { "code": "360F2-FB1", "title": "Statistiques pour gestionnaires" },
+    { "code": "109A1-EDU", "title": "Activité physique et autonomie" }
+  ],
+  "deinscriptionDate": "13 février 2026",
+  "abandonDate": "1 avril 2026"
+}

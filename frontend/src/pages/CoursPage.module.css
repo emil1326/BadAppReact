@@ -1,0 +1,15 @@
+.coursesList {
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+}
+
+.coursesList li {
+  margin-bottom: 2px;
+}
+
+.deadline {
+  font-style: italic;
+  color: var(--color-muted);
+  margin: 4px 0 0;
+}

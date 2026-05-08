@@ -1,0 +1,164 @@
+[
+  {
+    "id": "j001",
+    "title": "Caissier(ère)",
+    "employer": "McDonald's",
+    "location": "Saint-Bruno-du-Lac",
+    "salary": "3,75 $/h",
+    "datePosted": "2026-03-04",
+    "requirements": "10 ans d'expérience minimum en caisse enregistreuse. Baccalauréat en gestion des opérations obligatoire. Maîtrise en marketing recommandée. Test psychométrique exigé. Bilingue français-anglais avec niveau C2 attesté."
+  },
+  {
+    "id": "j002",
+    "title": "Friteur(euse) en chef",
+    "employer": "McDonald's",
+    "location": "Saint-Bruno-du-Lac",
+    "salary": "5,50 $/h",
+    "datePosted": "2026-03-02",
+    "requirements": "4 doctorats minimum (Chimie organique, Physique des fluides, Génie alimentaire, Statistiques industrielles). 15 ans d'expérience documentée en friture haute température. Publications scientifiques peer-reviewed un atout."
+  },
+  {
+    "id": "j003",
+    "title": "Concierge - quart de nuit",
+    "employer": "McDonald's",
+    "location": "Boucherville",
+    "salary": "2,95 $/h",
+    "datePosted": "2026-02-28",
+    "requirements": "Doctorat en biologie moléculaire obligatoire. Certification ISO 9001 (qualité) et ISO 14001 (environnement) requises. Expérience préalable dans un laboratoire de niveau biosécurité 4."
+  },
+  {
+    "id": "j004",
+    "title": "Ouvreur(euse) de porte (entrée principale)",
+    "employer": "McDonald's",
+    "location": "Saint-Bruno-du-Lac",
+    "salary": "4,25 $/h",
+    "datePosted": "2026-02-24",
+    "requirements": "Minimum 5 ans d'expérience en hôtellerie 5 étoiles. Référence du Ritz-Carlton ou équivalent obligatoire. Diction parfaite. Doit savoir distinguer 12 types de poignée de porte."
+  },
+  {
+    "id": "j005",
+    "title": "Préparateur(trice) de Big Mac",
+    "employer": "McDonald's",
+    "location": "Longueuil",
+    "salary": "4,80 $/h",
+    "datePosted": "2026-02-19",
+    "requirements": "Sommelier accrédité (WSET niveau 4 minimum). Ceinture noire en arts martiaux pour la précision du geste. 8 ans d'expérience en pâtisserie de luxe. Capable de réciter la liste des 14 ingrédients à l'envers en moins de 3 secondes."
+  },
+  {
+    "id": "j006",
+    "title": "Architecte de plateaux",
+    "employer": "McDonald's",
+    "location": "Saint-Bruno-du-Lac",
+    "salary": "3,10 $/h",
+    "datePosted": "2026-02-15",
+    "requirements": "Maîtrise en architecture (M.Arch) obligatoire. Membre OAQ ou OAA. Portfolio démontrant 7 ans de conception de plateaux ergonomiques. Certification LEED Platine un atout."
+  },
+  {
+    "id": "j007",
+    "title": "Mascotte Ronald (suppléance fin de semaine)",
+    "employer": "McDonald's",
+    "location": "Mascouche",
+    "salary": "2,50 $/h",
+    "datePosted": "2026-02-11",
+    "requirements": "8 ans d'expérience documentée comme clown professionnel. Permis d'acrobatie aérienne. Diplôme de l'École nationale de cirque ou équivalent international. Aucune allergie au maquillage à base de plomb."
+  },
+  {
+    "id": "j008",
+    "title": "Spécialiste en assemblage Happy Meal",
+    "employer": "McDonald's",
+    "location": "Brossard",
+    "salary": "5,25 $/h",
+    "datePosted": "2026-02-08",
+    "requirements": "Doctorat en logistique des chaînes d'approvisionnement. 12 ans en gestion de production. Six Sigma Master Black Belt obligatoire. Connaissance approfondie des 47 jouets actifs en circulation."
+  },
+  {
+    "id": "j009",
+    "title": "Testeur(euse) de cornichons",
+    "employer": "McDonald's",
+    "location": "Saint-Bruno-du-Lac",
+    "salary": "4,40 $/h",
+    "datePosted": "2026-02-03",
+    "requirements": "Diplôme universitaire en agronomie OU 20 ans d'expérience en agriculture biologique. Goût et odorat certifiés par un panel sensoriel accrédité. Aucune préférence personnelle pour les cornichons (impartialité totale exigée)."
+  },
+  {
+    "id": "j010",
+    "title": "Designer de latte art",
+    "employer": "McDonald's (McCafé)",
+    "location": "Saint-Bruno-du-Lac",
+    "salary": "5,95 $/h",
+    "datePosted": "2026-01-29",
+    "requirements": "Études Beaux-Arts (BA minimum). Portfolio démontrant 15 ans de pratique du latte art. Capacité de reproduire la Joconde à la mousse de lait en moins de 90 secondes. Bilingue."
+  },
+  {
+    "id": "j011",
+    "title": "Stagiaire développement React (non rémunéré)",
+    "employer": "TechSolutions Innovantes Plus inc.",
+    "location": "Télétravail",
+    "salary": "Bénévolat - opportunité d'apprentissage",
+    "datePosted": "2026-01-25",
+    "requirements": "Minimum 25 ans d'expérience React. Contribution majeure au cœur de React.js exigée. Doit avoir présenté à React Conf au moins 3 fois. Disponibilité 60h/semaine. Possibilité d'obtenir une lettre de recommandation à la fin du stage."
+  },
+  {
+    "id": "j012",
+    "title": "Développeur(euse) Junior",
+    "employer": "Conseils Stratégiques Avancés",
+    "location": "Montréal",
+    "salary": "13,75 $/h",
+    "datePosted": "2026-01-20",
+    "requirements": "50 ans d'expérience minimum en programmation. Maîtrise de COBOL, Fortran, Lisp, Brainfuck et tous les langages publiés depuis 1958. Doit avoir travaillé personnellement avec Alan Turing. Pas de débutants."
+  },
+  {
+    "id": "j013",
+    "title": "Compteur(euse) de moutons",
+    "employer": "Ferme Belle Allée",
+    "location": "Sainte-Anne-des-Plaines",
+    "salary": "À déterminer après évaluation",
+    "datePosted": "2026-01-15",
+    "requirements": "Patience extrême. 30 ans d'expérience en élevage ovin. Capacité de compter sans s'endormir. Insomnie chronique fortement valorisée. Connaissance de la psychologie des moutons un atout."
+  },
+  {
+    "id": "j014",
+    "title": "Inspecteur(trice) d'œufs (un par un, à la main)",
+    "employer": "Œuf Inc.",
+    "location": "Saint-Hyacinthe",
+    "salary": "0,03 $ par œuf",
+    "datePosted": "2026-01-12",
+    "requirements": "Doctorat en philosophie de la perception. Vision 20/15 corrigée ou non. Capable de distinguer 47 nuances de blanc. Doit accepter de travailler en silence absolu (les œufs sont sensibles au bruit)."
+  },
+  {
+    "id": "j015",
+    "title": "Plieur(euse) professionnel(le) de napkins",
+    "employer": "Le Restaurant Très Élégant",
+    "location": "Vieux-Montréal",
+    "salary": "12,50 $/h",
+    "datePosted": "2026-01-08",
+    "requirements": "Maîtrise en arts visuels avec spécialisation en origami. Certification de la Japanese Origami Society obligatoire. Doit maîtriser au minimum 184 plis distincts. Capacité de plier en simultané avec les deux mains."
+  },
+  {
+    "id": "j016",
+    "title": "Gardien(ne) de coussins (musée)",
+    "employer": "Musée du Coussin du Québec",
+    "location": "Trois-Rivières",
+    "salary": "Stage non-rémunéré (3 ans)",
+    "datePosted": "2026-01-05",
+    "requirements": "10 ans en sécurité haute valeur (objets d'art, joaillerie). Discrétion absolue. Aucun éternuement permis pendant les heures de service. Allergies aux plumes éliminatoires."
+  },
+  {
+    "id": "j017",
+    "title": "Promeneur(euse) de poissons rouges",
+    "employer": "Animalerie Aquatique du Sud",
+    "location": "Laval",
+    "salary": "11,00 $/h",
+    "datePosted": "2025-12-21",
+    "requirements": "Certification PADI Open Water minimum (recommandé Divemaster). 4 ans d'expérience en aquaculture. Doit savoir reconnaître les humeurs des poissons rouges. Cours de massage thérapeutique pour cyprinidés un atout."
+  },
+  {
+    "id": "j018",
+    "title": "Souffleur(euse) de bougies (banquets)",
+    "employer": "Événements Lumière Inc.",
+    "location": "Boucherville",
+    "salary": "9,75 $/h (avant pourboires)",
+    "datePosted": "2025-12-15",
+    "requirements": "Capacité pulmonaire mesurée et certifiée à 8 litres minimum. 12 ans d'expérience en performance scénique. Diplôme du Conservatoire de musique (instruments à vent) obligatoire. Non-fumeur."
+  }
+]

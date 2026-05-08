@@ -1,0 +1,28 @@
+.welcomePanel {
+  max-width: 320px;
+  margin-bottom: 8px;
+}
+
+.welcomePanelBody {
+  text-align: center;
+}
+
+.photoPlaceholder {
+  width: 110px;
+  height: 140px;
+  background: #dddddd;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #888888;
+}
+
+.dateColumn {
+  width: 110px;
+}
+
+.fromColumn {
+  width: 300px;
+}
