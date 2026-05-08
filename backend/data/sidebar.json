@@ -29,6 +29,7 @@
       { "label": "Plateforme d'apprentissage", "slug": "plateforme-apprentissage" },
       { "label": "Prêts et réservations", "slug": "prets-reservations" },
       { "label": "Prise de rendez-vous", "slug": "prise-rendez-vous" },
+      { "label": "Sécurité", "slug": "securite" },
       { "label": "Services adaptés", "slug": "services-adaptes" },
       { "label": "Vignette auto", "slug": "vignette-auto" }
     ]

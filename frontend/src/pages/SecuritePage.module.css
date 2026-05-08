@@ -1,0 +1,42 @@
+.intro {
+  margin: 0 0 8px;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.codeBox {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 28px;
+  letter-spacing: 6px;
+  text-align: center;
+  padding: 16px 8px;
+  background: var(--color-page-bg);
+  border: 1px solid var(--color-border);
+  margin: 8px 0;
+}
+
+.codeBoxEmpty {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: var(--color-muted);
+  font-style: italic;
+  letter-spacing: normal;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.disclaimer {
+  margin: 12px 0 0;
+  font-size: 10px;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.inactive {
+  font-style: italic;
+  color: var(--color-muted);
+}

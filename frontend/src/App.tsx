@@ -6,6 +6,7 @@ import { AccueilPage } from './pages/AccueilPage';
 import { CoursPage } from './pages/CoursPage';
 import { LoginPage } from './pages/LoginPage';
 import { OffresEmploiPage } from './pages/OffresEmploiPage';
+import { SecuritePage } from './pages/SecuritePage';
 import { StubPage } from './pages/StubPage';
 import { VignetteAutoPage } from './pages/VignetteAutoPage';
 import { useAuth } from './store/hooks';
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="accueil" element={<AccueilPage />} />
           <Route path="cours" element={<CoursPage />} />
           <Route path="offres-emploi" element={<OffresEmploiPage />} />
+          <Route path="securite" element={<SecuritePage />} />
           <Route path="vignette-auto" element={<VignetteAutoPage />} />
           <Route path=":slug" element={<StubPage />} />
         </Route>
