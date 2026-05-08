@@ -1,0 +1,2 @@
+# Enforce CRLF line endings for all text files on this Windows repo
+* text=auto eol=crlf
