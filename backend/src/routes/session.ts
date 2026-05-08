@@ -1,6 +1,11 @@
 import type { FastifyInstance } from 'fastify';
 import { getRequiredSession, requireSession } from '../services/auth.js';
-import { burnCode, regenerateCode, startFlow } from '../services/timer.js';
+import {
+  burnCode,
+  getActiveFlow,
+  regenerateCode,
+  startFlow,
+} from '../services/timer.js';
 
 type CheckTimerBody = { code?: string };
 
@@ -36,14 +41,11 @@ export async function sessionRoutes(app: FastifyInstance): Promise<void> {
     { preHandler: requireSession },
     async (request, reply) => {
       const { state } = getRequiredSession(request);
-      if (!state.flow) {
-        return reply.code(400).send({ error: 'NO_ACTIVE_FLOW' });
-      }
-      if (state.flow.endTime <= Date.now()) {
-        return reply.code(400).send({ error: 'FLOW_EXPIRED' });
+      const active = getActiveFlow(state);
+      if (!active.ok) {
+        return reply.code(400).send({ error: active.reason });
       }
       return regenerateCode(state);
     },
   );
-
 }

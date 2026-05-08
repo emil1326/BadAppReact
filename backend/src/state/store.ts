@@ -6,7 +6,6 @@ export type FlowState = {
 
 export type CodesState = {
   active: string | null;
-  burned: string[];
 };
 
 export type GameState = {
@@ -22,7 +21,7 @@ export function createSession(initial: { userName: string }): string {
   sessions.set(sessionId, {
     userName: initial.userName,
     flow: null,
-    codes: { active: null, burned: [] },
+    codes: { active: null },
   });
   return sessionId;
 }

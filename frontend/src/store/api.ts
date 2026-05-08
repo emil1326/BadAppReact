@@ -44,20 +44,26 @@ export const api = createApi({
       },
     }),
 
+    // Static JSON endpoints — data never changes within a session, so we
+    // never want RTK Query to evict and re-fetch.
     getSidebar: builder.query<SidebarSection[], void>({
       query: () => '/data/sidebar.json',
+      keepUnusedDataFor: Infinity,
     }),
 
     getMessages: builder.query<AdminMessage[], void>({
       query: () => '/data/messages.json',
+      keepUnusedDataFor: Infinity,
     }),
 
     getWelcome: builder.query<WelcomeData, void>({
       query: () => '/data/welcome.json',
+      keepUnusedDataFor: Infinity,
     }),
 
     getJobs: builder.query<Job[], void>({
       query: () => '/data/jobs.json',
+      keepUnusedDataFor: Infinity,
     }),
 
     startBourseFlow: builder.mutation<
