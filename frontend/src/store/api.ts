@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './store';
 import { resetAuth, setAuth } from './slices/authSlice';
-import { resetFlow, setFlow } from './slices/flowSlice';
+import { resetFlow, setFlow, updateFlow } from './slices/flowSlice';
 import type { SidebarSection } from '../types/sidebar';
 import type { AdminMessage } from '../types/message';
 import type { WelcomeData } from '../types/welcome';
@@ -70,7 +70,7 @@ export const api = createApi({
       query: () => ({ url: '/api/session/start-bourse-flow', method: 'POST' }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
-        dispatch(setFlow({ endTime: data.endTime }));
+        dispatch(setFlow({ endTime: data.endTime, latestCode: data.code }));
       },
     }),
 
@@ -80,10 +80,24 @@ export const api = createApi({
         method: 'POST',
         body,
       }),
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          // Successful verification burns the code server-side; clear the
+          // cached one so the UI reflects the same state.
+          dispatch(updateFlow({ latestCode: null }));
+        } catch {
+          // Leave the cached code untouched on failure.
+        }
+      },
     }),
 
     regenerateCode: builder.mutation<{ code: string }, void>({
       query: () => ({ url: '/api/session/regenerate-code', method: 'POST' }),
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        dispatch(updateFlow({ latestCode: data.code }));
+      },
     }),
 
     recoverSession: builder.query<
@@ -94,7 +108,9 @@ export const api = createApi({
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
         if (data.active && data.endTime !== null) {
-          dispatch(setFlow({ endTime: data.endTime }));
+          // Recovery doesn't restore the code (codes live in server memory
+          // alongside burned[] state). Keep whatever we had cached locally.
+          dispatch(updateFlow({ endTime: data.endTime }));
         } else {
           dispatch(resetFlow());
         }
