@@ -6,4 +6,5 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const useAuth = () => useAppSelector((state) => state.auth);
 export const useFlow = () => useAppSelector((state) => state.flow);
+export const useProfile = () => useAppSelector((state) => state.profile);
 export const useUi = () => useAppSelector((state) => state.ui);

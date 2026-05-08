@@ -2,10 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './store';
 import { resetAuth, setAuth } from './slices/authSlice';
 import { setFlow, updateFlow } from './slices/flowSlice';
+import { setProfile } from './slices/profileSlice';
 import type { SidebarSection } from '../types/sidebar';
 import type { AdminMessage } from '../types/message';
 import type { WelcomeData } from '../types/welcome';
 import type { Job } from '../types/job';
+import type { Profile, ProfileMode } from '../types/profile';
 
 const API_BASE_URL = 'http://localhost:3001';
 
@@ -95,6 +97,26 @@ export const api = createApi({
       },
     }),
 
+    getProfile: builder.query<Profile, void>({
+      query: () => '/api/profile',
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        dispatch(setProfile(data));
+      },
+    }),
+
+    setProfileMode: builder.mutation<Profile, { mode: ProfileMode }>({
+      query: (body) => ({
+        url: '/api/profile/mode',
+        method: 'POST',
+        body,
+      }),
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        dispatch(setProfile(data));
+      },
+    }),
+
     regenerateCode: builder.mutation<{ codeSvg: string }, void>({
       query: () => ({ url: '/api/session/regenerate-code', method: 'POST' }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
@@ -113,6 +135,8 @@ export const {
   useGetMessagesQuery,
   useGetWelcomeQuery,
   useGetJobsQuery,
+  useGetProfileQuery,
+  useSetProfileModeMutation,
   useStartBourseFlowMutation,
   useCheckTimerMutation,
   useRegenerateCodeMutation,
