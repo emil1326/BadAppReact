@@ -1,0 +1,47 @@
+.formRow {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.label {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.input {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 4px 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel-bg);
+  width: 100%;
+  text-align: center;
+}
+
+.submit {
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  padding: 5px 14px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--color-button-bg-hover);
+}
+
+.submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-top: 8px;
+}
+
+.cardWide {
+  min-width: 560px;
+}
