@@ -1,6 +1,10 @@
 # start.ps1 - launches BadAppReact frontend (Vite) + backend (Fastify)
 # in a single Windows Terminal window with one tab per process.
 #
+# The backend is a thin Fastify server whose only job is to serve the static
+# JSON files in `backend/data/` (and a tiny /api/health endpoint). All real
+# game logic lives in the frontend (Redux + localStorage).
+#
 # Usage:
 #   .\start.ps1
 # If execution policy blocks it:
@@ -32,9 +36,7 @@ if (-not (Test-Path (Join-Path $backend 'node_modules'))) {
 Write-Host ""
 Write-Host "Launching BadAppReact dev servers..." -ForegroundColor Cyan
 Write-Host "  Frontend (Vite):    http://localhost:5173" -ForegroundColor Gray
-Write-Host "  Backend  (Fastify): http://localhost:3001" -ForegroundColor Gray
+Write-Host "  Backend  (Fastify): http://localhost:3001  (serves /data/* + /api/health)" -ForegroundColor Gray
 Write-Host ""
 
-# Open one wt window with two tabs. The backtick-semicolon (`;) escapes ;
-# so PowerShell passes it to wt, which treats it as the tab separator.
 wt new-tab --title "Frontend" -d "$frontend" powershell -NoExit -Command "npm run dev" `; new-tab --title "Backend" -d "$backend" powershell -NoExit -Command "npm run dev"
