@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useAppDispatch, useAuth, useUi } from '../store/hooks';
 import { useLogoutAndRedirect } from '../hooks/useLogoutAndRedirect';
 import { updateUi } from '../store/slices/uiSlice';
@@ -24,8 +24,12 @@ export function Header() {
   const dispatch = useAppDispatch();
   const { logoutAndRedirect, isLoggingOut } = useLogoutAndRedirect();
 
+  const today = useMemo(formatTodayInFrench, []);
+
   const relockIntervalRef = useRef<number | null>(null);
-  const [relockSecondsLeft, setRelockSecondsLeft] = useState<number | null>(null);
+  // Tenths of a second remaining on the relock countdown. Stored as an integer
+  // so identical-displayed-value ticks don't trigger spurious re-renders.
+  const [relockTenthsLeft, setRelockTenthsLeft] = useState<number | null>(null);
 
   useEffect(() => {
     return () => {
@@ -40,7 +44,7 @@ export function Header() {
       window.clearInterval(relockIntervalRef.current);
       relockIntervalRef.current = null;
     }
-    setRelockSecondsLeft(null);
+    setRelockTenthsLeft(null);
   };
 
   const startRelockCountdown = () => {
@@ -53,7 +57,11 @@ export function Header() {
         dispatch(updateUi({ logoutLocked: true }));
         return;
       }
-      setRelockSecondsLeft(remainingMs / 1000);
+      // Round up so the user never sees "0.0s" while the lock is still off.
+      const tenths = Math.ceil(remainingMs / 100);
+      setRelockTenthsLeft((previous) =>
+        previous === tenths ? previous : tenths,
+      );
     }, RELOCK_TICK_MS);
   };
 
@@ -63,7 +71,7 @@ export function Header() {
     if (logoutLocked) {
       // Unlocking — start the visible 2s countdown that auto-relocks at zero.
       dispatch(updateUi({ logoutLocked: false }));
-      setRelockSecondsLeft(RELOCK_DELAY_MS / 1000);
+      setRelockTenthsLeft(Math.ceil(RELOCK_DELAY_MS / 100));
       startRelockCountdown();
     } else {
       dispatch(updateUi({ logoutLocked: true }));
@@ -78,8 +86,8 @@ export function Header() {
 
   const lockLabel = logoutLocked
     ? 'DÉBLOQUER'
-    : relockSecondsLeft !== null
-      ? `BLOQUER (${relockSecondsLeft.toFixed(1)}s)`
+    : relockTenthsLeft !== null
+      ? `BLOQUER (${(relockTenthsLeft / 10).toFixed(1)}s)`
       : 'BLOQUER';
 
   return (
@@ -88,7 +96,7 @@ export function Header() {
       <div className="colnet-header__user">
         <div className="colnet-header__user-info">
           <div className="colnet-header__user-name">{userName ?? ''}</div>
-          <div className="colnet-header__user-date">{formatTodayInFrench()}</div>
+          <div className="colnet-header__user-date">{today}</div>
         </div>
         <button
           type="button"

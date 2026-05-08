@@ -4,7 +4,7 @@ import { useTimer } from '../hooks/useTimer';
 import styles from './VerificationDialog.module.css';
 
 const DISPLAY_DURATION_MS = 10_000;
-const TICK_INTERVAL_MS = 100;
+const TICK_INTERVAL_MS = 200;
 
 type Phase = 'input' | 'displaying';
 
@@ -24,9 +24,9 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
   const [code, setCode] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>('input');
-  const [, setTick] = useState(0);
+  const [displayedTime, setDisplayedTime] = useState('');
 
-  const { remainingMs } = useTimer();
+  const { endTime } = useTimer();
   const [checkTimer, { isLoading }] = useCheckTimerMutation();
 
   // Reset to input phase whenever the dialog is freshly opened.
@@ -38,20 +38,26 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
     }
   }, [open]);
 
-  // While displaying the timer, tick the local re-render every 100ms so the
-  // countdown updates, and auto-close after exactly 10 seconds.
+  // While displaying the timer, poll the cached endTime and only re-render
+  // when the formatted string actually changes (once per second), and
+  // auto-close the dialog after 10 seconds.
   useEffect(() => {
-    if (!open || phase !== 'displaying') return;
+    if (!open || phase !== 'displaying' || endTime === null) return;
+
+    const tick = () => {
+      const remaining = Math.max(0, endTime - Date.now());
+      const next = formatRemaining(remaining);
+      setDisplayedTime((previous) => (previous === next ? previous : next));
+    };
+
+    tick();
     const closeId = window.setTimeout(onClose, DISPLAY_DURATION_MS);
-    const tickId = window.setInterval(
-      () => setTick((value) => value + 1),
-      TICK_INTERVAL_MS,
-    );
+    const tickId = window.setInterval(tick, TICK_INTERVAL_MS);
     return () => {
       window.clearTimeout(closeId);
       window.clearInterval(tickId);
     };
-  }, [open, phase, onClose]);
+  }, [open, phase, onClose, endTime]);
 
   if (!open) return null;
 
@@ -118,9 +124,7 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
             <div>
               <div className={styles.timerDisplay}>
                 <p className={styles.timerLabel}>Temps restant avant expiration</p>
-                <p className={styles.timerValue}>
-                  {formatRemaining(remainingMs())}
-                </p>
+                <p className={styles.timerValue}>{displayedTime}</p>
               </div>
               <p className={styles.autoCloseHint}>
                 Cette fenêtre se fermera automatiquement dans 10 secondes pour
