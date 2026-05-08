@@ -1,0 +1,9 @@
+.captcha {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  background: #f7efd9;
+}

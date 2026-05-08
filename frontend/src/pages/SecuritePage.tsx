@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PageShell } from '../layout/PageShell';
+import { CaptchaCode } from '../components/CaptchaCode';
 import { VerificationDialog } from '../components/VerificationDialog';
 import { useRegenerateCodeMutation } from '../store/api';
 import { useFlow } from '../store/hooks';
@@ -38,13 +39,13 @@ export function SecuritePage() {
             </p>
           ) : (
             <>
-              <div
-                className={`${styles.codeBox}${
-                  latestCode === null ? ' ' + styles.codeBoxEmpty : ''
-                }`}
-              >
-                {latestCode ?? 'Aucun code disponible — veuillez en régénérer un.'}
-              </div>
+              {latestCode === null ? (
+                <div className={`${styles.codeBox} ${styles.codeBoxEmpty}`}>
+                  Aucun code disponible — veuillez en régénérer un.
+                </div>
+              ) : (
+                <CaptchaCode code={latestCode} />
+              )}
               <div className={styles.actions}>
                 <button
                   type="button"
