@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './store';
 import { resetAuth, setAuth } from './slices/authSlice';
-import { resetFlow, setFlow, updateFlow } from './slices/flowSlice';
+import { setFlow, updateFlow } from './slices/flowSlice';
 import type { SidebarSection } from '../types/sidebar';
 import type { AdminMessage } from '../types/message';
 import type { WelcomeData } from '../types/welcome';
@@ -21,7 +21,6 @@ export const api = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Me'],
   endpoints: (builder) => ({
     login: builder.mutation<
       { sessionId: string; userName: string },
@@ -43,11 +42,6 @@ export const api = createApi({
           dispatch(resetAuth());
         }
       },
-    }),
-
-    getMe: builder.query<{ userName: string }, void>({
-      query: () => '/api/me',
-      providesTags: ['Me'],
     }),
 
     getSidebar: builder.query<SidebarSection[], void>({
@@ -103,29 +97,12 @@ export const api = createApi({
       },
     }),
 
-    recoverSession: builder.query<
-      { active: boolean; endTime: number | null; expired: boolean },
-      void
-    >({
-      query: () => '/api/session/recover',
-      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
-        const { data } = await queryFulfilled;
-        if (data.active && data.endTime !== null) {
-          // Recovery doesn't restore the code SVG (codes live in server
-          // memory alongside burned[] state). Keep whatever we had cached.
-          dispatch(updateFlow({ endTime: data.endTime }));
-        } else {
-          dispatch(resetFlow());
-        }
-      },
-    }),
   }),
 });
 
 export const {
   useLoginMutation,
   useLogoutMutation,
-  useGetMeQuery,
   useGetSidebarQuery,
   useGetMessagesQuery,
   useGetWelcomeQuery,
@@ -133,5 +110,4 @@ export const {
   useStartBourseFlowMutation,
   useCheckTimerMutation,
   useRegenerateCodeMutation,
-  useRecoverSessionQuery,
 } = api;

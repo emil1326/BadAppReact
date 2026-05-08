@@ -1,11 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 import { getRequiredSession, requireSession } from '../services/auth.js';
-import {
-  burnCode,
-  getFlowSnapshot,
-  regenerateCode,
-  startFlow,
-} from '../services/timer.js';
+import { burnCode, regenerateCode, startFlow } from '../services/timer.js';
 
 type CheckTimerBody = { code?: string };
 
@@ -51,12 +46,4 @@ export async function sessionRoutes(app: FastifyInstance): Promise<void> {
     },
   );
 
-  app.get(
-    '/api/session/recover',
-    { preHandler: requireSession },
-    async (request) => {
-      const { state } = getRequiredSession(request);
-      return getFlowSnapshot(state);
-    },
-  );
 }

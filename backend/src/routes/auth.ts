@@ -20,9 +20,4 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
     destroySession(session.id);
     return { ok: true };
   });
-
-  app.get('/api/me', { preHandler: requireSession }, async (request) => {
-    const session = getRequiredSession(request);
-    return { userName: session.state.userName };
-  });
 }
