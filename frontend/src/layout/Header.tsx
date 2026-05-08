@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAuth, useUi } from '../store/hooks';
-import { useLogoutMutation } from '../store/api';
+import { useLogoutAndRedirect } from '../hooks/useLogoutAndRedirect';
 import { updateUi } from '../store/slices/uiSlice';
 import { COLLEGE_NAME } from '../config/branding';
 
@@ -23,8 +22,7 @@ export function Header() {
   const { userName } = useAuth();
   const { logoutLocked } = useUi();
   const dispatch = useAppDispatch();
-  const [logout, { isLoading: isLoggingOut }] = useLogoutMutation();
-  const navigate = useNavigate();
+  const { logoutAndRedirect, isLoggingOut } = useLogoutAndRedirect();
 
   const relockIntervalRef = useRef<number | null>(null);
   const [relockSecondsLeft, setRelockSecondsLeft] = useState<number | null>(null);
@@ -75,8 +73,7 @@ export function Header() {
   const handleLogout = async () => {
     if (logoutLocked) return;
     cancelPendingRelock();
-    await logout();
-    navigate('/login');
+    await logoutAndRedirect();
   };
 
   const lockLabel = logoutLocked

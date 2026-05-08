@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Wheel } from 'react-custom-roulette';
 import { PageShell } from '../layout/PageShell';
-import { useLogoutMutation } from '../store/api';
+import { useLogoutAndRedirect } from '../hooks/useLogoutAndRedirect';
 import styles from './VignetteAutoPage.module.css';
 
 type WheelOutcome = {
@@ -110,8 +109,7 @@ export function VignetteAutoPage() {
   const [hasSpun, setHasSpun] = useState(false);
   const [warning, setWarning] = useState<WarningKind | null>(null);
 
-  const [logout] = useLogoutMutation();
-  const navigate = useNavigate();
+  const { logoutAndRedirect } = useLogoutAndRedirect();
 
   const handleSpin = () => {
     if (mustSpin) return;
@@ -136,8 +134,7 @@ export function VignetteAutoPage() {
 
   const handleConfirmLogout = async () => {
     setWarning(null);
-    await logout();
-    navigate('/login');
+    await logoutAndRedirect();
   };
 
   const activeWarning = warning ? WARNINGS[warning] : null;
