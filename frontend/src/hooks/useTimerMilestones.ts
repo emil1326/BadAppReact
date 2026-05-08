@@ -3,11 +3,13 @@ import { useTimer } from './useTimer';
 
 export type TimerMilestone = '1min' | '30s' | '10s';
 
-const MILESTONE_OFFSETS_MS: Record<TimerMilestone, number> = {
-  '1min': 60_000,
-  '30s': 30_000,
-  '10s': 10_000,
-};
+type MilestoneSpec = { milestone: TimerMilestone; offsetMs: number };
+
+const MILESTONES: readonly MilestoneSpec[] = [
+  { milestone: '1min', offsetMs: 60_000 },
+  { milestone: '30s', offsetMs: 30_000 },
+  { milestone: '10s', offsetMs: 10_000 },
+];
 
 /**
  * Schedules local setTimeout calls so that `onMilestone` fires when the active
@@ -24,14 +26,12 @@ export function useTimerMilestones(
   useEffect(() => {
     if (endTime === null) return;
 
-    const now = Date.now();
-    const remaining = endTime - now;
+    const remainingMs = endTime - Date.now();
     const timeouts: number[] = [];
 
-    for (const [key, offset] of Object.entries(MILESTONE_OFFSETS_MS)) {
-      const fireInMs = remaining - offset;
+    for (const { milestone, offsetMs } of MILESTONES) {
+      const fireInMs = remainingMs - offsetMs;
       if (fireInMs <= 0) continue;
-      const milestone = key as TimerMilestone;
       const id = window.setTimeout(() => {
         onMilestoneRef.current(milestone);
       }, fireInMs);
