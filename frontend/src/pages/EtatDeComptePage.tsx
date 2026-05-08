@@ -58,7 +58,7 @@ export function EtatDeComptePage() {
               type="button"
               className="colnet-form__submit"
               onClick={handleStart}
-              disabled={isActive || isLoading}
+              disabled={isActive || isLoading || !canSubmit}
             >
               {isActive
                 ? 'Procédure déjà en cours'
