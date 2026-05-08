@@ -29,15 +29,18 @@ type DecoyField =
       defaultValue: boolean;
     };
 
+type SpecialRow = { kind: 'mode-toggle' } | { kind: 'student-number' };
+
 type Section = {
   title: string;
-  rows: ReadonlyArray<DecoyField | { kind: 'mode-toggle' }>;
+  rows: ReadonlyArray<DecoyField | SpecialRow>;
 };
 
 const SECTIONS: readonly Section[] = [
   {
     title: 'Compte',
     rows: [
+      { kind: 'student-number' },
       { kind: 'text', id: 'fullName', label: 'Nom complet', defaultValue: '' },
       { kind: 'text', id: 'email', label: 'Courriel', defaultValue: '' },
       { kind: 'text', id: 'phone', label: 'Téléphone', defaultValue: '' },
@@ -217,7 +220,7 @@ function buildInitialDecoyState(): Record<string, string | boolean> {
   const initial: Record<string, string | boolean> = {};
   for (const section of SECTIONS) {
     for (const row of section.rows) {
-      if (row.kind === 'mode-toggle') continue;
+      if (row.kind === 'mode-toggle' || row.kind === 'student-number') continue;
       initial[row.id] = row.defaultValue;
     }
   }
@@ -228,7 +231,7 @@ export function OptionsPage() {
   // Pull profile from server on mount so the mode toggle reflects reality
   // even if Redux was empty (first visit) or out of sync.
   useGetProfileQuery();
-  const { mode } = useProfile();
+  const { mode, studentNumber } = useProfile();
   const [setProfileMode, { isLoading: isUpdatingMode }] =
     useSetProfileModeMutation();
 
@@ -277,6 +280,21 @@ export function OptionsPage() {
           <div className="colnet-panel__header">{section.title}</div>
           <div className="colnet-panel__body">
             {section.rows.map((row) => {
+              if (row.kind === 'student-number') {
+                return (
+                  <div key="student-number" className={styles.row}>
+                    <span className={styles.label}>Numéro étudiant</span>
+                    {studentNumber !== null ? (
+                      <span className={styles.readOnlyValue}>
+                        {studentNumber}
+                      </span>
+                    ) : (
+                      <span className={styles.maskedValue}>•••••••</span>
+                    )}
+                    <span className={styles.saveIndicator}>Lecture seule</span>
+                  </div>
+                );
+              }
               if (row.kind === 'mode-toggle') {
                 return (
                   <div key="mode-toggle" className={`${styles.row} ${styles.modeRow}`}>

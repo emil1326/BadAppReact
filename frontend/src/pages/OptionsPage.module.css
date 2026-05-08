@@ -57,6 +57,17 @@
   /* No visual emphasis. The whole point is that this row blends in. */
 }
 
+.readOnlyValue {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+}
+
+.maskedValue {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 6px;
+  color: var(--color-muted);
+}
+
 .modeButtons {
   display: flex;
   gap: 4px;
