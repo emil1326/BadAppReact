@@ -4,11 +4,13 @@ import type { Reducer } from 'redux';
 
 import { api } from './api';
 import { authReducer } from './slices/authSlice';
+import { flowReducer } from './slices/flowSlice';
 import { uiReducer } from './slices/uiSlice';
 import { localStorageAdapter } from './persistStorage';
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  flow: flowReducer,
   ui: uiReducer,
   [api.reducerPath]: api.reducer,
 });
@@ -18,7 +20,7 @@ type StoreState = ReturnType<typeof rootReducer>;
 const persistConfig: PersistConfig<StoreState> = {
   key: 'root',
   storage: localStorageAdapter,
-  whitelist: ['auth', 'ui'],
+  whitelist: ['auth', 'flow', 'ui'],
 };
 
 const persistedReducer = persistReducer(
