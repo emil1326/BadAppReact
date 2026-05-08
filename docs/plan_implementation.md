@@ -300,7 +300,7 @@ export function useTimer() {
 
 **Sortie :** tu démarres un faux flow, tu reçois un code, tu fais la danse pour voir le timer, tu regenères des codes, tu te fais matraquer par les modals de jalons (déclenchés localement, pas via polling), tu te fais kicker au timeout.
 
-## Phase 3 — Le toggle profil
+## Phase 3 — Le toggle profil (✅ fait)
 
 Affecte presque toutes les pages.
 
