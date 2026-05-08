@@ -213,7 +213,7 @@ Construire le layout de base que toutes les pages utilisent. Aucune logique de j
 
 **Sortie :** tu te login (n'importe quoi accepté), tu vois l'accueil ColNet-like, tu peux cliquer dans la sidebar pis tomber sur des pages "À venir".
 
-## Phase 2 — Le système de timer
+## Phase 2 — Le système de timer (✅ fait)
 
 Foundational, doit être solide avant le reste.
 
