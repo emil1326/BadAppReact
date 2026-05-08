@@ -15,7 +15,8 @@
   "dependencies": {
     "@fastify/cors": "^11.2.0",
     "@fastify/static": "^8.0.0",
-    "fastify": "^5.8.5"
+    "fastify": "^5.8.5",
+    "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^25.6.2",

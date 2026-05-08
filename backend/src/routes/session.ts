@@ -15,8 +15,7 @@ export async function sessionRoutes(app: FastifyInstance): Promise<void> {
     { preHandler: requireSession },
     async (request) => {
       const { state } = getRequiredSession(request);
-      const { endTime, code } = startFlow(state);
-      return { endTime, code };
+      return startFlow(state);
     },
   );
 
@@ -48,8 +47,7 @@ export async function sessionRoutes(app: FastifyInstance): Promise<void> {
       if (state.flow.endTime <= Date.now()) {
         return reply.code(400).send({ error: 'FLOW_EXPIRED' });
       }
-      const code = regenerateCode(state);
-      return { code };
+      return regenerateCode(state);
     },
   );
 

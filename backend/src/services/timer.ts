@@ -1,27 +1,35 @@
+import svgCaptcha from 'svg-captcha';
 import type { GameState } from '../state/store.js';
 
 const FLOW_DURATION_MS = 3 * 60 * 1000; // 3 minutes
 
-function generate6DigitCode(): string {
-  const value = Math.floor(Math.random() * 1_000_000);
-  return value.toString().padStart(6, '0');
+function generateCaptcha(): { text: string; data: string } {
+  return svgCaptcha.create({
+    size: 6,
+    charPreset: '0123456789',
+    noise: 4,
+    color: true,
+    background: '#f7efd9',
+    width: 280,
+    height: 88,
+  });
 }
 
-export function startFlow(state: GameState): { endTime: number; code: string } {
+export function startFlow(state: GameState): { endTime: number; codeSvg: string } {
   const endTime = Date.now() + FLOW_DURATION_MS;
-  const code = generate6DigitCode();
+  const captcha = generateCaptcha();
   state.flow = { endTime };
-  state.codes = { active: code, burned: [] };
-  return { endTime, code };
+  state.codes = { active: captcha.text, burned: [] };
+  return { endTime, codeSvg: captcha.data };
 }
 
-export function regenerateCode(state: GameState): string {
+export function regenerateCode(state: GameState): { codeSvg: string } {
   if (state.codes.active && !state.codes.burned.includes(state.codes.active)) {
     state.codes.burned.push(state.codes.active);
   }
-  const code = generate6DigitCode();
-  state.codes.active = code;
-  return code;
+  const captcha = generateCaptcha();
+  state.codes.active = captcha.text;
+  return { codeSvg: captcha.data };
 }
 
 type BurnResult =
