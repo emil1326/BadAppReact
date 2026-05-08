@@ -1,0 +1,28 @@
+.intro {
+  margin: 0 0 8px;
+}
+
+.requestActions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.referenceLine {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.delayHighlight {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--color-error);
+}
+
+.smallNote {
+  font-size: 10px;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 12px 0 0;
+}

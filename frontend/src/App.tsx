@@ -7,6 +7,7 @@ import { CarteEtudiantePage } from './pages/CarteEtudiantePage';
 import { CoursPage } from './pages/CoursPage';
 import { EtatDeComptePage } from './pages/EtatDeComptePage';
 import { LoginPage } from './pages/LoginPage';
+import { NotesPersonnellesPage } from './pages/NotesPersonnellesPage';
 import { OffresEmploiPage } from './pages/OffresEmploiPage';
 import { SecuritePage } from './pages/SecuritePage';
 import { StubPage } from './pages/StubPage';
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="carte-etudiante" element={<CarteEtudiantePage />} />
           <Route path="cours" element={<CoursPage />} />
           <Route path="etat-de-compte" element={<EtatDeComptePage />} />
+          <Route path="notes-personnelles" element={<NotesPersonnellesPage />} />
           <Route path="offres-emploi" element={<OffresEmploiPage />} />
           <Route path="securite" element={<SecuritePage />} />
           <Route path="timeout" element={<TimeoutPage />} />
