@@ -8,6 +8,7 @@ import { LoginPage } from './pages/LoginPage';
 import { OffresEmploiPage } from './pages/OffresEmploiPage';
 import { SecuritePage } from './pages/SecuritePage';
 import { StubPage } from './pages/StubPage';
+import { TimeoutPage } from './pages/TimeoutPage';
 import { VignetteAutoPage } from './pages/VignetteAutoPage';
 import { useAuth } from './store/hooks';
 
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="cours" element={<CoursPage />} />
           <Route path="offres-emploi" element={<OffresEmploiPage />} />
           <Route path="securite" element={<SecuritePage />} />
+          <Route path="timeout" element={<TimeoutPage />} />
           <Route path="vignette-auto" element={<VignetteAutoPage />} />
           <Route path=":slug" element={<StubPage />} />
         </Route>

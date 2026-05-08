@@ -1,0 +1,18 @@
+.expiredPanel {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+
+.expiredPanel .colnet-panel__header {
+  background: var(--color-error);
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.message {
+  margin: 0 0 8px;
+}
+
+.actions {
+  margin-top: 12px;
+}
