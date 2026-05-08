@@ -4,6 +4,7 @@ import staticPlugin from '@fastify/static';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { authRoutes } from './routes/auth.js';
+import { sessionRoutes } from './routes/session.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,6 +29,7 @@ await app.register(staticPlugin, {
 });
 
 await app.register(authRoutes);
+await app.register(sessionRoutes);
 
 app.get('/api/health', async () => ({ status: 'ok', uptime: process.uptime() }));
 
