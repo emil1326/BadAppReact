@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { InfoStrip } from './InfoStrip';
+import { TimerMilestoneModal } from '../components/TimerMilestoneModal';
 
 export function Layout() {
   const location = useLocation();
@@ -15,6 +16,7 @@ export function Layout() {
           <Outlet />
         </main>
       </div>
+      <TimerMilestoneModal />
     </div>
   );
 }
