@@ -9,7 +9,7 @@ export function StubPage() {
 
   return (
     <PageShell title={title}>
-      <p className="colnet-stub">Cette section est en construction. À venir.</p>
+      <p className="colnet-stub">Cette section n'est pas en construction. Revenez jamais.</p>
     </PageShell>
   );
 }
