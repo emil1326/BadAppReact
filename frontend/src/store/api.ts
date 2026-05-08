@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './store';
 import { resetAuth, setAuth } from './slices/authSlice';
+import { resetFlow, setFlow } from './slices/flowSlice';
 import type { SidebarSection } from '../types/sidebar';
 import type { AdminMessage } from '../types/message';
 import type { WelcomeData } from '../types/welcome';
@@ -64,6 +65,41 @@ export const api = createApi({
     getJobs: builder.query<Job[], void>({
       query: () => '/data/jobs.json',
     }),
+
+    startBourseFlow: builder.mutation<{ endTime: number; code: string }, void>({
+      query: () => ({ url: '/api/session/start-bourse-flow', method: 'POST' }),
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        dispatch(setFlow({ endTime: data.endTime }));
+      },
+    }),
+
+    checkTimer: builder.mutation<{ ok: true; remainingMs: number }, { code: string }>({
+      query: (body) => ({
+        url: '/api/session/check-timer',
+        method: 'POST',
+        body,
+      }),
+    }),
+
+    regenerateCode: builder.mutation<{ code: string }, void>({
+      query: () => ({ url: '/api/session/regenerate-code', method: 'POST' }),
+    }),
+
+    recoverSession: builder.query<
+      { active: boolean; endTime: number | null; expired: boolean },
+      void
+    >({
+      query: () => '/api/session/recover',
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        if (data.active && data.endTime !== null) {
+          dispatch(setFlow({ endTime: data.endTime }));
+        } else {
+          dispatch(resetFlow());
+        }
+      },
+    }),
   }),
 });
 
@@ -75,4 +111,8 @@ export const {
   useGetMessagesQuery,
   useGetWelcomeQuery,
   useGetJobsQuery,
+  useStartBourseFlowMutation,
+  useCheckTimerMutation,
+  useRegenerateCodeMutation,
+  useRecoverSessionQuery,
 } = api;
