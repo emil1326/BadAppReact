@@ -3,7 +3,7 @@ export type UiState = {
 };
 
 const defaultUiState: UiState = {
-  logoutLocked: false,
+  logoutLocked: true,
 };
 
 export function createUiState(overrides: Partial<UiState> = {}): UiState {
