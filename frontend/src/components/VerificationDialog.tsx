@@ -78,7 +78,7 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
   };
 
   return (
-    <div className={styles.overlay} role="dialog" aria-modal="true">
+    <div className="colnet-modal-overlay" role="dialog" aria-modal="true">
       <div className={`colnet-panel ${styles.dialog}`}>
         <div className="colnet-panel__header">Vérification de session</div>
         <div className={`colnet-panel__body ${styles.body}`}>

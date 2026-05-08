@@ -194,7 +194,11 @@ export function VignetteAutoPage() {
       )}
 
       {activeWarning && (
-        <div className={styles.modalOverlay} role="alertdialog" aria-modal="true">
+        <div
+          className="colnet-modal-overlay colnet-modal-overlay--page"
+          role="alertdialog"
+          aria-modal="true"
+        >
           <div className={`colnet-panel ${styles.modal}`}>
             <div className="colnet-panel__header">{activeWarning.title}</div>
             <div className="colnet-panel__body">

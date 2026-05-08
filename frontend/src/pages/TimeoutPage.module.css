@@ -3,7 +3,7 @@
   border-width: 2px;
 }
 
-.expiredPanel .colnet-panel__header {
+.expiredPanel :global(.colnet-panel__header) {
   background: var(--color-error);
   color: #ffffff;
   letter-spacing: 1px;

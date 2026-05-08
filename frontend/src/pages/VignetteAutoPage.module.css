@@ -62,22 +62,12 @@
   font-style: italic;
 }
 
-.modalOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
 .modal {
   width: 480px;
   max-width: calc(100vw - 32px);
 }
 
-.modal .colnet-panel__header {
+.modal :global(.colnet-panel__header) {
   background: var(--color-error);
   color: #ffffff;
   letter-spacing: 1px;
