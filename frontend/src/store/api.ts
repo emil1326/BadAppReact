@@ -66,11 +66,14 @@ export const api = createApi({
       query: () => '/data/jobs.json',
     }),
 
-    startBourseFlow: builder.mutation<{ endTime: number; code: string }, void>({
+    startBourseFlow: builder.mutation<
+      { endTime: number; codeSvg: string },
+      void
+    >({
       query: () => ({ url: '/api/session/start-bourse-flow', method: 'POST' }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
-        dispatch(setFlow({ endTime: data.endTime, latestCode: data.code }));
+        dispatch(setFlow({ endTime: data.endTime, latestCodeSvg: data.codeSvg }));
       },
     }),
 
@@ -84,19 +87,19 @@ export const api = createApi({
         try {
           await queryFulfilled;
           // Successful verification burns the code server-side; clear the
-          // cached one so the UI reflects the same state.
-          dispatch(updateFlow({ latestCode: null }));
+          // cached SVG so the UI reflects the same state.
+          dispatch(updateFlow({ latestCodeSvg: null }));
         } catch {
           // Leave the cached code untouched on failure.
         }
       },
     }),
 
-    regenerateCode: builder.mutation<{ code: string }, void>({
+    regenerateCode: builder.mutation<{ codeSvg: string }, void>({
       query: () => ({ url: '/api/session/regenerate-code', method: 'POST' }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
-        dispatch(updateFlow({ latestCode: data.code }));
+        dispatch(updateFlow({ latestCodeSvg: data.codeSvg }));
       },
     }),
 
@@ -108,8 +111,8 @@ export const api = createApi({
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
         if (data.active && data.endTime !== null) {
-          // Recovery doesn't restore the code (codes live in server memory
-          // alongside burned[] state). Keep whatever we had cached locally.
+          // Recovery doesn't restore the code SVG (codes live in server
+          // memory alongside burned[] state). Keep whatever we had cached.
           dispatch(updateFlow({ endTime: data.endTime }));
         } else {
           dispatch(resetFlow());

@@ -1,11 +1,11 @@
 export type Flow = {
   endTime: number | null;
-  latestCode: string | null;
+  latestCodeSvg: string | null;
 };
 
 const defaultFlow: Flow = {
   endTime: null,
-  latestCode: null,
+  latestCodeSvg: null,
 };
 
 export function createFlow(overrides: Partial<Flow> = {}): Flow {

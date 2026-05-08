@@ -1,9 +1,12 @@
 .captcha {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.captcha svg {
   display: block;
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  margin: 0 auto;
   border: 1px solid var(--color-border);
-  background: #f7efd9;
+  max-width: 100%;
+  height: auto;
 }

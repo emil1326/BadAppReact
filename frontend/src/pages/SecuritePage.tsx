@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { PageShell } from '../layout/PageShell';
 import { CaptchaCode } from '../components/CaptchaCode';
+import captchaStyles from '../components/CaptchaCode.module.css';
 import { VerificationDialog } from '../components/VerificationDialog';
 import { useRegenerateCodeMutation } from '../store/api';
 import { useFlow } from '../store/hooks';
@@ -9,7 +10,7 @@ import styles from './SecuritePage.module.css';
 
 export function SecuritePage() {
   const { isActive } = useTimer();
-  const { latestCode } = useFlow();
+  const { latestCodeSvg } = useFlow();
   const [regenerateCode, { isLoading: isRegenerating }] = useRegenerateCodeMutation();
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -39,12 +40,15 @@ export function SecuritePage() {
             </p>
           ) : (
             <>
-              {latestCode === null ? (
+              {latestCodeSvg === null ? (
                 <div className={`${styles.codeBox} ${styles.codeBoxEmpty}`}>
                   Aucun code disponible — veuillez en régénérer un.
                 </div>
               ) : (
-                <CaptchaCode code={latestCode} />
+                <CaptchaCode
+                  svgMarkup={latestCodeSvg}
+                  className={captchaStyles.captcha}
+                />
               )}
               <div className={styles.actions}>
                 <button
