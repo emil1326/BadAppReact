@@ -1,0 +1,109 @@
+.intro {
+  margin: 0 0 12px;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.card {
+  width: 480px;
+  max-width: 100%;
+  border: 2px solid var(--color-header);
+  background: var(--color-panel-bg);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.cardHeader {
+  background: var(--color-header);
+  color: #ffffff;
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  padding: 12px;
+}
+
+.photoFrame {
+  width: 130px;
+  height: 160px;
+  border: 1px solid #999999;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photoFrame svg {
+  width: 110px;
+  height: 110px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.fieldLabel {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.fieldValue {
+  margin: 0 0 4px;
+  font-weight: bold;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-top: 1px solid var(--color-border);
+  background: #f5f5f0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+}
+
+.barcode {
+  display: flex;
+  gap: 1px;
+  height: 28px;
+}
+
+.barcode span {
+  display: block;
+  background: #000000;
+}
+
+.stamp {
+  border: 2px solid #006400;
+  color: #006400;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  transform: rotate(-6deg);
+  font-size: 12px;
+  background: rgba(0, 100, 0, 0.05);
+}
+
+.disclaimer {
+  font-size: 10px;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 8px 0 0;
+}
