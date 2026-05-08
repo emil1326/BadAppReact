@@ -48,7 +48,7 @@ Mince. Ça affiche ce que le backend dit. Aucune logique métier.
 - **redux-persist** avec `localStorage` pour que le state survive un refresh
 - **Style production** : composants bien séparés, hooks bien nommés, types stricts, pas de `any`, pas de logique stuffée dans des composants. Code-reviewable comme un vrai projet
 - **Pas de validation côté client** (sauf UX optimistic). Le backend valide tout pis retourne les erreurs
-- **EmailJS** : seul truc côté client qui appelle un service externe. Déclenché en réponse aux signaux du backend (genre `/api/codes/init-2fa` retourne `{ emailToSend: { template: '2fa-code', vars: { code: ... } } }`, frontend dispatche)
+- **Pas d'EmailJS côté frontend** : l'envoi d'email vit côté backend (voir section EmailJS plus bas). Le frontend ne fait que déclencher des mutations RTK qui retournent `{ ok: true }` une fois l'email envoyé.
 
 #### Pattern RTK à suivre
 
@@ -152,11 +152,19 @@ Naming conventions à respecter :
 
 **Principe :** on évite de poll le backend pour des données qui changent pas (genre le `endTime` qui est fixé une fois pour toutes au démarrage du flow). On call le backend seulement pour les actions (mutations) ou si on a perdu la cache pis qu'on doit recover.
 
-### EmailJS
+### EmailJS (côté backend)
 
-EmailJS reste pour envoyer les vrais emails SMTP depuis le browser. Pourrait techniquement être en backend avec nodemailer, mais ça nécessiterait de configurer des credentials SMTP côté serveur, ce qui ajoute du setup pour un gain marginal. EmailJS = juste une clé publique + un template ID. 200 emails/mois free tier.
+L'envoi d'email se fait via **`@emailjs/nodejs`** depuis le backend Fastify. La clé privée EmailJS est sensible (validation server-side) donc elle reste hors du browser.
 
-Pattern : le backend retourne dans une response `{ ..., emailToSend: { template: 'twoFA', to: '...', vars: { code: '123456' } } }`. Le frontend voit ce signal pis dispatche EmailJS. Pas de logique d'envoi côté frontend, juste l'exécution.
+Setup :
+- Compte gratuit sur emailjs.com, un service Gmail connecté, 2-3 templates créés dans le dashboard
+- Les credentials (`EMAILJS_SERVICE_ID`, `EMAILJS_PUBLIC_KEY`, `EMAILJS_PRIVATE_KEY`) vivent dans `backend/.env` (gitignoré). Un `backend/.env.example` est commité avec des placeholders.
+- `backend/src/index.ts` charge le `.env` au démarrage via `import 'dotenv/config'`
+- `backend/src/services/email.ts` expose `sendEmail({ templateId, to, vars })` qui call EmailJS Node SDK
+
+Flow : le frontend déclenche un endpoint backend (genre `POST /api/codes/init-2fa`). Le backend génère le code, appelle `sendEmail(...)` directement, et retourne juste `{ ok: true }` ou `{ ok: false, reason: ... }`. Aucune fuite de données EmailJS au client.
+
+Free tier 200 emails/mois, largement assez pour un projet d'école. Délai d'envoi 1-30s — ON-BRAND parce que le timer roule pendant ce temps.
 
 ## Phase 0 — Foundation (✅ fait)
 
@@ -169,14 +177,14 @@ Pattern : le backend retourne dans une response `{ ..., emailToSend: { template:
 
 Côté frontend :
 - `npm install @reduxjs/toolkit react-redux redux-persist`
-- `npm install @emailjs/browser`
+- (frontend n'a plus besoin d'EmailJS — c'est sur le backend maintenant)
 - Setup le store Redux dans `frontend/src/store/` selon le pattern de la section Architecture :
   - `store.ts` — combineReducers + persistReducer + configureStore + RTK Query api middleware. Whitelist `['flow', 'profile']` (pas l'api cache, pas l'ui)
   - `hooks.ts` — `useAppDispatch`, `useAppSelector`, pis les selecteurs domain (`useFlow`, `useProfile`, `useUiState`)
   - `api.ts` — `createApi` avec `baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001', prepareHeaders: (h) => { h.set('X-Session-Id', sessionId); return h } })`
   - `slices/uiSlice.ts` — UI state (modals ouverts, etc.) avec set/update/reset
 - Wrapper l'app dans `<Provider store={store}><PersistGate loading={null} persistor={persistor}>`
-- Créer `frontend/src/config/emailjs.ts` (vide pour l'instant, sera rempli en Phase 6)
+- (config EmailJS retirée du frontend — voir backend/.env)
 - Nettoyer le scaffold Vite default (App.tsx, App.css, le logo qui tourne, etc.)
 
 Côté backend :
@@ -186,11 +194,12 @@ Côté backend :
 - Créer `src/routes/auth.ts` avec `POST /api/auth/login` (accepte n'importe quoi, génère un sessionId UUID, le retourne)
 - Wirer ça dans `src/index.ts`
 
-Côté EmailJS :
+Côté EmailJS (backend) :
 - Créer un compte gratuit sur emailjs.com
 - Configurer un service email (Gmail le plus simple)
 - Créer un premier template de test
-- Récupérer la clé publique + IDs (à mettre dans `frontend/src/config/emailjs.ts` plus tard)
+- Récupérer service ID + clé publique + clé privée + IDs templates → mettre dans `backend/.env` (gitignoré)
+- Backend a déjà `@emailjs/nodejs` + `dotenv` installés et `services/email.ts` câblé
 
 ## Phase 1 — Le shell visuel ColNet
 
@@ -355,7 +364,8 @@ Tu reçois un VRAI email dans ta vraie inbox, fais du 2FA, pis trouves le tab ca
 
 **Setup EmailJS :**
 - Compte gratuit sur emailjs.com, service Gmail, 2-3 templates ("2fa-code", "code-a")
-- Mettre la clé publique + IDs dans `frontend/src/config/emailjs.ts`
+- Mettre service ID + clé publique + clé privée dans `backend/.env`
+- Templates IDs : ajouter dans .env (`EMAILJS_TEMPLATE_2FA`, `EMAILJS_TEMPLATE_CODE_A`)
 
 **Backend :**
 - Routes (`src/routes/codes.ts`) :
@@ -365,7 +375,7 @@ Tu reçois un VRAI email dans ta vraie inbox, fais du 2FA, pis trouves le tab ca
 - Service `src/services/codes.ts` : génération + validation des codes A et B
 
 **Frontend :**
-- Hook `useEmailJS()` : wrapper sur `@emailjs/browser` qui prend `{ template, to, vars }` et envoie. Trigger automatique quand un endpoint retourne `emailToSend`.
+- (pas de hook frontend pour l'envoi — le backend appelle `sendEmail()` directement dans les handlers de route. Le frontend voit juste un `{ ok: true }` quand l'email a été envoyé.)
 - Page 2FA : champ pour entrer le code reçu par email, submit appelle `verify-2fa`
 - Page cachée dans nested tabs (`Mon dossier > Documents > Confirmations > Codes > Validation > Sélection`) : entre le Code A → reçoit le Code B
 
@@ -437,8 +447,8 @@ BadAppReact/
 │       ├── pages/                    Accueil, EtatDeCompte, Bulletin, Options, Login, etc.
 │       ├── flows/bourse/             Pages spécifiques au flow de bourse
 │       ├── components/               BadScroller, VerificationDialog, MilestoneModal, ProtectedField, SubmitButton
-│       ├── hooks/                    useTimer, useTimerMilestones, useEmailJS
-│       ├── config/                   emailjs.ts (clé publique + IDs templates)
+│       ├── hooks/                    useTimer, useTimerMilestones, useTimerExpiration, useSidebarItem, useLogoutAndRedirect
+│       ├── config/                   branding.ts (noms du collège / portail)
 │       └── styles/                   CSS global "ColNet 2003"
 ├── backend/
 │   ├── src/
