@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PageShell } from '../layout/PageShell';
+import { formatNumberFr } from '../utils/format';
 import styles from './NotesPersonnellesPage.module.css';
 
 type RequestSnapshot = {
@@ -19,12 +20,8 @@ function generateSnapshot(): RequestSnapshot {
   return { reference, queuePosition, queueTotal, delayDays };
 }
 
-function formatThousands(value: number): string {
-  return value.toLocaleString('fr-CA');
-}
-
 function approxYears(days: number): string {
-  return formatThousands(Math.round(days / 365));
+  return formatNumberFr(Math.round(days / 365));
 }
 
 export function NotesPersonnellesPage() {
@@ -52,13 +49,13 @@ export function NotesPersonnellesPage() {
             </p>
             <p className={styles.referenceLine}>
               <strong>Position dans la file d&apos;attente :</strong>{' '}
-              {formatThousands(snapshot.queuePosition)} sur{' '}
-              {formatThousands(snapshot.queueTotal)}
+              {formatNumberFr(snapshot.queuePosition)} sur{' '}
+              {formatNumberFr(snapshot.queueTotal)}
             </p>
             <p className={styles.referenceLine}>
               <strong>Délai estimé de traitement :</strong>{' '}
               <span className={styles.delayHighlight}>
-                {formatThousands(snapshot.delayDays)} jours ouvrables
+                {formatNumberFr(snapshot.delayDays)} jours ouvrables
               </span>{' '}
               (≈ {approxYears(snapshot.delayDays)} années)
             </p>

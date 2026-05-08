@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { PageShell } from '../layout/PageShell';
 import { useStartBourseFlowMutation } from '../store/api';
 import { useTimer } from '../hooks/useTimer';
+import { formatNumberFr } from '../utils/format';
 import styles from './EtatDeComptePage.module.css';
 
 const BALANCE_AMOUNT = 13486;
@@ -27,9 +28,7 @@ export function EtatDeComptePage() {
         <div className="colnet-panel__header">Solde actuel</div>
         <div className="colnet-panel__body">
           <p className={styles.balanceLabel}>Frais de scolarité — Hiver 2026</p>
-          <p className={styles.balance}>
-            {BALANCE_AMOUNT.toLocaleString('fr-CA')} $ CA
-          </p>
+          <p className={styles.balance}>{formatNumberFr(BALANCE_AMOUNT)} $ CA</p>
           <p className={styles.helper}>
             Date d&apos;échéance : {BALANCE_DUE_DATE}
           </p>
