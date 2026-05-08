@@ -1,0 +1,34 @@
+.balanceLabel {
+  margin: 0;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.balance {
+  margin: 4px 0 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.helper {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.warning {
+  font-size: 11px;
+  color: var(--color-error);
+  margin: 8px 0;
+}
+
+.warning strong {
+  font-weight: bold;
+}
+
+.activeNotice {
+  font-size: 11px;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 8px 0 0;
+}
