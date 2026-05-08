@@ -43,5 +43,6 @@
 }
 
 .cardWide {
-  min-width: 560px;
+  width: 560px;
+  max-width: calc(100vw - 32px);
 }
