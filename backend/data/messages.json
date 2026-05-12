@@ -1,19 +1,110 @@
 [
-  { "date": "2003-09-12", "objet": "Mise en service du portail COLNET - Bienvenue dans le système intégré", "from": "Direction des services informatiques" },
-  { "date": "2005-01-18", "objet": "Compatibilité des navigateurs - Internet Explorer 6 ou supérieur recommandé", "from": "Service informatique" },
-  { "date": "2007-08-22", "objet": "Politique de confidentialité de l'information - Acceptation requise", "from": "Bureau du Registraire" },
-  { "date": "2009-11-04", "objet": "Réinitialisation des mots de passe - Présentez-vous au comptoir avec une pièce d'identité", "from": "Service informatique" },
-  { "date": "2011-06-30", "objet": "Lancement du portail mobile - Application Java Mobile désormais disponible", "from": null },
-  { "date": "2013-03-12", "objet": "Migration vers le système comptable v3.2 - Période transitoire du 1er au 30 juin", "from": "Service des finances" },
-  { "date": "2015-09-08", "objet": "Réforme de la grille horaire - Nouvelles plages disponibles dès l'automne 2016", "from": "Direction des études" },
-  { "date": "2017-04-25", "objet": "Mise à jour de la politique de stationnement - Vignettes obligatoires en tout temps", "from": "Service de la sécurité" },
-  { "date": "2018-10-19", "objet": "Éliminer le papier d'ici 2020 - Adoption progressive du portail numérique", "from": null },
-  { "date": "2019-12-02", "objet": "Implantation du module bilan-santé - Formulaire annuel obligatoire", "from": "Vie étudiante" },
-  { "date": "2020-03-14", "objet": "Suspension temporaire des activités sur place - Consignes officielles", "from": "Direction générale" },
-  { "date": "2021-08-30", "objet": "Retour partiel en présentiel - Consulter le calendrier des cohortes", "from": "Direction des études" },
-  { "date": "2022-11-21", "objet": "Modernisation de COLNET - Phase 1 - Refonte graphique partielle", "from": "Direction des services informatiques" },
-  { "date": "2023-07-15", "objet": "Mise en service du nouveau filtre anti-pourriel - Vérifier vos paramètres", "from": "Service informatique" },
-  { "date": "2024-02-09", "objet": "Adoption de la plateforme Microsoft Teams pour les communications internes", "from": null },
-  { "date": "2025-06-03", "objet": "Lancement du module d'orientation IA - Recommandations de programmes personnalisées", "from": "Centre d'aide à la réussite" },
-  { "date": "2026-02-27", "objet": "Période de réinscription Hiver 2026 - Date limite : 15 mars", "from": "Bureau du Registraire" }
+  {
+    "date": "2003-09-12",
+    "objet": "Mise en service du portail COLNET - Bienvenue dans le système intégré",
+    "from": "Direction des services informatiques",
+    "body": "Le portail COLNET v0.5 est désormais en service. Pour confirmer la réception de ce message, veuillez imprimer le formulaire d'accusé de réception (FORM-SI-2003-014), le signer en présence d'un témoin majeur, et le retourner par télécopieur au numéro indiqué à la page 3 du guide d'utilisation, lui-même disponible uniquement en format papier au comptoir B-214. La confirmation de votre réception sera traitée dans un délai de 6 à 8 semaines ouvrables. En attendant, votre accès au portail est conditionnel à l'envoi dudit formulaire. Si vous lisez ceci, vous avez déjà accès au portail. Nous vous remercions de votre collaboration."
+  },
+  {
+    "date": "2005-01-18",
+    "objet": "Compatibilité des navigateurs - Internet Explorer 6 ou supérieur recommandé",
+    "from": "Service informatique",
+    "body": "Suite à des tests approfondis, le Service informatique confirme que COLNET est pleinement compatible avec Internet Explorer 6.0 et supérieur. Les utilisateurs de Netscape Navigator 4.7 signalent des problèmes d'affichage connus et non résolus. Les navigateurs Opera, Mozilla Firefox (version bêta) et tout navigateur non-Microsoft sont officiellement non supportés. Pour un résultat optimal, réglez votre résolution d'écran à 800x600 pixels, désactivez le bloqueur de fenêtres contextuelles, et ajoutez colnet.csbsl.qc.ca à votre liste de sites de confiance. Si votre navigateur affiche un avertissement de sécurité à l'ouverture, cliquez sur « Continuer quand même ». C'est normal."
+  },
+  {
+    "date": "2007-08-22",
+    "objet": "Politique de confidentialité de l'information - Acceptation requise",
+    "from": "Bureau du Registraire",
+    "body": "Conformément à la Loi sur l'accès aux documents des organismes publics et sur la protection des renseignements personnels, vous êtes requis(e) d'accepter la Politique de confidentialité de l'information du Cégep de Saint-Bruno-du-Lac (document CONF-2007-REV3, 47 pages). Une copie papier est disponible au Bureau du Registraire (B-214, lun-ven 8h30-16h00, sauf jours fériés et la dernière semaine du mois). L'absence de réponse dans les 6 semaines ouvrables suivant la réception de ce message constitue une acceptation implicite. Ce message a été envoyé il y a 6 semaines. Vous avez donc accepté. Merci."
+  },
+  {
+    "date": "2009-11-04",
+    "objet": "Réinitialisation des mots de passe - Présentez-vous au comptoir avec une pièce d'identité",
+    "from": "Service informatique",
+    "body": "Pour réinitialiser votre mot de passe COLNET, présentez-vous au comptoir B-214 avec les documents suivants : une pièce d'identité gouvernementale avec photo (originale, pas de photocopie), votre certificat de naissance original (pas de copie intégrale), une lettre de confirmation de votre programme d'études signée par le directeur de département, et le formulaire MOT-DE-PASSE-2009 (disponible uniquement au comptoir B-214, aux mêmes heures). Votre nouveau mot de passe temporaire vous sera envoyé par télécopieur dans un délai de 6 à 8 semaines. Le mot de passe temporaire expire 48 heures après l'envoi du télécopieur. Délai habituel de traitement : 6 à 8 semaines."
+  },
+  {
+    "date": "2011-06-30",
+    "objet": "Lancement du portail mobile - Application Java Mobile désormais disponible",
+    "from": null,
+    "body": "COLNET Mobile est maintenant disponible pour vos téléphones intelligents compatibles Java ME (MIDP 2.0 ou supérieur). L'application a été testée avec succès sur Nokia 3310, Nokia 6100, et Motorola RAZR V3. Taille du fichier : 1,2 Mo. Temps de téléchargement estimé via connexion WAP : 18 à 40 minutes selon le signal. Pour télécharger, accédez au menu WAP de votre appareil, naviguez vers mobile.csbsl.qc.ca/colnet.jar et suivez les instructions à l'écran (écran recommandé : 128x160 pixels minimum). Les fonctions disponibles sont : consulter votre solde (lecture seule) et voir les 3 prochains messages (lecture seule). Toute autre action requiert la version bureau d'Internet Explorer 6."
+  },
+  {
+    "date": "2013-03-12",
+    "objet": "Migration vers le système comptable v3.2 - Période transitoire du 1er au 30 juin",
+    "from": "Service des finances",
+    "body": "Le système comptable sera migré vers la version 3.2 du 1er au 30 juin. Durant cette période, les soldes affichés pourraient ne pas refléter la réalité. C'est normal. Les transactions effectuées entre le 14 et le 17 juin seront automatiquement annulées et devront être refaites après le 30 juin. Les transactions du 18 au 22 juin seront traitées, mais potentiellement deux fois. En cas de doute sur votre solde, consultez vos relevés papier des 3 dernières années. Si vous ne conservez pas vos relevés papier, c'est votre responsabilité. Les erreurs de facturation détectées après le 30 juin ne pourront être corrigées qu'en personne, sur présentation du formulaire FIN-2013-CORR, disponible dès août 2013."
+  },
+  {
+    "date": "2015-09-08",
+    "objet": "Réforme de la grille horaire - Nouvelles plages disponibles dès l'automne 2016",
+    "from": "Direction des études",
+    "body": "La refonte de la grille horaire est en cours. Les nouvelles plages horaires seront disponibles à compter de l'automne 2016, sous réserve d'approbation du comité pédagogique (réunion prévue en novembre 2015), du Conseil d'administration (réunion prévue en mars 2016), et de la direction du Ministère (délai estimé : 4 à 6 mois supplémentaires). La plage du mardi 14h30-16h00 sera supprimée en raison d'un conflit de salle non résolu depuis 2009. Les étudiants actuellement inscrits dans cette plage seront automatiquement réinscrits dans la plage la moins populaire disponible. Des précisions suivront, probablement."
+  },
+  {
+    "date": "2016-09-06",
+    "objet": "Procédure de remboursement en ligne - Guide étape par étape (COLNET)",
+    "from": "Service des finances",
+    "body": "La procédure de remboursement via COLNET se déroule comme suit. (1) Accédez à la page « État de compte » et cliquez sur « Demander un remboursement ». Un minuteur de traitement de 3 minutes démarrera automatiquement à ce moment. (2) Avant de remplir le formulaire, basculez votre profil en mode Observation (page Options) afin de consulter votre numéro d'étudiant et vos codes de référence personnels. Ces informations ne sont visibles qu'en mode Observation. (3) Téléchargez votre bulletin de la session en cours (page Bulletin) et repérez manuellement les trois codes de référence imprimés sur le document. Ces codes ne peuvent pas être copiés-collés. (4) Rebasculez en mode Soumission, puis accédez à la page « Formulaire de demande » et saisissez votre numéro d'étudiant ainsi que les trois codes. (5) Accédez au « Convertisseur de codes de cours » et entrez chacun de vos trois codes de bulletin un par un. Pour chaque conversion, notez le code de cours résultant immédiatement — il ne s'affiche que quelques secondes. (6) Accédez à la page « Sélection de cours » et sélectionnez vos trois codes de cours dans les menus déroulants prévus à cet effet. (7) Un code de vérification à usage unique vous sera envoyé par courriel. Saisissez-le dans le délai imparti. (8) Un Code A vous sera alors communiqué. Rendez-vous dans la section Mon dossier > Documents > Confirmations > Codes > Validation > Sélection pour l'échanger contre un Code B. (9) Sur la page de confirmation finale, lisez attentivement les instructions affichées à l'écran avant d'interagir avec les boutons. (10) La demande sera traitée dans un délai de 6 à 8 semaines ouvrables. En cas d'échec, le minuteur recommence depuis l'étape 1."
+  },
+  {
+    "date": "2017-04-25",
+    "objet": "Mise à jour de la politique de stationnement - Vignettes obligatoires en tout temps",
+    "from": "Service de la sécurité",
+    "body": "Depuis le 1er mai 2017, une vignette de stationnement est obligatoire pour tout véhicule garé sur les terrains du Cégep, en tout temps, incluant les fins de semaine, les jours fériés, les journées pédagogiques, la période des Fêtes, et les jours où le Cégep est officiellement fermé. Les véhicules sans vignette valide seront remorqués. Les étudiants qui n'utilisent pas de véhicule motorisé sont également invités à se procurer une vignette à titre préventif (frais : 47,50 $/année). La vignette doit être apposée sur le pare-brise avant gauche, à l'intérieur, dans le coin supérieur gauche, mais pas trop dans le coin. Référez-vous au schéma disponible au bureau B-214."
+  },
+  {
+    "date": "2018-10-19",
+    "objet": "Éliminer le papier d'ici 2020 - Adoption progressive du portail numérique",
+    "from": null,
+    "body": "Dans le cadre de notre engagement vers un campus sans papier d'ici 2020, nous vous invitons à consulter toutes vos communications officielles via le portail COLNET plutôt que par courrier interne. Pour confirmer votre engagement envers cette initiative, veuillez imprimer le formulaire d'engagement PAPIER-2018-E01 (pièce jointe), le signer, et le retourner en personne au Bureau du Registraire (B-214) ou par télécopieur au 450-555-0193. Une copie originale signée est requise — les photocopies ne sont pas acceptées. Nous avons pleinement confiance en notre capacité à atteindre l'objectif de 2020. Mise à jour prévue sur l'avancement : automne 2019, par courrier interne."
+  },
+  {
+    "date": "2019-12-02",
+    "objet": "Implantation du module bilan-santé - Formulaire annuel obligatoire",
+    "from": "Vie étudiante",
+    "body": "Le module Bilan-Santé est maintenant intégré à COLNET. Vous devez remplir le formulaire annuel avant le 31 janvier. Le formulaire comprend 4 sections : informations générales (nom, adresse, groupe sanguin, pointure de chaussures), historique académique (à retranscrire manuellement depuis vos bulletins des 3 dernières sessions), informations médicales (déclaration sur l'honneur uniquement — nous déclinons toute responsabilité), et la section culturelle (poète préféré du XVIIe siècle, réponse obligatoire). Le groupe sanguin doit être confirmé par un test en laboratoire agréé ; l'autoévaluation n'est pas acceptée. Délai pour obtenir le résultat de laboratoire : 6 à 8 semaines. Délai pour soumettre le formulaire : 31 janvier."
+  },
+  {
+    "date": "2020-03-14",
+    "objet": "Suspension temporaire des activités sur place - Consignes officielles",
+    "from": "Direction générale",
+    "body": "En raison des circonstances exceptionnelles, toutes les activités en présentiel sont suspendues jusqu'à nouvel ordre. Les cours seront offerts en ligne via une plateforme à confirmer (décision attendue d'ici 3 à 5 jours ouvrables). Les formulaires administratifs urgents doivent néanmoins être déposés en personne au Bureau du Registraire (B-214), lequel est fermé jusqu'à nouvel ordre. Une option de dépôt par télécopieur est disponible pour les formulaires dont la version télécopiable sera mise en ligne dans les prochaines semaines. En attendant, rien ne peut être traité. Nous vous remercions de votre compréhension et de votre calme."
+  },
+  {
+    "date": "2021-08-30",
+    "objet": "Retour partiel en présentiel - Consulter le calendrier des cohortes",
+    "from": "Direction des études",
+    "body": "Le retour en présentiel se fera de façon graduelle selon le calendrier des cohortes ci-joint (non joint — disponible sur demande). Les étudiants dont le nom de famille commence par A à L peuvent se présenter le mardi entre 10h34 et 10h47, semaines paires seulement. Les étudiants M à Z : le mardi suivant, mêmes heures, semaines impaires. Ceux dont le nom commence par N doivent consulter l'annexe B (non disponible en ligne). Le masque est obligatoire sauf assis. Assis signifie : dans une chaise fournie par le Cégep. Les chaises personnelles ne sont pas reconnues comme position assise aux fins de la politique. Le calendrier des cohortes est aussi disponible en version imprimée au Bureau du Registraire, sur rendez-vous."
+  },
+  {
+    "date": "2022-11-21",
+    "objet": "Modernisation de COLNET - Phase 1 - Refonte graphique partielle",
+    "from": "Direction des services informatiques",
+    "body": "La Phase 1 de la modernisation de COLNET est terminée. Les changements apportés sont les suivants : la taille de la police de base a été augmentée de 8pt à 8,5pt ; la couleur de fond des panneaux est passée de #EFEFEF à #F0F0F0 ; le logo du portail a été redimensionné de 120x38 à 122x38 pixels ; le délai d'expiration de session a été porté de 8 minutes à 8 minutes et 30 secondes. La Phase 2, qui comprendra une refonte complète de l'interface, est prévue pour l'automne 2024. Une mise à jour sur la Phase 2 sera communiquée dans les meilleurs délais. La Phase 3 n'est pas encore planifiée."
+  },
+  {
+    "date": "2023-07-15",
+    "objet": "Mise en service du nouveau filtre anti-pourriel - Vérifier vos paramètres",
+    "from": "Service informatique",
+    "body": "Le nouveau filtre anti-pourriel Barracuda v7.1 est maintenant actif. Veuillez noter que certains courriels légitimes pourraient avoir été bloqués depuis le 15 juillet. Si vous attendez une réponse du Bureau du Registraire, du Service des finances, ou de votre directeur de programme, sachez que leurs courriels sont bloqués par le filtre depuis le 15 juillet. Pour y accéder, remplissez le formulaire de déclassification de courriels (SPAM-2023-D01) au comptoir B-214. Veuillez également vérifier que vos messages sortants ne contiennent pas les mots « urgent », « important », « formulaire » ou « COLNET », qui déclenchent le filtre. Ce message a été envoyé depuis un serveur externe pour contourner le filtre."
+  },
+  {
+    "date": "2024-02-09",
+    "objet": "Adoption de la plateforme Microsoft Teams pour les communications internes",
+    "from": null,
+    "body": "À compter du 1er mars 2024, toutes les communications internes non officielles seront acheminées via Microsoft Teams. Les communications officielles continuent d'être envoyées par télécopieur uniquement. Les communications semi-officielles doivent être envoyées par courriel ET par Teams simultanément, puis confirmées par télécopieur dans les 48 heures. Pour accéder à Teams, remplissez le formulaire d'inscription TEAMS-2024-F1 (disponible sur Teams — accès requis) et retournez-le signé au Bureau du Registraire. L'accès à Teams sera accordé dans un délai de 6 à 8 semaines. D'ici là, utilisez le télécopieur."
+  },
+  {
+    "date": "2025-06-03",
+    "objet": "Lancement du module d'orientation IA - Recommandations de programmes personnalisées",
+    "from": "Centre d'aide à la réussite",
+    "body": "Le module d'orientation par intelligence artificielle est maintenant disponible dans COLNET. Sur la base de votre dossier académique, l'IA vous recommandera des programmes d'études adaptés à votre profil. Avertissement — problèmes connus en version bêta : le système recommande régulièrement le programme de Droit, non offert au Cégep ; il suggère des programmes que vous avez déjà complétés ; il identifie occasionnellement des étudiants comme membres du corps professoral ; et il recommande à 34 % des utilisateurs de « recommencer depuis le début ». Ces résultats sont donnés à titre indicatif seulement et ne peuvent pas être contestés. Le Centre d'aide à la réussite décline toute responsabilité quant à l'exactitude des recommandations."
+  },
+  {
+    "date": "2026-02-27",
+    "objet": "Période de réinscription Hiver 2026 - Date limite : 15 mars",
+    "from": "Bureau du Registraire",
+    "body": "La période de réinscription pour l'automne 2026 est ouverte. Date limite : le 15 mars 2026. Veuillez noter que le système de réinscription sera en maintenance du 12 au 16 mars inclusivement. Les inscriptions reçues pendant cette période seront traitées, peut-être. Le portail sera également instable le 11 mars en raison d'une mise à jour préventive. Il est donc fortement recommandé de ne pas attendre à la dernière minute. La procédure complète de réinscription (18 étapes) est disponible sur COLNET, sous l'onglet « Formulaires », sous-onglet « Documents étudiants », dossier « Archives 2024 ». En cas de problème technique, contactez le Service informatique par télécopieur."
+  }
 ]

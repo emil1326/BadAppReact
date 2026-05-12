@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { useGetMessagesQuery, useGetWelcomeQuery } from '../store/api';
 import { useAuth } from '../store/hooks';
 import { PageShell } from '../layout/PageShell';
+import type { AdminMessage } from '../types/message';
 import styles from './AccueilPage.module.css';
 
 export function AccueilPage() {
   const { userName } = useAuth();
   const { data: messages } = useGetMessagesQuery();
   const { data: welcome } = useGetWelcomeQuery();
+  const [selected, setSelected] = useState<AdminMessage | null>(null);
 
   return (
     <PageShell title="Accueil">
@@ -38,7 +41,13 @@ export function AccueilPage() {
               <tr key={`${message.date}-${message.objet}`}>
                 <td>{message.date}</td>
                 <td>
-                  <a href="#">{message.objet}</a>
+                  <button
+                    type="button"
+                    className={styles.msgLink}
+                    onClick={() => setSelected(message)}
+                  >
+                    {message.objet}
+                  </button>
                 </td>
                 <td>{message.from ?? ''}</td>
               </tr>
@@ -46,6 +55,46 @@ export function AccueilPage() {
           </tbody>
         </table>
       </section>
+
+      {selected && (
+        <div
+          className="colnet-modal-overlay colnet-modal-overlay--page"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            className={`colnet-panel ${styles.modal}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="colnet-panel__header">
+              {selected.objet}
+            </div>
+            <div className="colnet-panel__body">
+              {selected.from && (
+                <p className={styles.modalMeta}>
+                  De&nbsp;: {selected.from} &nbsp;|&nbsp; Date&nbsp;: {selected.date}
+                </p>
+              )}
+              {!selected.from && (
+                <p className={styles.modalMeta}>
+                  De&nbsp;: (expéditeur inconnu) &nbsp;|&nbsp; Date&nbsp;: {selected.date}
+                </p>
+              )}
+              <p className={styles.modalBody}>{selected.body}</p>
+              <div className={styles.modalFooter}>
+                <button
+                  type="button"
+                  className={styles.modalClose}
+                  onClick={() => setSelected(null)}
+                >
+                  Fermer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </PageShell>
   );
 }

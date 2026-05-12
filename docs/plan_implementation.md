@@ -339,24 +339,42 @@ Maintenant qu'on a le timer pis le profil mode, on construit la 1ʳᵉ vraie ét
 
 **Sortie :** tu démarres une demande, tu vas chercher tes infos en mode Observation (no étudiant + codes du bulletin-image), tu retapes les UUIDs à la main, tu re-flippes en Soumission, tu soumets le formulaire.
 
-## Phase 5 — La liste de cours
+## Phase 5 — Le convertisseur de codes + la sélection de cours
 
-L'écran ou tu confirmes ta sélection avec le mauvais scroller.
+Tu prends tes codes de bulletin, tu les passes un par un dans un convertisseur, puis tu entres les codes de cours résultants dans un dropdown vraiment chiant à utiliser.
 
-**Backend :**
-- Routes (dans `src/routes/bourse.ts`) :
-  - `GET /api/bourse/courses` → retourne les ~200 cours hardcodés
-  - `POST /api/bourse/course-selection` body `{ courseIds: string[] }` → valide qu'il y en a 3 + qu'ils matchent ceux du formulaire, sauvegarde
+### Flow utilisateur
 
-**Frontend :**
-- Composant `CourseList` : ~200 cours fetched, texte minuscule, sans recherche, ordre apparemment aléatoire
-- Composant `BadScroller` : custom scroll qui bug (trop lent en click+drag, trop rapide à la molette, saute des sections)
-- Checkboxes minuscules
-- Bouton Confirmer qui apparaît seulement quand 3 sont cochés (sans message qui te le dit)
+1. L'utilisateur a ses 3 codes de bulletin sous la main (du PDF de Phase 4).
+2. Il accède au **Convertisseur de codes de cours** (page séparée dans COLNET).
+3. Il entre un code de bulletin → soumet → reçoit un code de cours (ex. `INF-420-A7`). Le champ se vide après chaque conversion. Il recommence pour les 2 autres codes.
+4. Il accède à la page **Sélection de cours**, où il entre manuellement ses 3 codes de cours convertis dans un dropdown personnalisé horrible.
+5. Il confirme.
 
-**Données :** `backend/data/courses.json` avec ~200 entrées hardcodées
+### Backend
 
-**Sortie :** tu confirmes ta sélection après avoir scrollé dans l'enfer.
+Routes (dans `src/routes/bourse.ts`) :
+- `POST /api/bourse/convert-code` body `{ bulletinCode: string }` → valide que le code de bulletin est l'un des 3 valides du dossier (sinon 400), retourne `{ courseCode: string }`. La correspondance bulletin → cours est hardcodée dans `backend/data/course-codes.json`.
+- `POST /api/bourse/course-selection` body `{ courseCodes: string[] }` → valide qu'il y en a exactement 3 + que chacun correspond bien aux conversions déjà effectuées pour cette session, sauvegarde.
+
+### Frontend
+
+**Page Convertisseur de codes** (`/bourse-convertisseur`) :
+- Un seul champ texte + bouton Convertir.
+- Le champ se vide automatiquement après chaque conversion réussie (sans afficher le résultat dans le champ — le résultat apparaît à côté, en petit, pendant 8 secondes, puis disparaît).
+- L'utilisateur doit copier ou mémoriser le code de cours avant que ça disparaisse.
+- Le bouton Convertir est désactivé pendant la réponse backend (délai artificiel de 1,5s côté backend pour faire semblant que c'est complexe).
+- Aucun historique des conversions affiché.
+
+**Page Sélection de cours** (`/bourse-cours`) :
+- Composant `CourseCodeDropdown` : un `<select>` custom, très petit (largeur fixe insuffisante), qui contient tous les codes de cours disponibles (~200 entrées) dans un ordre qui semble aléatoire (trié par un champ interne non affiché).
+- L'utilisateur doit trouver son code dans la liste et le sélectionner — 3 fois, dans 3 dropdowns séparés. Aucun filtre/recherche.
+- Les 3 dropdowns sont identiques (même liste complète). Choisir le même code deux fois n'affiche aucune erreur immédiate — l'erreur n'arrive qu'au submit.
+- Bouton Confirmer présent en tout temps mais retourne une erreur vague si les codes sont incorrects ou en double.
+
+**Données :** `backend/data/course-codes.json` — objet `{ [bulletinCode]: courseCode }` + liste de tous les codes disponibles pour peupler les dropdowns.
+
+**Sortie :** tu convertis tes 3 codes un par un en espérant avoir le temps de les noter, puis tu retrouves chacun dans une liste de 200 entrées sans ordre apparent.
 
 ## Phase 6 — Email réel (SMTP) + 2FA + cascade de codes
 
