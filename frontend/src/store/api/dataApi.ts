@@ -2,6 +2,7 @@ import type { SidebarSection } from '../../types/sidebar';
 import type { AdminMessage } from '../../types/message';
 import type { WelcomeData } from '../../types/welcome';
 import type { Job } from '../../types/job';
+import type { RendezVousSlot } from '../../types/rendezVous';
 import { api } from './baseApi';
 
 /**
@@ -30,6 +31,11 @@ export const dataApi = api.injectEndpoints({
       query: () => '/data/jobs.json',
       keepUnusedDataFor: Infinity,
     }),
+
+    getRendezVousSlots: builder.query<RendezVousSlot[], void>({
+      query: () => '/data/rendez-vous-slots.json',
+      keepUnusedDataFor: Infinity,
+    }),
   }),
 });
 
@@ -38,4 +44,5 @@ export const {
   useGetMessagesQuery,
   useGetWelcomeQuery,
   useGetJobsQuery,
+  useGetRendezVousSlotsQuery,
 } = dataApi;

@@ -1,0 +1,105 @@
+[
+  {
+    "heure": "08h00",
+    "intervenant": "Mme Tremblay, M. Éd.",
+    "service": "Aide à l'orientation",
+    "disponible": false
+  },
+  {
+    "heure": "08h30",
+    "intervenant": "M. Gagnon",
+    "service": "Registrariat — dossiers étudiants",
+    "disponible": false
+  },
+  {
+    "heure": "09h00",
+    "intervenant": "Fantôme du Pavillon B (présence non garantie)",
+    "service": "Soutien psychosocial — secteur paranormal",
+    "disponible": true
+  },
+  {
+    "heure": "09h30",
+    "intervenant": "Entité de passage (traducteur universel requis)",
+    "service": "Relations interplanétaires — secteur Andromède",
+    "disponible": true
+  },
+  {
+    "heure": "10h00",
+    "intervenant": "Mme Côté",
+    "service": "Services adaptés",
+    "disponible": false
+  },
+  {
+    "heure": "10h30",
+    "intervenant": "M. Beausoleil",
+    "service": "Aide financière — bourses et prêts",
+    "disponible": false
+  },
+  {
+    "heure": "11h00",
+    "intervenant": "Dr. Hannibal Lecter, PhD, FRCPC",
+    "service": "Conseiller pédagogique — alimentation et développement personnel",
+    "disponible": true
+  },
+  {
+    "heure": "11h30",
+    "intervenant": "Dr. Hannibal Lecteur, PhD",
+    "service": "Conseiller en littérature — club de lecture du mercredi",
+    "disponible": true
+  },
+  {
+    "heure": "12h00",
+    "intervenant": "(Fermé — heure du dîner)",
+    "service": "—",
+    "disponible": false
+  },
+  {
+    "heure": "12h30",
+    "intervenant": "Ne pas cliquer",
+    "service": "Conseiller principal — direction générale",
+    "disponible": true,
+    "blackout": true
+  },
+  {
+    "heure": "13h00",
+    "intervenant": "Mme Lapointe",
+    "service": "Cheminement scolaire",
+    "disponible": false
+  },
+  {
+    "heure": "13h30",
+    "intervenant": "Nicolas Cage",
+    "service": "Conseiller en gestion du stress et des émotions",
+    "disponible": true
+  },
+  {
+    "heure": "14h00",
+    "intervenant": "M. Bouchard",
+    "service": "Techniques de l'informatique — soutien académique",
+    "disponible": true
+  },
+  {
+    "heure": "14h30",
+    "intervenant": "Quelqu'un (nom à confirmer)",
+    "service": "Service inconnu — en attente de mise à jour du système",
+    "disponible": true
+  },
+  {
+    "heure": "15h00",
+    "intervenant": "Mme St-Pierre",
+    "service": "Consentements et formulaires administratifs",
+    "disponible": false
+  },
+  {
+    "heure": "15h30",
+    "intervenant": "Le stagiaire (prénom : Kévin)",
+    "service": "Tout sauf ce pour quoi vous venez",
+    "disponible": true
+  },
+  {
+    "heure": "16h00",
+    "intervenant": "(Fermé)",
+    "service": "—",
+    "disponible": false
+  }
+]

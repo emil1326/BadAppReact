@@ -12,6 +12,7 @@ import { LoginPage } from './pages/LoginPage';
 import { NotesPersonnellesPage } from './pages/NotesPersonnellesPage';
 import { OffresEmploiPage } from './pages/OffresEmploiPage';
 import { OptionsPage } from './pages/OptionsPage';
+import { PriseRendezVousPage } from './pages/PriseRendezVousPage';
 import { SecuritePage } from './pages/SecuritePage';
 import { StubPage } from './pages/StubPage';
 import { TimeoutPage } from './pages/TimeoutPage';
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="notes-personnelles" element={<NotesPersonnellesPage />} />
           <Route path="offres-emploi" element={<OffresEmploiPage />} />
           <Route path="options" element={<OptionsPage />} />
+          <Route path="prise-rendez-vous" element={<PriseRendezVousPage />} />
           <Route path="securite" element={<SecuritePage />} />
           <Route path="timeout" element={<TimeoutPage />} />
           <Route path="vignette-auto" element={<VignetteAutoPage />} />
