@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PageShell } from '../layout/PageShell';
-import { useGetBalanceQuery, useStartBourseFlowMutation } from '../store/api';
+import { useGetBalanceQuery, useStartBourseFlowMutation, useGetModeHelpQuery } from '../store/api';
 import { useTimer } from '../hooks/useTimer';
 import { useSubmitGate } from '../hooks/useSubmitGate';
 import { formatNumberFr } from '../utils/format';
@@ -14,9 +15,15 @@ export function EtatDeComptePage() {
   const { canSubmit } = useSubmitGate();
   const [startFlow, { isLoading }] = useStartBourseFlowMutation();
   const { data: balanceData } = useGetBalanceQuery();
+  const { data: modeHelp } = useGetModeHelpQuery();
   const navigate = useNavigate();
+  const [showModeHelp, setShowModeHelp] = useState(false);
 
   const handleStart = async () => {
+    if (!canSubmit) {
+      setShowModeHelp(true);
+      return;
+    }
     try {
       await startFlow().unwrap();
       navigate('/bourse-formulaire');
@@ -60,7 +67,7 @@ export function EtatDeComptePage() {
               type="button"
               className="colnet-form__submit"
               onClick={handleStart}
-              disabled={isActive || isLoading || !canSubmit}
+              disabled={isActive || isLoading}
             >
               {isActive
                 ? 'Procédure déjà en cours'
@@ -79,6 +86,36 @@ export function EtatDeComptePage() {
 
         <ClothOverlay />
       </div>
+
+      {showModeHelp && modeHelp && (
+        <div
+          className="colnet-modal-overlay colnet-modal-overlay--page"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setShowModeHelp(false)}
+        >
+          <div
+            className={`colnet-panel ${styles.modal}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="colnet-panel__header">{modeHelp.title}</div>
+            <div className="colnet-panel__body">
+              {modeHelp.paragraphs.map((p) => (
+                <p key={p.slice(0, 40)} className={styles.modalPara}>{p}</p>
+              ))}
+              <div className={styles.modalFooter}>
+                <button
+                  type="button"
+                  className={styles.modalClose}
+                  onClick={() => setShowModeHelp(false)}
+                >
+                  Fermer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </PageShell>
   );
 }

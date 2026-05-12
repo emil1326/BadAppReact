@@ -6,7 +6,7 @@ export type Profile = {
 };
 
 const defaultProfile: Profile = {
-  mode: 'SOUMISSION',
+  mode: 'OBSERVATION',
   studentNumber: null,
 };
 

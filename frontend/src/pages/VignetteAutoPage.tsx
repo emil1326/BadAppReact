@@ -6,141 +6,61 @@ import {
   useGetVignetteStatusQuery,
   useRecordVignetteSpinMutation,
   useResetVignetteMutation,
+  useGetVignetteContentQuery,
 } from '../store/api';
 import styles from './VignetteAutoPage.module.css';
 
-type WheelOutcome = {
-  label: string;
-  result: string;
-  description: string;
-};
-
-const OUTCOMES: WheelOutcome[] = [
-  {
-    label: 'Aucune',
-    result: 'Aucune vignette assignée',
-    description: "Veuillez recommencer la procédure l'année prochaine.",
-  },
-  {
-    label: 'Sibérie',
-    result: 'Vignette zone Sibérie',
-    description: '5 km de marche depuis le stationnement. Aller-retour quotidien obligatoire.',
-  },
-  {
-    label: 'Antarctique',
-    result: 'Vignette zone Antarctique',
-    description: '8 km de marche. Vêtements isothermes recommandés en tout temps.',
-  },
-  {
-    label: 'Lune',
-    result: 'Vignette zone Lune',
-    description: 'Stationnement disponible uniquement les soirs de pleine lune (calendrier lunaire fourni).',
-  },
-  {
-    label: 'EXPIRÉE',
-    result: 'Vignette EXPIRÉE le jour même',
-    description: 'Félicitations, vous avez gagné une vignette. Elle expire dans 24 heures.',
-  },
-  {
-    label: 'Toit',
-    result: 'Vignette zone Toit',
-    description: "14 étages d'escaliers à monter. Ascenseur en panne depuis 2018.",
-  },
-  {
-    label: 'Sous-marin',
-    result: 'Vignette zone Sous-Marin',
-    description: 'Niveau B-7. Permis de plongée requis pour certaines journées (pluie/dégel).',
-  },
-  {
-    label: 'Vélo',
-    result: 'Vignette vélo seulement',
-    description: 'Aucune voiture acceptée. Vélo obligatoire en toute saison, incluant tempêtes.',
-  },
-  {
-    label: 'Covoit',
-    result: 'Vignette covoiturage obligatoire',
-    description: 'Minimum 3 personnes par véhicule. Liste à valider chaque matin avant 7h00.',
-  },
-  {
-    label: 'Chantier',
-    result: 'Vignette zone Chantier permanent',
-    description: 'Stationnement sur dalle de béton fraîchement coulée. Casque exigé.',
-  },
-  {
-    label: 'VIP refusé',
-    result: 'Demande de vignette VIP refusée',
-    description: 'Réservé exclusivement au directeur général. Veuillez ne plus présenter de demande VIP.',
-  },
-  {
-    label: '→ 2027',
-    result: 'Réessayez en 2027',
-    description: 'Le système est saturé. Votre demande sera retraitée dans 14 mois.',
-  },
-];
-
-const WHEEL_COLORS = ['#b22222', '#2f3a4a', '#6b1313', '#555555'];
-
-const WHEEL_DATA = OUTCOMES.map((outcome, index) => ({
-  option: outcome.label,
-  style: {
-    backgroundColor: WHEEL_COLORS[index % WHEEL_COLORS.length],
-    textColor: '#ffffff',
-  },
-}));
-
 type WarningKind = 'wheel-click' | 'double-spin';
 
-const WARNINGS: Record<WarningKind, { title: string; paragraphs: string[] }> = {
-  'wheel-click': {
-    title: 'AVERTISSEMENT DE SÉCURITÉ',
-    paragraphs: [
-      'Toute interaction directe avec le composant rotatif est strictement interdite et déclenche une déconnexion immédiate de votre session pour des raisons de sécurité.',
-      "Pour utiliser le module d'attribution, veuillez utiliser exclusivement le bouton « TOURNER LA ROUE ».",
-    ],
-  },
-  'double-spin': {
-    title: 'TENTATIVE ANNUELLE DÉJÀ UTILISÉE',
-    paragraphs: [
-      "Vous avez déjà utilisé votre tentative d'attribution pour l'année académique en cours.",
-      'Toute tentative supplémentaire déclenche une déconnexion immédiate de votre session conformément à la politique #PV-2003-14.',
-    ],
-  },
-};
+const WHEEL_COLORS = ['#b22222', '#2f3a4a', '#6b1313', '#555555'] as const;
 
 export function VignetteAutoPage() {
+  const { data: content } = useGetVignetteContentQuery();
   const { data: vignetteStatus } = useGetVignetteStatusQuery();
   const [recordSpin] = useRecordVignetteSpinMutation();
   const [resetVignette, { isLoading: isResetting }] = useResetVignetteMutation();
 
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
-  const [localRevealed, setLocalRevealed] = useState<WheelOutcome | null>(null);
+  const [localRevealedIndex, setLocalRevealedIndex] = useState<number | null>(null);
   const [warning, setWarning] = useState<WarningKind | null>(null);
 
   const { logoutAndRedirect } = useLogoutAndRedirect();
 
+  const outcomes = content?.outcomes ?? [];
+  const warnings = content?.warnings ?? {};
+
+  const wheelData = outcomes.map((outcome, index) => ({
+    option: outcome.label,
+    style: {
+      backgroundColor: WHEEL_COLORS[index % WHEEL_COLORS.length],
+      textColor: '#ffffff',
+    },
+  }));
+
   const hasSpun = vignetteStatus?.spun ?? false;
-  const serverRevealed =
-    vignetteStatus?.prizeIndex != null ? OUTCOMES[vignetteStatus.prizeIndex] : null;
-  const revealed = localRevealed ?? serverRevealed;
+
+  const revealedIndex =
+    localRevealedIndex ?? (vignetteStatus?.prizeIndex ?? null);
+  const revealed = revealedIndex != null ? (outcomes[revealedIndex] ?? null) : null;
 
   const handleSpin = () => {
-    if (mustSpin) return;
+    if (mustSpin || outcomes.length === 0) return;
     if (hasSpun) {
       setWarning('double-spin');
       return;
     }
-    setLocalRevealed(null);
-    setPrizeNumber(Math.floor(Math.random() * OUTCOMES.length));
+    setLocalRevealedIndex(null);
+    setPrizeNumber(Math.floor(Math.random() * outcomes.length));
     setMustSpin(true);
   };
 
   const handleStopSpin = async () => {
     setMustSpin(false);
-    const outcome = OUTCOMES[prizeNumber];
-    setLocalRevealed(outcome);
+    const outcome = outcomes[prizeNumber];
+    setLocalRevealedIndex(prizeNumber);
     try {
-      await recordSpin({ prizeIndex: prizeNumber, result: outcome.result }).unwrap();
+      await recordSpin({ prizeIndex: prizeNumber, result: outcome?.result ?? '' }).unwrap();
     } catch {
       // Spin is already shown locally — a save failure doesn't break the UX.
     }
@@ -156,7 +76,7 @@ export function VignetteAutoPage() {
   };
 
   const handleReset = async () => {
-    setLocalRevealed(null);
+    setLocalRevealedIndex(null);
     setMustSpin(false);
     setPrizeNumber(0);
     try {
@@ -166,7 +86,7 @@ export function VignetteAutoPage() {
     }
   };
 
-  const activeWarning = warning ? WARNINGS[warning] : null;
+  const activeWarning = warning ? (warnings[warning] ?? null) : null;
 
   return (
     <PageShell title="Vignette auto">
@@ -183,26 +103,28 @@ export function VignetteAutoPage() {
           onClick={handleWheelClick}
           role="presentation"
         >
-          <Wheel
-            mustStartSpinning={mustSpin}
-            prizeNumber={prizeNumber}
-            data={WHEEL_DATA}
-            onStopSpinning={handleStopSpin}
-            outerBorderColor="#6b1313"
-            outerBorderWidth={4}
-            innerBorderColor="#6b1313"
-            innerBorderWidth={2}
-            radiusLineColor="#ffffff"
-            radiusLineWidth={1}
-            fontSize={14}
-            spinDuration={0.8}
-          />
+          {wheelData.length > 0 && (
+            <Wheel
+              mustStartSpinning={mustSpin}
+              prizeNumber={prizeNumber}
+              data={wheelData}
+              onStopSpinning={handleStopSpin}
+              outerBorderColor="#6b1313"
+              outerBorderWidth={4}
+              innerBorderColor="#6b1313"
+              innerBorderWidth={2}
+              radiusLineColor="#ffffff"
+              radiusLineWidth={1}
+              fontSize={14}
+              spinDuration={0.8}
+            />
+          )}
         </div>
         <button
           type="button"
           className={styles.spinButton}
           onClick={handleSpin}
-          disabled={mustSpin || isResetting}
+          disabled={mustSpin || isResetting || wheelData.length === 0}
         >
           {mustSpin ? 'EN COURS...' : 'TOURNER LA ROUE'}
         </button>

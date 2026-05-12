@@ -1,0 +1,80 @@
+{
+  "outcomes": [
+    {
+      "label": "Aucune",
+      "result": "Aucune vignette assignée",
+      "description": "Veuillez recommencer la procédure l'année prochaine."
+    },
+    {
+      "label": "Sibérie",
+      "result": "Vignette zone Sibérie",
+      "description": "5 km de marche depuis le stationnement. Aller-retour quotidien obligatoire."
+    },
+    {
+      "label": "Antarctique",
+      "result": "Vignette zone Antarctique",
+      "description": "8 km de marche. Vêtements isothermes recommandés en tout temps."
+    },
+    {
+      "label": "Lune",
+      "result": "Vignette zone Lune",
+      "description": "Stationnement disponible uniquement les soirs de pleine lune (calendrier lunaire fourni)."
+    },
+    {
+      "label": "EXPIRÉE",
+      "result": "Vignette EXPIRÉE le jour même",
+      "description": "Félicitations, vous avez gagné une vignette. Elle expire dans 24 heures."
+    },
+    {
+      "label": "Toit",
+      "result": "Vignette zone Toit",
+      "description": "14 étages d'escaliers à monter. Ascenseur en panne depuis 2018."
+    },
+    {
+      "label": "Sous-marin",
+      "result": "Vignette zone Sous-Marin",
+      "description": "Niveau B-7. Permis de plongée requis pour certaines journées (pluie/dégel)."
+    },
+    {
+      "label": "Vélo",
+      "result": "Vignette vélo seulement",
+      "description": "Aucune voiture acceptée. Vélo obligatoire en toute saison, incluant tempêtes."
+    },
+    {
+      "label": "Covoit",
+      "result": "Vignette covoiturage obligatoire",
+      "description": "Minimum 3 personnes par véhicule. Liste à valider chaque matin avant 7h00."
+    },
+    {
+      "label": "Chantier",
+      "result": "Vignette zone Chantier permanent",
+      "description": "Stationnement sur dalle de béton fraîchement coulée. Casque exigé."
+    },
+    {
+      "label": "VIP refusé",
+      "result": "Demande de vignette VIP refusée",
+      "description": "Réservé exclusivement au directeur général. Veuillez ne plus présenter de demande VIP."
+    },
+    {
+      "label": "→ 2027",
+      "result": "Réessayez en 2027",
+      "description": "Le système est saturé. Votre demande sera retraitée dans 14 mois."
+    }
+  ],
+  "warnings": {
+    "wheel-click": {
+      "title": "AVERTISSEMENT DE SÉCURITÉ",
+      "paragraphs": [
+        "Toute interaction directe avec le composant rotatif est strictement interdite et déclenche une déconnexion immédiate de votre session pour des raisons de sécurité.",
+        "Pour utiliser le module d'attribution, veuillez utiliser exclusivement le bouton « TOURNER LA ROUE »."
+      ]
+    },
+    "double-spin": {
+      "title": "TENTATIVE ANNUELLE DÉJÀ UTILISÉE",
+      "paragraphs": [
+        "Vous avez déjà utilisé votre tentative d'attribution pour l'année académique en cours.",
+        "Toute tentative supplémentaire déclenche une déconnexion immédiate de votre session conformément à la politique #PV-2003-14."
+      ]
+    }
+  }
+}

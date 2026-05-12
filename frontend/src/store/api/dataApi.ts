@@ -3,6 +3,8 @@ import type { AdminMessage } from '../../types/message';
 import type { WelcomeData } from '../../types/welcome';
 import type { Job } from '../../types/job';
 import type { RendezVousSlot } from '../../types/rendezVous';
+import type { VignetteContent, ModeHelp } from '../../types/content';
+import type { Consentement } from '../../types/consentement';
 import { api } from './baseApi';
 
 /**
@@ -36,6 +38,21 @@ export const dataApi = api.injectEndpoints({
       query: () => '/data/rendez-vous-slots.json',
       keepUnusedDataFor: Infinity,
     }),
+
+    getVignetteContent: builder.query<VignetteContent, void>({
+      query: () => '/data/vignette-content.json',
+      keepUnusedDataFor: Infinity,
+    }),
+
+    getModeHelp: builder.query<ModeHelp, void>({
+      query: () => '/data/mode-help.json',
+      keepUnusedDataFor: Infinity,
+    }),
+
+    getConsentements: builder.query<Consentement[], void>({
+      query: () => '/data/consentements.json',
+      keepUnusedDataFor: Infinity,
+    }),
   }),
 });
 
@@ -45,4 +62,7 @@ export const {
   useGetWelcomeQuery,
   useGetJobsQuery,
   useGetRendezVousSlotsQuery,
+  useGetVignetteContentQuery,
+  useGetModeHelpQuery,
+  useGetConsentementsQuery,
 } = dataApi;

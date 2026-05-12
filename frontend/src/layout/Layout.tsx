@@ -4,12 +4,15 @@ import { Sidebar } from './Sidebar';
 import { InfoStrip } from './InfoStrip';
 import { TimerMilestoneModal } from '../components/TimerMilestoneModal';
 import { useTimerExpiration } from '../hooks/useTimerExpiration';
+import { useGetProfileQuery } from '../store/api';
 
 const TIMEOUT_PATH = '/timeout';
 
 export function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
+
+  useGetProfileQuery();
 
   useTimerExpiration(() => {
     if (location.pathname !== TIMEOUT_PATH) {

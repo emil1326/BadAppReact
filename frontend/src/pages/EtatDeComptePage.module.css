@@ -36,3 +36,41 @@
   font-style: italic;
   margin: 8px 0 0;
 }
+
+.modal {
+  width: 560px;
+  max-width: calc(100vw - 32px);
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal :global(.colnet-panel__body) {
+  overflow-y: auto;
+}
+
+.modalPara {
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 0 0 10px;
+  text-align: justify;
+}
+
+.modalFooter {
+  text-align: right;
+  border-top: 1px solid var(--color-border);
+  padding-top: 8px;
+  margin-top: 4px;
+}
+
+.modalClose {
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  padding: 3px 14px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.modalClose:hover {
+  background: var(--color-button-bg-hover);
+}

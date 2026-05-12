@@ -105,7 +105,7 @@ export function createSession(initial: { userName: string }): string {
   sessions.set(sessionId, {
     userName: initial.userName,
     profile: {
-      mode: 'SOUMISSION',
+      mode: 'OBSERVATION',
       studentNumber: generateStudentNumber(),
     },
     flow: null,

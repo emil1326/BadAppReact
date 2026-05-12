@@ -1,0 +1,123 @@
+[
+  {
+    "id": "c001",
+    "titre": "Cueillette d'empreintes palmaires",
+    "description": "Autorise le Service du registrariat à prélever et conserver mes empreintes palmaires (paume droite et gauche) à des fins d'identification rapide aux comptoirs de service. Le prélèvement est obligatoire à chaque réémission de carte étudiante.",
+    "dateConsenti": "2024-09-05",
+    "reference": "politique #PV-2003-14, art. 5",
+    "renvoi": { "label": "Carte étudiante", "to": "/carte-etudiante" }
+  },
+  {
+    "id": "c002",
+    "titre": "Mémorisation faciale par le personnel administratif",
+    "description": "J'accepte que le personnel du Pavillon A mémorise mon visage à des fins de reconnaissance directe (sans intermédiaire technologique). Toute coiffure significativement différente doit faire l'objet d'un avis écrit déposé en bureau 14-B au moins 14 jours ouvrables avant la modification.",
+    "dateConsenti": "2024-09-05",
+    "reference": "directive interne DGA-2014-04"
+  },
+  {
+    "id": "c003",
+    "titre": "Captation audio passive en Pavillon B",
+    "description": "Autorise la captation continue, par micros d'ambiance dissimulés, des sons produits dans un rayon de 4 mètres de ma personne pendant que je me trouve au Pavillon B. Les enregistrements sont conservés 47 ans à des fins de continuité administrative.",
+    "dateConsenti": "2024-09-12",
+    "reference": "Service de la sécurité, registre 2018-en-cours"
+  },
+  {
+    "id": "c004",
+    "titre": "Divulgation du dossier au Fantôme du Pavillon B",
+    "description": "Le Fantôme du Pavillon B (entité officiellement inscrite au registre paranormal du collège depuis 1991) peut consulter mon dossier sur demande verbale faite à un membre du personnel, sans préavis écrit. Aucun motif n'est requis.",
+    "dateConsenti": "2024-10-03",
+    "reference": "mémo n° 47 du 4 février 2019",
+    "renvoi": { "label": "Prise de rendez-vous", "to": "/prise-rendez-vous" }
+  },
+  {
+    "id": "c005",
+    "titre": "Réception de télécopies non-sollicitées",
+    "description": "J'accepte de recevoir, par télécopieur uniquement, toute correspondance administrative jugée utile par un agent du registrariat, à toute heure du jour ou de la nuit, y compris en l'absence d'un télécopieur en ma possession.",
+    "dateConsenti": "2024-09-05",
+    "reference": "Service informatique, communiqué 2017-Q3"
+  },
+  {
+    "id": "c006",
+    "titre": "Appels téléphoniques entre 03 h 00 et 05 h 00 du matin",
+    "description": "Autorise le Service de la sécurité à me contacter par téléphone entre 3 h 00 et 5 h 00 du matin pour toute question relative au stationnement, à la vignette auto, ou à l'accès à l'ascenseur B (selon disponibilité).",
+    "dateConsenti": "2024-09-05",
+    "reference": "politique #PV-2003-14, art. 22",
+    "renvoi": { "label": "Vignette auto", "to": "/vignette-auto" }
+  },
+  {
+    "id": "c007",
+    "titre": "Ajustement automatique des notes (à la baisse uniquement)",
+    "description": "J'accepte que le système COLNET ajuste automatiquement mes notes au trimestre, à la baisse uniquement, en fonction de critères internes non-divulgables. Les ajustements à la hausse ne sont jamais possibles et ne peuvent être demandés.",
+    "dateConsenti": "2024-09-12",
+    "reference": "Direction des études, directive #PV-2003-14 bis",
+    "renvoi": { "label": "Bulletin", "to": "/bulletin" }
+  },
+  {
+    "id": "c008",
+    "titre": "Stationnement obligatoire en zone Sibérie ou pire",
+    "description": "J'accepte de me voir attribuer une vignette de stationnement dans une zone située à au moins 5 km à pied du Pavillon A, sans recours possible. Inclut l'acceptation préalable des zones Antarctique, Lune, Sous-Marin, Toit, Chantier, ou tout autre zone créée ultérieurement.",
+    "dateConsenti": "2024-10-15",
+    "reference": "politique de stationnement 2017",
+    "renvoi": { "label": "Vignette auto", "to": "/vignette-auto" }
+  },
+  {
+    "id": "c009",
+    "titre": "Évaluation psychométrique préalable obligatoire",
+    "description": "Préalablement à toute démarche administrative de plus de 250,00 $, je consens à une évaluation psychométrique d'une durée minimale de 4 heures, conduite par un membre du personnel non-spécialisé désigné à la discrétion du bureau 14-B.",
+    "dateConsenti": "2024-09-05",
+    "reference": "bureau 14-B, calendrier d'évaluations 2024-Q4",
+    "renvoi": { "label": "État de compte", "to": "/etat-de-compte" }
+  },
+  {
+    "id": "c010",
+    "titre": "Reproduction de mon image au pinceau pour le rapport annuel",
+    "description": "Le Service de la promotion peut reproduire mon visage et ma silhouette, à la peinture acrylique sur toile, dans le rapport annuel du collège. La toile originale demeure la propriété du collège. Aucun droit d'auteur n'est cédé à l'étudiant(e).",
+    "dateConsenti": "2024-11-22",
+    "reference": "Service de la promotion, entente cadre 2022"
+  },
+  {
+    "id": "c011",
+    "titre": "Participation rétroactive à des sondages déjà clos",
+    "description": "Je consens à ce que mes réponses soient ajoutées rétroactivement à des sondages dont la période de collecte est déjà terminée (incluant les sondages des trimestres 2003 à 2024 inclusivement), à des fins de cohérence statistique.",
+    "dateConsenti": "2024-09-05",
+    "reference": "Cellule statistique COLNET"
+  },
+  {
+    "id": "c012",
+    "titre": "Prolongation indéfinie de la session Hiver 2003-2004",
+    "description": "J'accepte que la session Hiver 2003-2004, jamais officiellement clôturée pour des raisons techniques liées à la mise en service du portail COLNET, demeure ouverte indéfiniment, et que les frais afférents continuent de s'accumuler sur mon dossier (voir État de compte).",
+    "dateConsenti": "2024-09-05",
+    "reference": "Service du registrariat, dossier #2003-CLOTURE-PENDING",
+    "renvoi": { "label": "État de compte", "to": "/etat-de-compte" }
+  },
+  {
+    "id": "c013",
+    "titre": "Cession des droits sur mes notes personnelles à des fins de formation IA",
+    "description": "J'autorise le module d'orientation IA (lancé en 2025) à analyser, modifier, supprimer, ou compléter mes notes personnelles sans préavis. Les notes générées par l'IA et signées en mon nom sont réputées authentiques.",
+    "dateConsenti": "2025-06-10",
+    "reference": "Centre d'aide à la réussite, lancement IA 2025",
+    "renvoi": { "label": "Notes personnelles", "to": "/notes-personnelles" }
+  },
+  {
+    "id": "c014",
+    "titre": "Prélèvement éventuel d'ADN en cas de besoin",
+    "description": "Si une démarche administrative l'exige (à la seule discrétion du bureau 14-B), je consens à un prélèvement d'ADN par écouvillon buccal, effectué par un préposé sans formation médicale formelle. L'échantillon est conservé 47 ans dans un classeur non-réfrigéré du sous-sol Pavillon A.",
+    "dateConsenti": "2024-09-05",
+    "reference": "directive Santé et Services sociaux SBDL-2019-11"
+  },
+  {
+    "id": "c015",
+    "titre": "Modification rétroactive du nom légal",
+    "description": "J'accepte que le Service du registrariat modifie rétroactivement mon nom légal dans le système COLNET pour corriger d'éventuelles erreurs de saisie remontant à mon admission, sans m'en aviser. Toute correspondance émise sous l'ancien nom demeure néanmoins valide.",
+    "dateConsenti": "2024-09-12",
+    "reference": "Service du registrariat, calendrier de correction 2024-Q3"
+  },
+  {
+    "id": "c016",
+    "titre": "Rétention post-mortem des notes personnelles à des fins d'archivage culturel",
+    "description": "Autorise le collège à conserver mes notes personnelles, courriels, dossiers académiques et empreintes palmaires à perpétuité après mon décès, à des fins d'archivage culturel. La famille du défunt (ou ses ayants droit) peut consulter les archives sur rendez-vous (voir section Prise de rendez-vous, plage horaire des mardis impairs).",
+    "enAttente": true,
+    "reference": "directive d'archivage culturel ARCH-CULT-2014-Q4",
+    "renvoi": { "label": "Notes personnelles", "to": "/notes-personnelles" }
+  }
+]
