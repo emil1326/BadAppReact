@@ -23,3 +23,12 @@ export type BourseFormError = {
 export type CourseCodeResult = {
   courseCode: string;
 };
+
+export type CourseList = {
+  allCodes: string[];
+};
+
+export type CourseSelectionError = {
+  error: 'NOT_ENROLLED';
+  courseCode: string;
+};

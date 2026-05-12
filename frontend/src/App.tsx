@@ -5,7 +5,9 @@ import { Layout } from './layout/Layout';
 import { AccueilPage } from './pages/AccueilPage';
 import { AideOrientationPage } from './pages/AideOrientationPage';
 import { BourseConverterPage } from './pages/BourseConverterPage';
+import { BourseCoursPage } from './pages/BourseCoursPage';
 import { BourseFormulairePage } from './pages/BourseFormulairePage';
+import { BourseSubmitPage } from './pages/BourseSubmitPage';
 import { BulletinPage } from './pages/BulletinPage';
 import { CarteEtudiantePage } from './pages/CarteEtudiantePage';
 import { ConsentementsPage } from './pages/ConsentementsPage';
@@ -56,7 +58,9 @@ export default function App() {
           <Route path="accueil" element={<AccueilPage />} />
           <Route path="aide-orientation" element={<AideOrientationPage />} />
           <Route path="bourse-convertisseur" element={<BourseConverterPage />} />
+          <Route path="bourse-cours" element={<BourseCoursPage />} />
           <Route path="bourse-formulaire" element={<BourseFormulairePage />} />
+          <Route path="bourse-soumission" element={<BourseSubmitPage />} />
           <Route path="bulletin" element={<BulletinPage />} />
           <Route path="carte-etudiante" element={<CarteEtudiantePage />} />
           <Route path="consentements" element={<ConsentementsPage />} />

@@ -14,6 +14,18 @@ export const bourseApi = api.injectEndpoints({
     convertCode: builder.mutation<CourseCodeResult, { bulletinCode: string }>({
       query: (body) => ({ url: '/api/bourse/convert-code', method: 'POST', body }),
     }),
+
+    selectCourses: builder.mutation<{ ok: true }, { courseCodes: string[] }>({
+      query: (body) => ({ url: '/api/bourse/course-selection', method: 'POST', body }),
+    }),
+
+    submitBourse: builder.mutation<{ ok: true }, void>({
+      query: () => ({ url: '/api/bourse/submit', method: 'POST' }),
+    }),
+
+    cancelBourse: builder.mutation<{ ok: true }, void>({
+      query: () => ({ url: '/api/bourse/cancel', method: 'POST' }),
+    }),
   }),
 });
 
@@ -21,4 +33,7 @@ export const {
   useGetBalanceQuery,
   useSubmitBourseFormMutation,
   useConvertCodeMutation,
+  useSelectCoursesMutation,
+  useSubmitBourseMutation,
+  useCancelBourseMutation,
 } = bourseApi;

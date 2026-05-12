@@ -33,6 +33,7 @@
       { "label": "Prêts et réservations", "slug": "prets-reservations" },
       { "label": "Prise de rendez-vous", "slug": "prise-rendez-vous" },
       { "label": "Sécurité", "slug": "securite" },
+      { "label": "Sélection de cours", "slug": "bourse-cours" },
       { "label": "Services adaptés", "slug": "services-adaptes" },
       { "label": "Vignette auto", "slug": "vignette-auto" }
     ]

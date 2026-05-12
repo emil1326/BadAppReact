@@ -1,0 +1,56 @@
+.instructions {
+  font-size: 11px;
+  margin: 0 0 10px;
+}
+
+.globalError {
+  font-size: 11px;
+  color: #b22222;
+  border: 1px solid #b22222;
+  background: #fff0f0;
+  padding: 4px 8px;
+  margin: 0 0 8px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.label {
+  font-size: 11px;
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.dropdown {
+  font-size: 11px;
+  font-family: inherit;
+  width: 145px;
+  padding: 1px 2px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.submitRow {
+  margin-top: 6px;
+}
+
+.reminder {
+  font-size: 11px;
+  margin: 0;
+  font-style: italic;
+}
+
+.link {
+  color: var(--color-link);
+}

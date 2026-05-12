@@ -6,6 +6,7 @@ import type { RendezVousSlot } from '../../types/rendezVous';
 import type { VignetteContent, ModeHelp } from '../../types/content';
 import type { Consentement } from '../../types/consentement';
 import type { SignalementFantome } from '../../types/signalement';
+import type { CourseList } from '../../types/bourse';
 import { api } from './baseApi';
 
 /**
@@ -59,6 +60,11 @@ export const dataApi = api.injectEndpoints({
       query: () => '/data/signalements-fantomes.json',
       keepUnusedDataFor: Infinity,
     }),
+
+    getCourseList: builder.query<CourseList, void>({
+      query: () => '/data/course-codes.json',
+      keepUnusedDataFor: Infinity,
+    }),
   }),
 });
 
@@ -72,4 +78,5 @@ export const {
   useGetModeHelpQuery,
   useGetConsentementsQuery,
   useGetSignalementsFantomesQuery,
+  useGetCourseListQuery,
 } = dataApi;

@@ -7,6 +7,7 @@ import { saveSession } from '../state/store.js';
 
 type FormBody = Partial<FormFields>;
 type ConvertBody = { bulletinCode?: string };
+type CourseSelectionBody = { courseCodes?: unknown };
 
 export async function bourseRoutes(app: FastifyInstance): Promise<void> {
   app.get(
@@ -81,6 +82,75 @@ export async function bourseRoutes(app: FastifyInstance): Promise<void> {
       }
 
       return { courseCode: result.courseCode };
+    },
+  );
+
+  app.post<{ Body: CourseSelectionBody }>(
+    '/api/bourse/course-selection',
+    { preHandler: requireSession },
+    async (request, reply) => {
+      const { id, state } = getRequiredSession(request);
+
+      if (state.profile.mode !== 'SOUMISSION') {
+        return reply.code(403).send({ error: 'PROFILE_MODE_BLOCKS_SUBMIT' });
+      }
+
+      const flow = getActiveFlow(state);
+      if (!flow.ok) {
+        return reply.code(400).send({ error: flow.reason });
+      }
+
+      const { courseCodes } = request.body ?? {};
+      if (!Array.isArray(courseCodes) || courseCodes.length !== 3) {
+        return reply.code(400).send({ error: 'MISSING_CODES' });
+      }
+
+      for (const code of courseCodes) {
+        if (typeof code !== 'string' || !state.bourse.convertedCodes.includes(code)) {
+          return reply.code(400).send({ error: 'NOT_ENROLLED', courseCode: code });
+        }
+      }
+
+      state.bourse.coursesSelected = true;
+      await saveSession(id);
+      return { ok: true };
+    },
+  );
+
+  app.post(
+    '/api/bourse/submit',
+    { preHandler: requireSession },
+    async (request, reply) => {
+      const { id, state } = getRequiredSession(request);
+
+      if (state.profile.mode !== 'SOUMISSION') {
+        return reply.code(403).send({ error: 'PROFILE_MODE_BLOCKS_SUBMIT' });
+      }
+
+      const flow = getActiveFlow(state);
+      if (!flow.ok) {
+        return reply.code(400).send({ error: flow.reason });
+      }
+
+      if (!state.bourse.coursesSelected) {
+        return reply.code(400).send({ error: 'COURSES_NOT_SELECTED' });
+      }
+
+      state.bourse.balance = 0;
+      state.flow = null;
+      await saveSession(id);
+      return { ok: true };
+    },
+  );
+
+  app.post(
+    '/api/bourse/cancel',
+    { preHandler: requireSession },
+    async (request, reply) => {
+      const { id, state } = getRequiredSession(request);
+      state.flow = null;
+      await saveSession(id);
+      return { ok: true };
     },
   );
 }

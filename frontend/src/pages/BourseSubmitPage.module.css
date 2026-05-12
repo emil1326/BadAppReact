@@ -1,0 +1,74 @@
+.recapText {
+  font-size: 11px;
+  margin: 0;
+}
+
+.modal {
+  width: 480px;
+  max-width: calc(100vw - 32px);
+}
+
+.modalText {
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.cancelBtn {
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  padding: 3px 14px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.cancelBtn:hover {
+  background: var(--color-button-bg-hover);
+}
+
+.successFlash {
+  position: fixed;
+  inset: 0;
+  background: #2a7a2a;
+  z-index: 9999;
+  animation: flash 0.5s forwards;
+}
+
+@keyframes flash {
+  0%   { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+.successMsg {
+  font-size: 11px;
+  color: #2a7a2a;
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+
+.balanceNote {
+  font-size: 11px;
+  margin: 0 0 12px;
+}
+
+.failMsg {
+  font-size: 11px;
+  color: #b22222;
+  font-weight: bold;
+  margin: 0 0 12px;
+}
+
+.pending {
+  font-size: 11px;
+  font-style: italic;
+  margin: 0;
+}
+
+.link {
+  color: var(--color-link);
+}
