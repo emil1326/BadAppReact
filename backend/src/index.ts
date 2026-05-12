@@ -6,10 +6,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { authRoutes } from './routes/auth.js';
 import { bourseRoutes } from './routes/bourse.js';
+import { bulletinRoutes } from './routes/bulletin.js';
 import { notesRoutes } from './routes/notes.js';
 import { profileRoutes } from './routes/profile.js';
 import { sessionRoutes } from './routes/session.js';
 import { vignetteRoutes } from './routes/vignette.js';
+import { closeBulletinBrowser } from './services/bulletin.js';
 import { loadSessions } from './state/store.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -36,10 +38,15 @@ await app.register(staticPlugin, {
 
 await app.register(authRoutes);
 await app.register(bourseRoutes);
+await app.register(bulletinRoutes);
 await app.register(notesRoutes);
 await app.register(profileRoutes);
 await app.register(sessionRoutes);
 await app.register(vignetteRoutes);
+
+app.addHook('onClose', async () => {
+  await closeBulletinBrowser();
+});
 
 app.get('/api/health', async () => ({ status: 'ok', uptime: process.uptime() }));
 

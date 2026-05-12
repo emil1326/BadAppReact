@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+  <meta charset="utf-8" />
+  <title>Bulletin officiel — Hiver 2026 — COLNET</title>
+  <style>
+    @page {
+      size: Letter;
+      margin: 14mm 16mm;
+    }
+
+    :root {
+      --ink: #1a1a1a;
+      --rule: #2a2a2a;
+    }
+
+    html, body {
+      background: #f4efe4;
+      color: var(--ink);
+      font-family: "Courier New", "Consolas", monospace;
+      font-size: 9.5pt;
+      line-height: 1.32;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      padding: 14mm 16mm;
+      box-sizing: border-box;
+      background: #f4efe4;
+      page-break-after: always;
+      position: relative;
+    }
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-weight: normal;
+      font-family: inherit;
+    }
+
+    .institution {
+      font-size: 9pt;
+      letter-spacing: 0.2px;
+      word-spacing: -1px;
+      text-transform: uppercase;
+      line-height: 1.18;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 4mm;
+      margin-bottom: 3mm;
+    }
+    .institution .sub {
+      display: block;
+      font-size: 8.5pt;
+      text-transform: none;
+      margin-top: 2mm;
+      letter-spacing: 0;
+    }
+
+    .titleblock {
+      text-align: center;
+      margin: 5mm 0 4mm;
+    }
+    .titleblock .t1 {
+      font-size: 13pt;
+      letter-spacing: 1px;
+    }
+    .titleblock .t2 {
+      font-size: 9pt;
+      margin-top: 1mm;
+    }
+
+    .meta {
+      margin: 4mm 0 5mm;
+      font-size: 9pt;
+    }
+    .meta .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8mm;
+    }
+
+    .section-header {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.4mm 0;
+      margin: 5mm 0 3mm;
+      font-size: 9.5pt;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .kv {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 9pt;
+    }
+    .kv td {
+      padding: 1mm 0 0.8mm;
+      vertical-align: top;
+      border-bottom: 1px dotted #888;
+    }
+    .kv td:first-child {
+      width: 42%;
+      padding-right: 4mm;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .kv td:last-child {
+      padding-left: 4mm;
+      word-wrap: break-word;
+    }
+
+    table.grades, table.fees {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9pt;
+      margin-top: 2mm;
+    }
+    table.grades th, table.grades td,
+    table.fees th, table.fees td {
+      padding: 0.8mm 1mm;
+      vertical-align: top;
+    }
+    table.grades thead th, table.fees thead th {
+      border-bottom: 1px solid var(--rule);
+      text-align: left;
+      font-weight: bold;
+      font-size: 8.5pt;
+      text-transform: uppercase;
+    }
+    table.grades td.sigle { width: 22%; white-space: nowrap; }
+    table.grades td.note  { width: 10%; text-align: right; white-space: nowrap; }
+
+    table.fees td.label  { width: 78%; }
+    table.fees td.amount { width: 22%; text-align: right; white-space: nowrap; }
+    table.fees tr.subhdr td {
+      padding-top: 2mm;
+      font-style: italic;
+      color: #333;
+    }
+    table.fees tr.subtotal td {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.4mm;
+      font-weight: bold;
+    }
+    table.fees tr.indent td.label { padding-left: 6mm; }
+
+    table.codes {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.8pt;
+      margin-top: 2mm;
+    }
+    table.codes th, table.codes td {
+      padding: 1mm 1.5mm;
+      vertical-align: top;
+      border-bottom: 1px dotted #888;
+    }
+    table.codes thead th {
+      border-bottom: 1px solid var(--rule);
+      text-align: left;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 8.4pt;
+    }
+    table.codes td.num   { width: 6%;  white-space: nowrap; }
+    table.codes td.code  { width: 28%; white-space: nowrap; font-weight: bold; }
+    table.codes td.usage { width: 66%; }
+
+    p {
+      margin: 1.4mm 0;
+      text-align: justify;
+    }
+
+    .footnote {
+      font-size: 8pt;
+      color: #2a2a2a;
+      margin-top: 2mm;
+      line-height: 1.3;
+    }
+
+    .pageno {
+      position: absolute;
+      bottom: 8mm;
+      left: 16mm;
+      right: 16mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8pt;
+      color: #555;
+      border-top: 1px solid var(--rule);
+      padding-top: 1mm;
+    }
+
+    .grand-total-block {
+      border-top: 2px double var(--rule);
+      border-bottom: 2px double var(--rule);
+      padding: 2mm 0;
+      margin: 4mm 0;
+    }
+    .grand-total-block table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.2pt;
+    }
+    .grand-total-block td:last-child {
+      text-align: right;
+      white-space: nowrap;
+    }
+    .grand-total-block tr.solde td {
+      font-weight: bold;
+      padding-top: 1.4mm;
+    }
+
+    .note-toberead {
+      border: 1px solid var(--rule);
+      padding: 2mm 3mm;
+      margin-top: 3mm;
+      font-size: 8.8pt;
+    }
+    .note-toberead h4 {
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 1mm;
+      font-size: 9pt;
+    }
+    .note-toberead ul {
+      margin: 1mm 0 0 4mm;
+      padding: 0;
+    }
+    .note-toberead li {
+      margin: 0.8mm 0;
+    }
+
+    /* mild "scanned" feel — uneven baseline + soft paper tone */
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px) 0 0/3px 3px,
+        linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0));
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+
+    @media print {
+      html, body { background: white; }
+      .page { background: white; }
+      .page::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================ PAGE 1 ============================ -->
+<section class="page">
+  <div class="institution">
+    Collège-Lionel-Groulx-de-Saint-Bruno-du-Lac-Campus-Principal-Pavillon-A-Institut-des-Technologies-de-l'Information-et-des-Communications-Division-Enseignement-Régulier-Cohorte-2026-2027-Région-Métropolitaine-Agréé-par-le-Ministère
+    <span class="sub">Service du registrariat — Sous-direction des affaires bulletinaires<br>
+    Bureau 14-B (sous-sol Pavillon A, accès par escalier de secours)</span>
+  </div>
+
+  <div class="titleblock">
+    <div class="t1">BULLETIN DE NOTES OFFICIEL — SESSION HIVER 2026</div>
+    <div class="t2">Document généré par le système COLNET v0.5</div>
+  </div>
+
+  <div class="meta">
+    <table class="kv">
+      <tr><td>Date de génération</td><td>14 mai 2026, 03:47:22 EST</td></tr>
+      <tr><td>File d'attente d'impression</td><td>position 4 187 (estimation : 9 jours)</td></tr>
+      <tr><td>Numéro de séquence COLNET</td><td>BUL-#PV-2003-14-H2026-7493-0042-A</td></tr>
+    </table>
+  </div>
+
+  <div class="section-header">Identification de l'étudiant(e)</div>
+  <table class="kv">
+    <tr><td>Nom légal complet</td><td>[voir Options › mode Observation]</td></tr>
+    <tr><td>Numéro d'étudiant</td><td>[voir Options › mode Observation]</td></tr>
+    <tr><td>Programme</td><td>420.B0-SBDL-ITC-RÉG-CH2026-PVA<br>« Techniques de l'informatique appliquée aux procédures internes du portail (volet régulier) »</td></tr>
+    <tr><td>Cheminement</td><td>Régulier-conditionnel</td></tr>
+    <tr><td>Statut administratif</td><td>Actif (sous réserve de paiement de la cotisation rétroactive depuis 2003)</td></tr>
+  </table>
+
+  <div class="section-header">Résultats du trimestre</div>
+  <table class="grades">
+    <thead>
+      <tr><th class="sigle">Sigle</th><th>Cours</th><th class="note">Note</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="sigle">420-3B4-SBDL</td><td>Programmation orientée formulaire (II)</td><td class="note">82</td></tr>
+      <tr><td class="sigle">420-4C5-SBDL</td><td>Bases de données à accès restreint</td><td class="note">77</td></tr>
+      <tr><td class="sigle">420-2A1-SBDL</td><td>Réseaux internes non-documentés</td><td class="note">68</td></tr>
+      <tr><td class="sigle">420-LGR-SBDL</td><td>Politique #PV-2003-14 et ses 47 amendements</td><td class="note">74</td></tr>
+      <tr><td class="sigle">604-CGS-SBDL</td><td>Anglais administratif niveau intermédiaire</td><td class="note">81</td></tr>
+      <tr><td class="sigle">340-AEB-SBDL</td><td>Éthique de l'attente prolongée*</td><td class="note">S/O</td></tr>
+    </tbody>
+  </table>
+  <div class="footnote">
+    * Cours validé par défaut suite à l'absence de l'enseignant responsable depuis Automne 2019. Réussite reconduite par décret interne, conformément à la politique #PV-2003-14.
+  </div>
+
+  <table class="kv" style="margin-top:3mm">
+    <tr><td>Moyenne pondérée du trimestre</td><td>76,4 / 100</td></tr>
+    <tr><td>Moyenne cumulative depuis l'admission</td><td>74,8 / 100</td></tr>
+    <tr><td>Cote R provisoire (non-officielle, non-contestable et néanmoins définitive)</td><td>28,12</td></tr>
+  </table>
+
+  <div class="section-header">Commentaires de la direction</div>
+  <p>
+    Aucun manquement disciplinaire signalé à ce jour, à l'exception du dossier #2024-0871 (utilisation non-autorisée de l'ascenseur B durant la période d'entretien hebdomadaire 2018-en-cours), pour lequel une réponse de l'étudiant(e) est attendue depuis 14 mois.
+  </p>
+  <p>
+    L'inscription au trimestre Automne 2026 est automatiquement reconduite, sauf désistement remis en personne au bureau 14-B entre le 15 juillet et le 16 juillet 2026 inclusivement, sur présentation du présent bulletin imprimé en deux exemplaires non-pliés, non-agrafés, non-troués.
+  </p>
+
+  <div class="pageno"><span>BUL-...-0042-A</span><span>Page 1 / 6 — (codes administratifs en page 2 →)</span></div>
+</section>
+
+<!-- ============================ PAGE 2 — CODES ============================ -->
+<section class="page">
+  <div class="institution">
+    Collège-Lionel-Groulx-de-Saint-Bruno-du-Lac-Campus-Principal-Pavillon-A-Institut-des-Technologies-de-l'Information-et-des-Communications-Division-Enseignement-Régulier-Cohorte-2026-2027-Région-Métropolitaine-Agréé-par-le-Ministère
+  </div>
+
+  <div class="section-header">Section II — Codes de référence personnels</div>
+  <p>
+    Codes générés automatiquement par COLNET pour le trimestre H-2026. Certains codes ci-dessous sont requis pour des démarches spécifiques (voir colonne « Usage »). Les codes marqués « interne » ne doivent en aucun cas être saisis dans un formulaire externe, sous peine de rejet automatique et de déclenchement d'une procédure d'audit (politique #PV-2003-14, art. 11, al. b).
+  </p>
+
+  <table class="codes">
+    <thead>
+      <tr><th class="num">N°</th><th class="code">Code</th><th class="usage">Usage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">01</td><td class="code">IMP-2024-K41056</td><td class="usage">interne — frais d'impression bulletin n° 47</td></tr>
+      <tr><td class="num">02</td><td class="code">{{decoyBRS}}</td><td class="usage">bourse — exercice antérieur (EXPIRÉ depuis le 31 août 2025)</td></tr>
+      <tr><td class="num">03</td><td class="code">ADM-7702-SBRLAC</td><td class="usage">interne — affectation administrative annuelle</td></tr>
+      <tr><td class="num">04</td><td class="code">{{code1}}</td><td class="usage">bourse — exercice courant (formulaire, champ n° 1)</td></tr>
+      <tr><td class="num">05</td><td class="code">CMPT-58931-2025</td><td class="usage">interne — validation comptable trimestrielle (lecture seule)</td></tr>
+      <tr><td class="num">06</td><td class="code">{{decoyCONF}}</td><td class="usage">confidentialité — extension partenaire CLGLG (non-applicable au campus SBDL)</td></tr>
+      <tr><td class="num">07</td><td class="code">{{code2}}</td><td class="usage">confidentialité — usage interne SBDL (formulaire, champ n° 2)*</td></tr>
+      <tr><td class="num">08</td><td class="code">{{decoyVHD}}</td><td class="usage">vérification harmonisée des données — incrément précédent (archivé automatiquement le 12 mai 2026)</td></tr>
+      <tr><td class="num">09</td><td class="code">{{code3}}</td><td class="usage">vérification harmonisée des données — incrément actif (formulaire, champ n° 3)</td></tr>
+      <tr><td class="num">10</td><td class="code">OBS-0000-X41056</td><td class="usage">interne — placeholder de session en mode Observation</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footnote">
+    * L'apparente contradiction entre la mention « usage interne » et la mention « formulaire, champ n° 2 » n'est pas une erreur typographique mais reflète la double-affectation du code dans le module bourse, conformément à la directive interne DGA-2014-04.
+  </div>
+
+  <div class="note-toberead">
+    <h4>Avis important — à lire avant toute saisie</h4>
+    <ul>
+      <li>Saisie sensible à la casse, aux tirets, aux espaces, et à l'humeur du serveur (politique #PV-2003-14, art. 8).</li>
+      <li>Toute substitution typographique (tiret cadratin « — » au lieu du tiret régulier « - », chiffre zéro « 0 » au lieu de la lettre O majuscule, etc.) entraîne le rejet immédiat et un délai de carence de 24 minutes.</li>
+      <li>La saisie doit être manuelle, sans copier-coller (technologie non-supportée par COLNET depuis sa mise en service en 2003).</li>
+      <li>Tout code marqué « interne » saisi dans un formulaire externe déclenche une procédure d'audit d'une durée habituelle de 6 à 8 semaines ouvrables.</li>
+    </ul>
+  </div>
+
+  <div class="pageno"><span>BUL-...-0042-A</span><span>Page 2 / 6 — (détail des frais en pages 3 à 5 →)</span></div>
+</section>
+
+<!-- ============================ PAGE 3 — FRAIS A ============================ -->
+<section class="page">
+  <div class="institution">
+    Collège-Lionel-Groulx-de-Saint-Bruno-du-Lac-Campus-Principal-Pavillon-A-Institut-des-Technologies-de-l'Information-et-des-Communications-Division-Enseignement-Régulier-Cohorte-2026-2027-Région-Métropolitaine-Agréé-par-le-Ministère
+  </div>
+
+  <div class="section-header">Section III.A — Frais de scolarité et d'inscription</div>
+  <table class="fees">
+    <tbody>
+      <tr><td class="label">Frais d'inscription au trimestre Hiver 2026</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">Frais de réinscription rétroactive (clause §14-B, réémis chaque session indépendamment du statut)</td><td class="amount">195,00 $</td></tr>
+
+      <tr class="subhdr"><td colspan="2">Frais de scolarité — cours réguliers :</td></tr>
+      <tr class="indent"><td class="label">420-3B4-SBDL — Programmation orientée formulaire (II)</td><td class="amount">597,00 $</td></tr>
+      <tr class="indent"><td class="label">420-4C5-SBDL — Bases de données à accès restreint</td><td class="amount">597,00 $</td></tr>
+      <tr class="indent"><td class="label">420-2A1-SBDL — Réseaux internes non-documentés</td><td class="amount">597,00 $</td></tr>
+      <tr class="indent"><td class="label">420-LGR-SBDL — Politique #PV-2003-14 et ses 47 amendements</td><td class="amount">597,00 $</td></tr>
+      <tr class="indent"><td class="label">604-CGS-SBDL — Anglais administratif niveau intermédiaire</td><td class="amount">597,00 $</td></tr>
+      <tr class="indent"><td class="label">340-AEB-SBDL — Éthique de l'attente prolongée*</td><td class="amount">597,00 $</td></tr>
+
+      <tr><td class="label">Frais d'évaluation des préalables (6 cours × 24,00 $)</td><td class="amount">144,00 $</td></tr>
+      <tr><td class="label">Frais d'accès au système de notation interne</td><td class="amount">12,75 $</td></tr>
+      <tr><td class="label">Frais d'émission du présent bulletin</td><td class="amount">14,25 $</td></tr>
+      <tr><td class="label">Frais de manutention du présent bulletin</td><td class="amount">4,50 $</td></tr>
+      <tr><td class="label">Frais de consultation du présent bulletin (1<sup>ère</sup> lecture)</td><td class="amount">2,00 $</td></tr>
+      <tr><td class="label">Cotisation AGECLGSBL (obligatoire, non-remboursable, non-démissionnable, non-contestable)</td><td class="amount">42,50 $</td></tr>
+
+      <tr class="subtotal"><td class="label">Sous-total Section III.A</td><td class="amount">4 192,00 $</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footnote">
+    * Cours sans enseignant depuis 2019. Réussite automatique. Frais maintenus à plein tarif conformément à #PV-2003-14.
+  </div>
+
+  <div class="pageno"><span>BUL-...-0042-A</span><span>Page 3 / 6 — (suite des frais en page 4 →)</span></div>
+</section>
+
+<!-- ============================ PAGE 4 — FRAIS B ============================ -->
+<section class="page">
+  <div class="institution">
+    Collège-Lionel-Groulx-de-Saint-Bruno-du-Lac-Campus-Principal-Pavillon-A-Institut-des-Technologies-de-l'Information-et-des-Communications-Division-Enseignement-Régulier-Cohorte-2026-2027-Région-Métropolitaine-Agréé-par-le-Ministère
+  </div>
+
+  <div class="section-header">Section III.B — Frais technologiques (historique 2003-2026)</div>
+  <p>
+    Ces frais reflètent les phases successives de modernisation du portail COLNET depuis sa mise en service. Ils sont facturés rétroactivement à chaque cohorte active, conformément à la politique #PV-2003-14 (art. 19, « pérennité technologique »).
+  </p>
+
+  <table class="fees">
+    <tbody>
+      <tr><td class="label">2003 — Mise en service initiale COLNET</td><td class="amount">95,00 $</td></tr>
+      <tr><td class="label">2005 — Compatibilité Internet Explorer 6 (résiduelle)</td><td class="amount">95,00 $</td></tr>
+      <tr><td class="label">2007 — Mise en conformité politique de confidentialité</td><td class="amount">95,00 $</td></tr>
+      <tr><td class="label">2009 — Module de réinit. mot de passe au comptoir</td><td class="amount">95,00 $</td></tr>
+      <tr><td class="label">2011 — Adaptation portail Java Mobile (non-fonctionnel depuis 2014 mais toujours facturé)</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">2013 — Migration vers système comptable v3.2</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">2015 — Réforme grille horaire (frais résiduels persistants)</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">2017 — Mise à jour politique stationnement (déploiement vignettes — voir module Vignette Auto, politique #PV-2003-14, art. 22)</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">2018 — Adoption du papier-zéro (présent bulletin néanmoins imprimé sur papier)</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">2019 — Implantation module bilan-santé</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">2020 — Adaptation aux consignes officielles</td><td class="amount">295,00 $</td></tr>
+      <tr><td class="label">2021 — Retour partiel en présentiel (logistique)</td><td class="amount">295,00 $</td></tr>
+      <tr><td class="label">2022 — Refonte graphique partielle COLNET (interface partiellement refondue)</td><td class="amount">395,00 $</td></tr>
+      <tr><td class="label">2023 — Filtre anti-pourriel (déploiement)</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">2024 — Adoption Microsoft Teams (licences résiduelles post-désinstallation)</td><td class="amount">295,00 $</td></tr>
+      <tr><td class="label">2025 — Module d'orientation IA (suite et fin)</td><td class="amount">495,00 $</td></tr>
+      <tr><td class="label">2026 — Mise à jour annuelle obligatoire COLNET</td><td class="amount">195,00 $</td></tr>
+
+      <tr><td class="label">Frais de connexion sécurisée (~250 tentatives × 0,15 $ par tentative documentée)</td><td class="amount">37,50 $</td></tr>
+      <tr><td class="label">Frais de support technique (4 appels non-répondus × 25,00 $ par appel)</td><td class="amount">100,00 $</td></tr>
+      <tr><td class="label">Frais d'archivage des courriels non-livrés (boîte du registrariat pleine depuis 2017)</td><td class="amount">142,75 $</td></tr>
+      <tr><td class="label">Frais d'accès au calendrier interactif (annuel)</td><td class="amount">65,00 $</td></tr>
+      <tr><td class="label">Frais de réémission de mot de passe (3 réémissions × 45,00 $, présence physique exigée)</td><td class="amount">135,00 $</td></tr>
+
+      <tr class="subtotal"><td class="label">Sous-total Section III.B</td><td class="amount">4 390,25 $</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pageno"><span>BUL-...-0042-A</span><span>Page 4 / 6 — (suite et fin des frais en page 5 →)</span></div>
+</section>
+
+<!-- ============================ PAGE 5 — FRAIS C + TOTAL + LÉGAL ============================ -->
+<section class="page">
+  <div class="institution">
+    Collège-Lionel-Groulx-de-Saint-Bruno-du-Lac-Campus-Principal-Pavillon-A-Institut-des-Technologies-de-l'Information-et-des-Communications-Division-Enseignement-Régulier-Cohorte-2026-2027-Région-Métropolitaine-Agréé-par-le-Ministère
+  </div>
+
+  <div class="section-header">Section III.C — Frais administratifs et exceptionnels</div>
+  <table class="fees">
+    <tbody>
+      <tr><td class="label">Frais de garde du dossier étudiant (annuel)</td><td class="amount">87,50 $</td></tr>
+      <tr><td class="label">Frais de garde du dossier étudiant (rétroactif, 3 sessions précédentes × 87,50 $)</td><td class="amount">262,50 $</td></tr>
+      <tr><td class="label">Frais de gestion de file d'attente du registrariat</td><td class="amount">24,00 $</td></tr>
+      <tr><td class="label">Frais d'usure du bouton d'ascenseur B (quote-part étudiante)</td><td class="amount">18,75 $</td></tr>
+      <tr><td class="label">Frais d'audit annuel des codes administratifs</td><td class="amount">145,00 $</td></tr>
+      <tr><td class="label">Frais d'émission des codes de référence (10 codes × 12,50 $, voir page 2)</td><td class="amount">125,00 $</td></tr>
+      <tr><td class="label">Frais d'archivage des codes expirés</td><td class="amount">35,00 $</td></tr>
+      <tr><td class="label">Frais de validation manuelle du formulaire de bourse</td><td class="amount">250,00 $</td></tr>
+      <tr><td class="label">Frais de manutention du formulaire de bourse</td><td class="amount">78,50 $</td></tr>
+      <tr><td class="label">Frais d'impression du formulaire de bourse en double exemplaire non-pliable</td><td class="amount">42,00 $</td></tr>
+      <tr><td class="label">Frais de transmission interne (bureau 14-B → bureau 47-D, livreur à pied)</td><td class="amount">67,25 $</td></tr>
+      <tr><td class="label">Frais d'évaluation psychologique préalable</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">Frais d'éclairage du local lors de l'évaluation préalable</td><td class="amount">14,75 $</td></tr>
+      <tr><td class="label">Frais de chauffage hors-saison</td><td class="amount">89,00 $</td></tr>
+      <tr><td class="label">Frais de climatisation hors-saison</td><td class="amount">89,00 $</td></tr>
+      <tr><td class="label">Frais de gestion du fonds de gestion</td><td class="amount">47,50 $</td></tr>
+      <tr><td class="label">Frais de gestion du fonds de gestion (TPS/TVQ)</td><td class="amount">7,11 $</td></tr>
+      <tr><td class="label">Frais bancaires (paiement par billets sales)</td><td class="amount">12,00 $</td></tr>
+      <tr><td class="label">Frais bancaires (paiement par billets neufs)</td><td class="amount">14,00 $</td></tr>
+      <tr><td class="label">Frais d'inscription au plan de paiement (le plan n'est plus offert depuis 2019)</td><td class="amount">25,00 $</td></tr>
+      <tr><td class="label">Frais de désinscription du plan de paiement (obligatoire malgré l'inexistence du plan)</td><td class="amount">25,00 $</td></tr>
+      <tr><td class="label">Frais de relevé annuel (envoyé en main propre par un préposé désigné à la discrétion du bureau 14-B)</td><td class="amount">95,00 $</td></tr>
+      <tr><td class="label">Frais de signature électronique manuscrite</td><td class="amount">27,50 $</td></tr>
+      <tr><td class="label">Frais d'application des taxes</td><td class="amount">195,00 $</td></tr>
+      <tr><td class="label">Frais de gestion des taxes</td><td class="amount">88,25 $</td></tr>
+      <tr><td class="label">Frais d'inflation prévisionnelle 2026-2027</td><td class="amount">215,00 $</td></tr>
+      <tr><td class="label">Frais d'amortissement du bouton « Soumettre » (usure logicielle estimée)</td><td class="amount">9,49 $</td></tr>
+      <tr><td class="label">Frais d'usage du clavier institutionnel (~11 250 caractères × 0,002 $/caractère)</td><td class="amount">22,50 $</td></tr>
+      <tr><td class="label">Frais imprévus (non-spécifiés, à la discrétion du bureau 14-B, non-contestables)</td><td class="amount">2 597,15 $</td></tr>
+
+      <tr class="subtotal"><td class="label">Sous-total Section III.C</td><td class="amount">4 903,75 $</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grand-total-block">
+    <table>
+      <tr><td>Grand total des frais</td><td>13 486,00 $</td></tr>
+      <tr><td>Crédit ministériel — bourse provinciale H-2026</td><td>-13 486,00 $</td></tr>
+      <tr class="solde"><td>Solde à acquitter</td><td>0,00 $*</td></tr>
+    </table>
+  </div>
+
+  <div class="footnote">
+    * Le solde de 0,00 $ ne dispense pas l'étudiant(e) du paiement, qui doit être effectué en personne, en argent comptant exact, au bureau 14-B (voir page 1 pour l'accès par escalier de secours). L'application du crédit est conditionnelle à la soumission complète et validée du formulaire de demande de bourse via le module COLNET, en mode Soumission, dans le délai imparti, avec les codes de référence corrects (voir page 2 — ne pas confondre avec les codes marqués « interne »).
+  </div>
+
+  <div class="pageno"><span>BUL-...-0042-A</span><span>Page 5 / 6 — (avis légaux et coordonnées en page 6 →)</span></div>
+</section>
+
+<!-- ============================ PAGE 6 — LÉGAL + COORDONNÉES ============================ -->
+<section class="page">
+  <div class="institution">
+    Collège-Lionel-Groulx-de-Saint-Bruno-du-Lac-Campus-Principal-Pavillon-A-Institut-des-Technologies-de-l'Information-et-des-Communications-Division-Enseignement-Régulier-Cohorte-2026-2027-Région-Métropolitaine-Agréé-par-le-Ministère
+  </div>
+
+  <div class="section-header">Section IV — Avis légaux (extrait condensé)</div>
+  <p>
+    Le présent document constitue un bulletin officiel au sens de la politique #PV-2003-14. Toute reproduction par voie optique, magnétique, photographique, photocopie, télécopie, dictée vocale, mémorisation prolongée ou évocation orale en présence de tiers est formellement prohibée et passible d'une sanction allant de la réprimande verbale à la suspension d'accès à l'ascenseur B pour une durée pouvant atteindre 14 mois.
+  </p>
+  <p>
+    Document volontairement numérisé en mode image afin d'empêcher toute extraction automatisée, conformément à la directive DGA-2003-11 réaffirmée par le mémo n° 47 du 4 février 2019.
+  </p>
+  <p>
+    La conservation du présent bulletin par l'étudiant(e) est obligatoire pour une durée minimale de sept (7) ans à compter de la date d'émission, conformément au calendrier de conservation 2014-Q4 du Service des archives du collège. Toute destruction prématurée — y compris involontaire (incendie, dégât d'eau, perte, oubli sur un comptoir d'autobus) — doit faire l'objet d'une déclaration écrite, en deux exemplaires, déposée en personne au bureau 14-B dans un délai n'excédant pas 14 jours ouvrables suivant l'événement, accompagnée d'une attestation notariée de bonne foi.
+  </p>
+  <p>
+    En cas de divergence entre le présent bulletin et toute autre source d'information (portail COLNET, courriel, communication verbale, relevé de notes officiel, etc.), c'est le document portant le numéro de séquence COLNET le plus élevé qui fait foi, à l'exception des cas où la politique #PV-2003-14 stipule explicitement le contraire (voir art. 31 à 47 inclusivement).
+  </p>
+
+  <div class="section-header">Coordonnées du Service du registrariat</div>
+  <table class="kv">
+    <tr><td>Téléphone</td><td>1 888 555-0142, poste 4419 (musique d'attente : 22 à 41 minutes en moyenne)</td></tr>
+    <tr><td>Courriel</td><td>ne pas utiliser (boîte pleine depuis 2017)</td></tr>
+    <tr><td>Présentiel</td><td>bureau 14-B, mardis impairs uniquement, entre 10 h 12 et 10 h 47</td></tr>
+    <tr><td>Heures d'ouverture</td><td>lun.-ven., 8 h 30 à 16 h 00 (fermé de 8 h 30 à 16 h 00 le jeudi)</td></tr>
+    <tr><td>Délai de réponse habituel</td><td>6 à 8 semaines ouvrables</td></tr>
+    <tr><td>Délai de réponse réel</td><td>variable (jusqu'à 14 mois, voir dossier #2024-0871)</td></tr>
+  </table>
+
+  <p style="text-align:center; margin-top:8mm; font-size:9.5pt;">— Fin du document officiel —</p>
+  <p style="text-align:center; font-size:8pt; margin-top:1mm;">
+    Document généré conformément à #PV-2003-14 — Validé sans signature numérique<br>
+    Référence interne : BUL-H2026-CLGSBDLITC-7493-0042-A
+  </p>
+
+  <div class="pageno"><span>BUL-...-0042-A</span><span>Page 6 / 6 — fin du document</span></div>
+</section>
+
+</body>
+</html>

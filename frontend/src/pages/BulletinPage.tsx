@@ -2,7 +2,7 @@ import { PageShell } from '../layout/PageShell';
 import { COLLEGE_NAME_LONG } from '../config/branding';
 import styles from './BulletinPage.module.css';
 
-const BULLETIN_URL = 'http://localhost:3001/data/bulletin_2026.pdf';
+const BULLETIN_URL = 'http://localhost:3001/api/bulletin.pdf';
 
 export function BulletinPage() {
   return (
@@ -23,10 +23,11 @@ export function BulletinPage() {
           </p>
           <a
             href={BULLETIN_URL}
-            download="bulletin_hiver_2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.downloadLink}
           >
-            Télécharger le bulletin (PDF)
+            Ouvrir le bulletin (PDF)
           </a>
         </div>
       </section>
