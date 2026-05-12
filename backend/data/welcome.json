@@ -6,9 +6,9 @@
     "name": "INFORMATIQUE DE GESTION"
   },
   "courses": [
-    { "code": "240A0-INT", "title": "Introduction au génie logiciel" },
-    { "code": "360F2-FB1", "title": "Statistiques pour gestionnaires" },
-    { "code": "109A1-EDU", "title": "Activité physique et autonomie" }
+    { "code": "INF-420-A7", "title": "Projet intégrateur en informatique" },
+    { "code": "MAT-203-C1", "title": "Mathématiques appliquées à la gestion" },
+    { "code": "FRA-102-B4", "title": "Langue française et communication" }
   ],
   "deinscriptionDate": "13 février 2026",
   "abandonDate": "1 avril 2026"
