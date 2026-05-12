@@ -67,3 +67,13 @@ Manipulation de PDF en pur JS (création, embed d'images, etc.). Utilisé en tan
 - Pure JS, aucun binaire externe (vs ghostscript / wkhtmltopdf).
 
 Voir : `backend/src/services/bulletin.ts` (la boucle `for (const handle of pageHandles)`).
+
+### [Leaflet/Leaflet](https://github.com/Leaflet/Leaflet) + [PaulLeCam/react-leaflet](https://github.com/PaulLeCam/react-leaflet)
+
+Carte interactive sur la page Prise de rendez-vous, section « Aide à l'orientation » — joke BadApp où le service d'orientation académique affiche littéralement une carte géographique centrée sur Montréal/Rive-Nord.
+
+- Packages npm : `leaflet`, `react-leaflet`, `@types/leaflet`
+- Installé avec `--legacy-peer-deps` (React 19, comme `react-custom-roulette`)
+- CSS Leaflet importé directement dans le composant (`import 'leaflet/dist/leaflet.css'`) plutôt que dans `main.tsx`, parce qu'aucune autre page n'en a besoin
+
+Voir : `frontend/src/pages/AideOrientationPage.tsx`.

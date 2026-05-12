@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from './layout/Layout';
 import { AccueilPage } from './pages/AccueilPage';
+import { AideOrientationPage } from './pages/AideOrientationPage';
 import { BourseConverterPage } from './pages/BourseConverterPage';
 import { BourseFormulairePage } from './pages/BourseFormulairePage';
 import { BulletinPage } from './pages/BulletinPage';
@@ -51,6 +52,7 @@ export default function App() {
         >
           <Route index element={<Navigate to="/accueil" replace />} />
           <Route path="accueil" element={<AccueilPage />} />
+          <Route path="aide-orientation" element={<AideOrientationPage />} />
           <Route path="bourse-convertisseur" element={<BourseConverterPage />} />
           <Route path="bourse-formulaire" element={<BourseFormulairePage />} />
           <Route path="bulletin" element={<BulletinPage />} />
