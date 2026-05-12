@@ -8,8 +8,10 @@ import { BourseConverterPage } from './pages/BourseConverterPage';
 import { BourseFormulairePage } from './pages/BourseFormulairePage';
 import { BulletinPage } from './pages/BulletinPage';
 import { CarteEtudiantePage } from './pages/CarteEtudiantePage';
+import { ConsentementsPage } from './pages/ConsentementsPage';
 import { CoursPage } from './pages/CoursPage';
 import { EtatDeComptePage } from './pages/EtatDeComptePage';
+import { FantomesNonInscritsPage } from './pages/FantomesNonInscritsPage';
 import { LoginPage } from './pages/LoginPage';
 import { NotesPersonnellesPage } from './pages/NotesPersonnellesPage';
 import { OffresEmploiPage } from './pages/OffresEmploiPage';
@@ -57,8 +59,10 @@ export default function App() {
           <Route path="bourse-formulaire" element={<BourseFormulairePage />} />
           <Route path="bulletin" element={<BulletinPage />} />
           <Route path="carte-etudiante" element={<CarteEtudiantePage />} />
+          <Route path="consentements" element={<ConsentementsPage />} />
           <Route path="cours" element={<CoursPage />} />
           <Route path="etat-de-compte" element={<EtatDeComptePage />} />
+          <Route path="fantomes-non-inscrits" element={<FantomesNonInscritsPage />} />
           <Route path="notes-personnelles" element={<NotesPersonnellesPage />} />
           <Route path="offres-emploi" element={<OffresEmploiPage />} />
           <Route path="options" element={<OptionsPage />} />

@@ -1,0 +1,167 @@
+.intro {
+  font-size: 11px;
+  margin: 0 0 8px;
+}
+
+.actionBanner {
+  background: #fff5cc;
+  border: 1px solid #d4a900;
+  padding: 6px 8px;
+  font-size: 11px;
+  margin: 8px 0 10px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 4px;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rowPending {
+  background: #fff5cc;
+}
+
+.checkbox {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.description {
+  font-size: 11px;
+  color: var(--color-text);
+  margin: 0 0 4px;
+}
+
+.meta {
+  font-size: 10px;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.pendingTag {
+  color: #a06800;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.reference {
+  color: var(--color-muted);
+}
+
+.renvoi {
+  color: var(--color-muted);
+}
+
+.renvoiLink {
+  color: #0000cc;
+  text-decoration: underline;
+}
+
+.renvoiLink:visited {
+  color: #551a8b;
+}
+
+.form {
+  margin: 0;
+}
+
+.formTitle {
+  font-size: 12px;
+  margin: 0 0 6px;
+  font-weight: bold;
+}
+
+.formIntro {
+  font-size: 11px;
+  margin: 0 0 10px;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.label {
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.input {
+  font-size: 11px;
+  padding: 2px 4px;
+  border: 1px solid var(--color-border);
+  background: white;
+  font-family: inherit;
+}
+
+.textarea {
+  font-size: 11px;
+  padding: 2px 4px;
+  border: 1px solid var(--color-border);
+  background: white;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.formCheckRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.checkLabel {
+  font-size: 11px;
+  flex: 1;
+}
+
+.errorMsg {
+  font-size: 11px;
+  color: #b22222;
+  background: #ffe0e0;
+  border: 1px solid #b22222;
+  padding: 4px 6px;
+  margin: 8px 0;
+}
+
+.submitBtn {
+  font-size: 11px;
+  padding: 3px 12px;
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.submitBtn:hover {
+  background: var(--color-button-bg-hover);
+}
+
+.legalNote {
+  font-size: 11px;
+  margin: 0;
+}

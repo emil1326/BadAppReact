@@ -5,6 +5,7 @@ import type { Job } from '../../types/job';
 import type { RendezVousSlot } from '../../types/rendezVous';
 import type { VignetteContent, ModeHelp } from '../../types/content';
 import type { Consentement } from '../../types/consentement';
+import type { SignalementFantome } from '../../types/signalement';
 import { api } from './baseApi';
 
 /**
@@ -53,6 +54,11 @@ export const dataApi = api.injectEndpoints({
       query: () => '/data/consentements.json',
       keepUnusedDataFor: Infinity,
     }),
+
+    getSignalementsFantomes: builder.query<SignalementFantome[], void>({
+      query: () => '/data/signalements-fantomes.json',
+      keepUnusedDataFor: Infinity,
+    }),
   }),
 });
 
@@ -65,4 +71,5 @@ export const {
   useGetVignetteContentQuery,
   useGetModeHelpQuery,
   useGetConsentementsQuery,
+  useGetSignalementsFantomesQuery,
 } = dataApi;

@@ -19,6 +19,7 @@
       { "label": "Documents", "slug": "documents" },
       { "label": "Dossier personnel", "slug": "dossier-personnel" },
       { "label": "État de compte", "slug": "etat-de-compte" },
+      { "label": "Fantômes non-inscrits", "slug": "fantomes-non-inscrits" },
       { "label": "Favoris", "slug": "favoris" },
       { "label": "Formulaire de remboursement", "slug": "bourse-formulaire" },
       { "label": "Fréquentation scolaire", "slug": "frequentation-scolaire" },

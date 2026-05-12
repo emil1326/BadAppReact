@@ -1,0 +1,142 @@
+.intro {
+  font-size: 11px;
+  margin: 0 0 8px;
+}
+
+.link {
+  color: #0000cc;
+  text-decoration: underline;
+}
+
+.link:visited {
+  color: #551a8b;
+}
+
+.form {
+  margin: 0;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-size: 11px;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+.input {
+  font-size: 11px;
+  padding: 2px 4px;
+  border: 1px solid var(--color-border);
+  background: white;
+  font-family: inherit;
+}
+
+.fileInput {
+  font-size: 11px;
+}
+
+.textarea {
+  font-size: 11px;
+  padding: 2px 4px;
+  border: 1px solid var(--color-border);
+  background: white;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.hint {
+  font-size: 10px;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 3px 0 0;
+}
+
+.previewBox {
+  margin-top: 6px;
+  border: 1px dashed var(--color-border);
+  padding: 6px;
+  display: inline-block;
+}
+
+.preview {
+  max-width: 240px;
+  max-height: 180px;
+  display: block;
+  background: #f0f0f0;
+}
+
+.previewLabel {
+  font-size: 10px;
+  color: var(--color-muted);
+  margin: 4px 0 0;
+}
+
+.errorMsg {
+  font-size: 11px;
+  color: #b22222;
+  background: #ffe0e0;
+  border: 1px solid #b22222;
+  padding: 4px 6px;
+  margin: 8px 0;
+}
+
+.confirmMsg {
+  font-size: 11px;
+  color: #0a5d0a;
+  background: #e0f5e0;
+  border: 1px solid #0a5d0a;
+  padding: 6px 8px;
+  margin: 8px 0;
+}
+
+.submitBtn {
+  font-size: 11px;
+  padding: 3px 12px;
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.submitBtn:hover {
+  background: var(--color-button-bg-hover);
+}
+
+.tableIntro {
+  font-size: 11px;
+  margin: 0 0 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.th {
+  background: var(--color-header);
+  color: var(--color-header-text);
+  text-align: left;
+  padding: 3px 6px;
+  border: 1px solid var(--color-border);
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.td {
+  padding: 3px 6px;
+  border: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.legalFooter {
+  font-size: 10px;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 10px 0 0;
+}

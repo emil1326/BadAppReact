@@ -24,10 +24,10 @@
   {
     "id": "c004",
     "titre": "Divulgation du dossier au Fantôme du Pavillon B",
-    "description": "Le Fantôme du Pavillon B (entité officiellement inscrite au registre paranormal du collège depuis 1991) peut consulter mon dossier sur demande verbale faite à un membre du personnel, sans préavis écrit. Aucun motif n'est requis.",
+    "description": "Le Fantôme du Pavillon B (entité officiellement inscrite au registre paranormal du collège depuis 1991) peut consulter mon dossier sur demande verbale faite à un membre du personnel, sans préavis écrit. Aucun motif n'est requis. Cette autorisation couvre également l'ingestion des entités non-inscrites signalées en mon nom.",
     "dateConsenti": "2024-10-03",
     "reference": "mémo n° 47 du 4 février 2019",
-    "renvoi": { "label": "Prise de rendez-vous", "to": "/prise-rendez-vous" }
+    "renvoi": { "label": "Fantômes non-inscrits", "to": "/fantomes-non-inscrits" }
   },
   {
     "id": "c005",
