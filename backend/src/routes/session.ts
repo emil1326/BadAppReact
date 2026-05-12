@@ -6,6 +6,7 @@ import {
   regenerateCode,
   startFlow,
 } from '../services/timer.js';
+import { saveSession } from '../state/store.js';
 
 type CheckTimerBody = { code?: string };
 
@@ -14,8 +15,10 @@ export async function sessionRoutes(app: FastifyInstance): Promise<void> {
     '/api/session/start-bourse-flow',
     { preHandler: requireSession },
     async (request) => {
-      const { state } = getRequiredSession(request);
-      return startFlow(state);
+      const { id, state } = getRequiredSession(request);
+      const result = startFlow(state);
+      await saveSession(id);
+      return result;
     },
   );
 
@@ -23,7 +26,7 @@ export async function sessionRoutes(app: FastifyInstance): Promise<void> {
     '/api/session/check-timer',
     { preHandler: requireSession },
     async (request, reply) => {
-      const { state } = getRequiredSession(request);
+      const { id, state } = getRequiredSession(request);
       const code = request.body?.code?.trim();
       if (!code) {
         return reply.code(400).send({ error: 'CODE_REQUIRED' });
@@ -32,6 +35,7 @@ export async function sessionRoutes(app: FastifyInstance): Promise<void> {
       if (!result.ok) {
         return reply.code(400).send({ error: result.reason });
       }
+      await saveSession(id);
       return { ok: true, remainingMs: result.remainingMs };
     },
   );
@@ -40,12 +44,14 @@ export async function sessionRoutes(app: FastifyInstance): Promise<void> {
     '/api/session/regenerate-code',
     { preHandler: requireSession },
     async (request, reply) => {
-      const { state } = getRequiredSession(request);
+      const { id, state } = getRequiredSession(request);
       const active = getActiveFlow(state);
       if (!active.ok) {
         return reply.code(400).send({ error: active.reason });
       }
-      return regenerateCode(state);
+      const result = regenerateCode(state);
+      await saveSession(id);
+      return result;
     },
   );
 }

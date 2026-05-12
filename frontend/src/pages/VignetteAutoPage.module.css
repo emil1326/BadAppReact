@@ -92,3 +92,28 @@
 .modalButton:hover {
   background: #aa0000;
 }
+
+.resetLine {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.resetBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 8px;
+  color: #d8d3cc;
+  cursor: pointer;
+  font-family: monospace;
+  letter-spacing: 0;
+}
+
+.resetBtn:hover:not(:disabled) {
+  color: #aaa;
+}
+
+.resetBtn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}

@@ -3,6 +3,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from './layout/Layout';
 import { AccueilPage } from './pages/AccueilPage';
+import { BourseFormulairePage } from './pages/BourseFormulairePage';
+import { BulletinPage } from './pages/BulletinPage';
 import { CarteEtudiantePage } from './pages/CarteEtudiantePage';
 import { CoursPage } from './pages/CoursPage';
 import { EtatDeComptePage } from './pages/EtatDeComptePage';
@@ -47,6 +49,8 @@ export default function App() {
         >
           <Route index element={<Navigate to="/accueil" replace />} />
           <Route path="accueil" element={<AccueilPage />} />
+          <Route path="bourse-formulaire" element={<BourseFormulairePage />} />
+          <Route path="bulletin" element={<BulletinPage />} />
           <Route path="carte-etudiante" element={<CarteEtudiantePage />} />
           <Route path="cours" element={<CoursPage />} />
           <Route path="etat-de-compte" element={<EtatDeComptePage />} />

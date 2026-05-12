@@ -11,6 +11,7 @@ const API_BASE_URL = 'http://localhost:3001';
  */
 export const api = createApi({
   reducerPath: 'api',
+  tagTypes: ['Vignette', 'Notes'],
   baseQuery: fetchBaseQuery({
     baseUrl: API_BASE_URL,
     prepareHeaders: (headers, { getState }) => {

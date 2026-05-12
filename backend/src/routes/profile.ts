@@ -4,7 +4,7 @@ import {
   getPublicProfile,
   setProfileMode,
 } from '../services/profile.js';
-import type { ProfileMode } from '../state/store.js';
+import { saveSession, type ProfileMode } from '../state/store.js';
 
 type ModeBody = { mode?: string };
 
@@ -26,12 +26,14 @@ export async function profileRoutes(app: FastifyInstance): Promise<void> {
     '/api/profile/mode',
     { preHandler: requireSession },
     async (request, reply) => {
-      const { state } = getRequiredSession(request);
+      const { id, state } = getRequiredSession(request);
       const mode = request.body?.mode;
       if (!isProfileMode(mode)) {
         return reply.code(400).send({ error: 'INVALID_MODE' });
       }
-      return setProfileMode(state, mode);
+      const result = setProfileMode(state, mode);
+      await saveSession(id);
+      return result;
     },
   );
 }

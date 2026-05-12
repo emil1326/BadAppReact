@@ -1,25 +1,25 @@
 import { useNavigate } from 'react-router-dom';
 import { PageShell } from '../layout/PageShell';
-import { useStartBourseFlowMutation } from '../store/api';
+import { useGetBalanceQuery, useStartBourseFlowMutation } from '../store/api';
 import { useTimer } from '../hooks/useTimer';
 import { useSubmitGate } from '../hooks/useSubmitGate';
 import { formatNumberFr } from '../utils/format';
 import { ClothOverlay } from '../components/ClothOverlay';
 import styles from './EtatDeComptePage.module.css';
 
-const BALANCE_AMOUNT = 13486;
 const BALANCE_DUE_DATE = '15 mars 2026';
 
 export function EtatDeComptePage() {
   const { isActive } = useTimer();
   const { canSubmit } = useSubmitGate();
   const [startFlow, { isLoading }] = useStartBourseFlowMutation();
+  const { data: balanceData } = useGetBalanceQuery();
   const navigate = useNavigate();
 
   const handleStart = async () => {
     try {
       await startFlow().unwrap();
-      navigate('/securite');
+      navigate('/bourse-formulaire');
     } catch {
       // Silent failure — the button stays available so the user can retry.
     }
@@ -32,7 +32,9 @@ export function EtatDeComptePage() {
           <div className="colnet-panel__header">Solde actuel</div>
           <div className="colnet-panel__body">
             <p className={styles.balanceLabel}>Frais de scolarité — Hiver 2026</p>
-            <p className={styles.balance}>{formatNumberFr(BALANCE_AMOUNT)} $ CA</p>
+            <p className={styles.balance}>
+              {balanceData !== undefined ? formatNumberFr(balanceData.balance) : '—'} $ CA
+            </p>
             <p className={styles.helper}>
               Date d&apos;échéance : {BALANCE_DUE_DATE}
             </p>

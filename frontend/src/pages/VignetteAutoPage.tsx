@@ -2,6 +2,11 @@ import { useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
 import { PageShell } from '../layout/PageShell';
 import { useLogoutAndRedirect } from '../hooks/useLogoutAndRedirect';
+import {
+  useGetVignetteStatusQuery,
+  useRecordVignetteSpinMutation,
+  useResetVignetteMutation,
+} from '../store/api';
 import styles from './VignetteAutoPage.module.css';
 
 type WheelOutcome = {
@@ -14,7 +19,7 @@ const OUTCOMES: WheelOutcome[] = [
   {
     label: 'Aucune',
     result: 'Aucune vignette assignée',
-    description: 'Veuillez recommencer la procédure l’année prochaine.',
+    description: "Veuillez recommencer la procédure l'année prochaine.",
   },
   {
     label: 'Sibérie',
@@ -39,7 +44,7 @@ const OUTCOMES: WheelOutcome[] = [
   {
     label: 'Toit',
     result: 'Vignette zone Toit',
-    description: '14 étages d’escaliers à monter. Ascenseur en panne depuis 2018.',
+    description: "14 étages d'escaliers à monter. Ascenseur en panne depuis 2018.",
   },
   {
     label: 'Sous-marin',
@@ -90,26 +95,34 @@ const WARNINGS: Record<WarningKind, { title: string; paragraphs: string[] }> = {
     title: 'AVERTISSEMENT DE SÉCURITÉ',
     paragraphs: [
       'Toute interaction directe avec le composant rotatif est strictement interdite et déclenche une déconnexion immédiate de votre session pour des raisons de sécurité.',
-      'Pour utiliser le module d’attribution, veuillez utiliser exclusivement le bouton « TOURNER LA ROUE ».',
+      "Pour utiliser le module d'attribution, veuillez utiliser exclusivement le bouton « TOURNER LA ROUE ».",
     ],
   },
   'double-spin': {
     title: 'TENTATIVE ANNUELLE DÉJÀ UTILISÉE',
     paragraphs: [
-      'Vous avez déjà utilisé votre tentative d’attribution pour l’année académique en cours.',
+      "Vous avez déjà utilisé votre tentative d'attribution pour l'année académique en cours.",
       'Toute tentative supplémentaire déclenche une déconnexion immédiate de votre session conformément à la politique #PV-2003-14.',
     ],
   },
 };
 
 export function VignetteAutoPage() {
+  const { data: vignetteStatus } = useGetVignetteStatusQuery();
+  const [recordSpin] = useRecordVignetteSpinMutation();
+  const [resetVignette, { isLoading: isResetting }] = useResetVignetteMutation();
+
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
-  const [revealed, setRevealed] = useState<WheelOutcome | null>(null);
-  const [hasSpun, setHasSpun] = useState(false);
+  const [localRevealed, setLocalRevealed] = useState<WheelOutcome | null>(null);
   const [warning, setWarning] = useState<WarningKind | null>(null);
 
   const { logoutAndRedirect } = useLogoutAndRedirect();
+
+  const hasSpun = vignetteStatus?.spun ?? false;
+  const serverRevealed =
+    vignetteStatus?.prizeIndex != null ? OUTCOMES[vignetteStatus.prizeIndex] : null;
+  const revealed = localRevealed ?? serverRevealed;
 
   const handleSpin = () => {
     if (mustSpin) return;
@@ -117,15 +130,20 @@ export function VignetteAutoPage() {
       setWarning('double-spin');
       return;
     }
-    setRevealed(null);
+    setLocalRevealed(null);
     setPrizeNumber(Math.floor(Math.random() * OUTCOMES.length));
     setMustSpin(true);
   };
 
-  const handleStopSpin = () => {
+  const handleStopSpin = async () => {
     setMustSpin(false);
-    setRevealed(OUTCOMES[prizeNumber]);
-    setHasSpun(true);
+    const outcome = OUTCOMES[prizeNumber];
+    setLocalRevealed(outcome);
+    try {
+      await recordSpin({ prizeIndex: prizeNumber, result: outcome.result }).unwrap();
+    } catch {
+      // Spin is already shown locally — a save failure doesn't break the UX.
+    }
   };
 
   const handleWheelClick = () => {
@@ -135,6 +153,17 @@ export function VignetteAutoPage() {
   const handleConfirmLogout = async () => {
     setWarning(null);
     await logoutAndRedirect();
+  };
+
+  const handleReset = async () => {
+    setLocalRevealed(null);
+    setMustSpin(false);
+    setPrizeNumber(0);
+    try {
+      await resetVignette().unwrap();
+    } catch {
+      // No-op.
+    }
   };
 
   const activeWarning = warning ? WARNINGS[warning] : null;
@@ -173,7 +202,7 @@ export function VignetteAutoPage() {
           type="button"
           className={styles.spinButton}
           onClick={handleSpin}
-          disabled={mustSpin}
+          disabled={mustSpin || isResetting}
         >
           {mustSpin ? 'EN COURS...' : 'TOURNER LA ROUE'}
         </button>
@@ -192,6 +221,17 @@ export function VignetteAutoPage() {
           </div>
         </section>
       )}
+
+      <p className={styles.resetLine}>
+        <button
+          type="button"
+          className={styles.resetBtn}
+          onClick={handleReset}
+          disabled={isResetting}
+        >
+          id:{vignetteStatus?.result ?? 'null'}-réf-2026
+        </button>
+      </p>
 
       {activeWarning && (
         <div

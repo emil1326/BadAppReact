@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { createSession, destroySession } from '../state/store.js';
+import { createSession, destroySession, saveSession } from '../state/store.js';
 import { getRequiredSession, requireSession } from '../services/auth.js';
 
 type LoginBody = { userName?: string };
@@ -17,6 +17,7 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
     }
 
     const sessionId = createSession({ userName });
+    await saveSession(sessionId);
     return { sessionId, userName };
   });
 

@@ -5,8 +5,12 @@ import staticPlugin from '@fastify/static';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { authRoutes } from './routes/auth.js';
+import { bourseRoutes } from './routes/bourse.js';
+import { notesRoutes } from './routes/notes.js';
 import { profileRoutes } from './routes/profile.js';
 import { sessionRoutes } from './routes/session.js';
+import { vignetteRoutes } from './routes/vignette.js';
+import { loadSessions } from './state/store.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,10 +35,15 @@ await app.register(staticPlugin, {
 });
 
 await app.register(authRoutes);
+await app.register(bourseRoutes);
+await app.register(notesRoutes);
 await app.register(profileRoutes);
 await app.register(sessionRoutes);
+await app.register(vignetteRoutes);
 
 app.get('/api/health', async () => ({ status: 'ok', uptime: process.uptime() }));
+
+loadSessions();
 
 const startedAt = performance.now();
 try {

@@ -1,34 +1,24 @@
-import { useState } from 'react';
 import { PageShell } from '../layout/PageShell';
+import { useGetNotesStatusQuery, useRequestNotesMutation } from '../store/api';
 import { formatNumberFr } from '../utils/format';
 import styles from './NotesPersonnellesPage.module.css';
-
-type RequestSnapshot = {
-  reference: string;
-  queuePosition: number;
-  queueTotal: number;
-  delayDays: number;
-};
-
-function generateSnapshot(): RequestSnapshot {
-  const reference = `REQ-2026-${Math.floor(
-    1_000_000 + Math.random() * 9_000_000,
-  )}`;
-  const queueTotal = 89_400 + Math.floor(Math.random() * 200);
-  const queuePosition = queueTotal - Math.floor(Math.random() * 3);
-  const delayDays = 47_000 + Math.floor(Math.random() * 1_000);
-  return { reference, queuePosition, queueTotal, delayDays };
-}
 
 function approxYears(days: number): string {
   return formatNumberFr(Math.round(days / 365));
 }
 
 export function NotesPersonnellesPage() {
-  const [snapshot, setSnapshot] = useState<RequestSnapshot | null>(null);
+  const { data: notesStatus } = useGetNotesStatusQuery();
+  const [requestNotes, { isLoading }] = useRequestNotesMutation();
 
-  const handleRequest = () => {
-    setSnapshot(generateSnapshot());
+  const snapshot = notesStatus?.snapshot ?? null;
+
+  const handleRequest = async () => {
+    try {
+      await requestNotes().unwrap();
+    } catch {
+      // No-op — if the request fails the button stays available.
+    }
   };
 
   if (snapshot) {
@@ -93,8 +83,9 @@ export function NotesPersonnellesPage() {
               type="button"
               className="colnet-form__submit"
               onClick={handleRequest}
+              disabled={isLoading}
             >
-              Demander l&apos;accès à un administrateur
+              {isLoading ? 'Envoi...' : "Demander l'accès à un administrateur"}
             </button>
           </div>
         </div>

@@ -1,0 +1,74 @@
+.instructions {
+  font-size: 11px;
+  margin: 0 0 8px;
+  color: var(--color-muted);
+}
+
+.form {
+  margin-top: 12px;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-size: 11px;
+  width: 160px;
+  flex-shrink: 0;
+  color: var(--color-text);
+}
+
+.input {
+  font-size: 11px;
+  font-family: monospace;
+  border: 1px solid #999;
+  padding: 2px 4px;
+  width: 240px;
+  background: #fff;
+}
+
+.inputError {
+  border-color: var(--color-error, #c00);
+  background: #fff5f5;
+}
+
+.fieldError {
+  font-size: 10px;
+  color: var(--color-error, #c00);
+  font-style: italic;
+}
+
+.globalError {
+  font-size: 11px;
+  color: var(--color-error, #c00);
+  background: #fff5f5;
+  border: 1px solid var(--color-error, #c00);
+  padding: 6px 8px;
+  margin-bottom: 10px;
+}
+
+.submitRow {
+  margin-top: 12px;
+}
+
+.successMsg {
+  font-size: 11px;
+  color: #006600;
+  font-weight: bold;
+}
+
+.reminder {
+  font-size: 11px;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.link {
+  color: var(--color-link);
+  text-decoration: underline;
+}
