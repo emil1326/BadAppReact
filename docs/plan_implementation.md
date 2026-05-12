@@ -354,27 +354,31 @@ Tu prends tes codes de bulletin, tu les passes un par un dans un convertisseur, 
 ### Backend
 
 Routes (dans `src/routes/bourse.ts`) :
-- `POST /api/bourse/convert-code` body `{ bulletinCode: string }` → valide que le code de bulletin est l'un des 3 valides du dossier (sinon 400), retourne `{ courseCode: string }`. La correspondance bulletin → cours est hardcodée dans `backend/data/course-codes.json`.
-- `POST /api/bourse/course-selection` body `{ courseCodes: string[] }` → valide qu'il y en a exactement 3 + que chacun correspond bien aux conversions déjà effectuées pour cette session, sauvegarde.
+- `POST /api/bourse/convert-code` body `{ bulletinCode: string }` → trois branches :
+  1. Code dans le mapping (un des 3 vrais codes de bulletin) → retourne le **vrai** code de cours et l'enregistre dans `state.bourse.convertedCodes` (server-side).
+  2. Code absent du mapping mais syntaxe valide (regex `^[A-Z0-9]{2,}-[A-Z0-9]{2,}-[A-Z0-9]{2,}$`) → retourne un **decoy** : un code piqué dans `allCodes` (excluant les 3 vrais codes de cours), choisi de manière **déterministe** via un hash djb2 du `bulletinCode`. **Le decoy n'est PAS enregistré dans `convertedCodes`** — c'est ça le piège : l'utilisateur croit avoir converti correctement mais le serveur sait qu'il s'est trompé. Même mauvais input → même mauvais code de cours, pas de brute-force.
+  3. Syntaxe invalide (pas 3 groupes alphanumériques séparés par tirets) → `400 INVALID_SYNTAX`.
+- `POST /api/bourse/course-selection` body `{ courseCodes: string[] }` → valide qu'il y en a exactement 3 + que **chacun** existe dans `state.bourse.convertedCodes`. Si un code soumis n'est pas dans `convertedCodes` (typiquement parce que c'était un decoy), retourner `400` avec `{ error: 'NOT_ENROLLED', courseCode: '<le code rejeté>' }` — message UI : « Vous n'êtes pas inscrit(e) au cours \<code\>. Vérifiez vos codes de bulletin et recommencez la conversion. » L'utilisateur doit alors deviner lequel des 3 codes de bulletin était mauvais et refaire tout le flow.
 
 ### Frontend
 
 **Page Convertisseur de codes** (`/bourse-convertisseur`) :
 - Un seul champ texte + bouton Convertir.
-- Le champ se vide automatiquement après chaque conversion réussie (sans afficher le résultat dans le champ — le résultat apparaît à côté, en petit, pendant 8 secondes, puis disparaît).
-- L'utilisateur doit copier ou mémoriser le code de cours avant que ça disparaisse.
+- Le champ se vide automatiquement après chaque conversion **acceptée** (vraie ou decoy — l'UI ne distingue pas les deux cas, le résultat apparaît à côté, en petit, pendant 8 secondes, puis disparaît).
+- L'utilisateur doit copier ou mémoriser le code de cours avant que ça disparaisse — sans savoir si c'est le bon.
 - Le bouton Convertir est désactivé pendant la réponse backend (délai artificiel de 1,5s côté backend pour faire semblant que c'est complexe).
+- Erreur affichée seulement si la syntaxe est invalide (`INVALID_SYNTAX`) — un mauvais code bien formé passe silencieusement.
 - Aucun historique des conversions affiché.
 
 **Page Sélection de cours** (`/bourse-cours`) :
-- Composant `CourseCodeDropdown` : un `<select>` custom, très petit (largeur fixe insuffisante), qui contient tous les codes de cours disponibles (~200 entrées) dans un ordre qui semble aléatoire (trié par un champ interne non affiché).
+- Composant `CourseCodeDropdown` : un `<select>` custom, très petit (largeur fixe insuffisante), qui contient tous les codes de cours disponibles (~150 entrées) dans un ordre qui semble aléatoire (trié par un champ interne non affiché).
 - L'utilisateur doit trouver son code dans la liste et le sélectionner — 3 fois, dans 3 dropdowns séparés. Aucun filtre/recherche.
 - Les 3 dropdowns sont identiques (même liste complète). Choisir le même code deux fois n'affiche aucune erreur immédiate — l'erreur n'arrive qu'au submit.
-- Bouton Confirmer présent en tout temps mais retourne une erreur vague si les codes sont incorrects ou en double.
+- Bouton Confirmer présent en tout temps. Retourne l'erreur « pas inscrit à ce cours » (avec le code fautif cité) si un des 3 codes est un decoy non-enregistré côté serveur. L'utilisateur n'a aucune idée duquel de ses codes de bulletin était mauvais — il doit tout recommencer.
 
-**Données :** `backend/data/course-codes.json` — objet `{ [bulletinCode]: courseCode }` + liste de tous les codes disponibles pour peupler les dropdowns.
+**Données :** `backend/data/course-codes.json` — objet `{ mapping: { [bulletinCode]: courseCode }, allCodes: string[] }`. `mapping` = les 3 vraies correspondances ; `allCodes` = ~150 codes de cours plausibles pour peupler les dropdowns et les decoys.
 
-**Sortie :** tu convertis tes 3 codes un par un en espérant avoir le temps de les noter, puis tu retrouves chacun dans une liste de 200 entrées sans ordre apparent.
+**Sortie :** tu convertis tes 3 codes un par un, tu notes ce que le système te montre (vrai ou faux, indistinguable), tu retrouves chacun dans une liste de 150 entrées sans ordre apparent. Au submit, si tu t'es trompé au moins une fois (typo dans le code de bulletin, mauvais millésime, mauvais suffixe), le système te dit gentiment que t'es « pas inscrit à ce cours » — sans te dire lequel des 3 est mauvais. Tu recommences.
 
 ## Phase 6 — Email réel (SMTP) + 2FA + cascade de codes
 

@@ -34,8 +34,10 @@ export function BourseConverterPage() {
       disappearTimer.current = setTimeout(() => setResult(null), RESULT_DISPLAY_MS);
     } catch (err: unknown) {
       const errorCode = (err as { data?: { error?: string } })?.data?.error;
-      if (errorCode === 'INVALID_BULLETIN_CODE') {
-        setError('Code de bulletin non reconnu.');
+      if (errorCode === 'INVALID_SYNTAX') {
+        setError(
+          'Format de code invalide. Le code doit comporter trois (3) groupes séparés par des tirets.',
+        );
       } else if (errorCode === 'NO_ACTIVE_FLOW' || errorCode === 'FLOW_EXPIRED') {
         setError(
           "Votre session de procédure est expirée ou inexistante. Veuillez retourner à l'État de compte.",
