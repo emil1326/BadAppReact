@@ -19,3 +19,7 @@ export type BourseFormError = {
   error: 'INVALID_FIELDS';
   fields: Record<keyof BourseFormFields, FieldStatus>;
 };
+
+export type CourseCodeResult = {
+  courseCode: string;
+};

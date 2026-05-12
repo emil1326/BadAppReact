@@ -31,6 +31,7 @@ export type CodesState = {
 export type BourseState = {
   balance: number;
   formDone: boolean;
+  convertedCodes: string[];
 };
 
 export type VignetteState = {
@@ -109,7 +110,7 @@ export function createSession(initial: { userName: string }): string {
     },
     flow: null,
     codes: { active: null },
-    bourse: { balance: 13486, formDone: false },
+    bourse: { balance: 13486, formDone: false, convertedCodes: [] },
     vignette: { spun: false, prizeIndex: null, result: null },
     notes: { snapshot: null },
   });

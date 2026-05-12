@@ -1,0 +1,102 @@
+.instructions {
+  font-size: 11px;
+  margin: 0 0 12px;
+  color: var(--color-muted);
+}
+
+.form {
+  margin-top: 4px;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-size: 11px;
+  width: 140px;
+  flex-shrink: 0;
+  color: var(--color-text);
+}
+
+.input {
+  font-size: 11px;
+  font-family: monospace;
+  border: 1px solid #999;
+  padding: 2px 4px;
+  width: 240px;
+  background: #fff;
+}
+
+.inputError {
+  border-color: var(--color-error, #c00);
+  background: #fff5f5;
+}
+
+.convertBtn {
+  font-size: 11px;
+  padding: 2px 12px;
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.convertBtn:hover:not(:disabled) {
+  background: var(--color-button-bg-hover);
+}
+
+.convertBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.errorMsg {
+  font-size: 11px;
+  color: var(--color-error, #c00);
+  background: #fff5f5;
+  border: 1px solid var(--color-error, #c00);
+  padding: 4px 8px;
+  margin: 8px 0 0;
+}
+
+.resultArea {
+  margin-top: 16px;
+  min-height: 36px;
+  border: 1px dashed #bbb;
+  padding: 6px 10px;
+  background: #f9f9f9;
+}
+
+.resultValue {
+  font-size: 12px;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.resultValue strong {
+  font-family: monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.resultPlaceholder {
+  font-size: 11px;
+  color: #bbb;
+  margin: 0;
+  font-style: italic;
+}
+
+.reminder {
+  font-size: 11px;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.link {
+  color: var(--color-link);
+  text-decoration: underline;
+}

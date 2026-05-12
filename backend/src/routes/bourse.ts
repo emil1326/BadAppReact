@@ -1,10 +1,12 @@
 import type { FastifyInstance } from 'fastify';
 import { getRequiredSession, requireSession } from '../services/auth.js';
 import { validateBourseForm, type FormFields } from '../services/bourse.js';
+import { convertBulletinCode } from '../services/courseCodes.js';
 import { getActiveFlow } from '../services/timer.js';
 import { saveSession } from '../state/store.js';
 
 type FormBody = Partial<FormFields>;
+type ConvertBody = { bulletinCode?: string };
 
 export async function bourseRoutes(app: FastifyInstance): Promise<void> {
   app.get(
@@ -43,6 +45,38 @@ export async function bourseRoutes(app: FastifyInstance): Promise<void> {
 
       await saveSession(id);
       return { ok: true };
+    },
+  );
+
+  app.post<{ Body: ConvertBody }>(
+    '/api/bourse/convert-code',
+    { preHandler: requireSession },
+    async (request, reply) => {
+      const { id, state } = getRequiredSession(request);
+
+      const flow = getActiveFlow(state);
+      if (!flow.ok) {
+        return reply.code(400).send({ error: flow.reason });
+      }
+
+      const { bulletinCode } = request.body ?? {};
+      if (!bulletinCode) {
+        return reply.code(400).send({ error: 'MISSING_CODE' });
+      }
+
+      const courseCode = convertBulletinCode(bulletinCode);
+      if (!courseCode) {
+        return reply.code(400).send({ error: 'INVALID_BULLETIN_CODE' });
+      }
+
+      await new Promise<void>((resolve) => setTimeout(resolve, 1500));
+
+      if (!state.bourse.convertedCodes.includes(courseCode)) {
+        state.bourse.convertedCodes.push(courseCode);
+      }
+      await saveSession(id);
+
+      return { courseCode };
     },
   );
 }
