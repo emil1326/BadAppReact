@@ -4,6 +4,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './layout/Layout';
 import { AccueilPage } from './pages/AccueilPage';
 import { AideOrientationPage } from './pages/AideOrientationPage';
+import { Bourse2FAPage } from './pages/Bourse2FAPage';
+import { BourseCodeExchangePage } from './pages/BourseCodeExchangePage';
 import { BourseConverterPage } from './pages/BourseConverterPage';
 import { BourseCoursPage } from './pages/BourseCoursPage';
 import { BourseFormulairePage } from './pages/BourseFormulairePage';
@@ -57,6 +59,8 @@ export default function App() {
           <Route index element={<Navigate to="/accueil" replace />} />
           <Route path="accueil" element={<AccueilPage />} />
           <Route path="aide-orientation" element={<AideOrientationPage />} />
+          <Route path="bourse-2fa" element={<Bourse2FAPage />} />
+          <Route path="bourse-code-exchange" element={<BourseCodeExchangePage />} />
           <Route path="bourse-convertisseur" element={<BourseConverterPage />} />
           <Route path="bourse-cours" element={<BourseCoursPage />} />
           <Route path="bourse-formulaire" element={<BourseFormulairePage />} />

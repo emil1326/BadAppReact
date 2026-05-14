@@ -1,0 +1,114 @@
+.form {
+  margin: 20px 0;
+}
+
+.row {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.input {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #999;
+  font-family: monospace;
+}
+
+.inputError {
+  border-color: #c00;
+  background: #fff5f5;
+}
+
+.error {
+  margin: 12px 0;
+  padding: 10px;
+  background: #ffebee;
+  border: 1px solid #c00;
+  color: #c00;
+  font-size: 13px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background: #e0e0e0;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background: #d0d0d0;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.instructions {
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.notice {
+  margin-top: 20px;
+  padding: 10px;
+  background: #f7f7f7;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.warning {
+  color: #c00;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+.success {
+  color: #060;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.steps {
+  margin: 16px 0;
+  padding-left: 24px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.steps li {
+  margin-bottom: 8px;
+}
+
+.pathHighlight {
+  font-family: monospace;
+  background: #fffacd;
+  padding: 2px 4px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+}
+
+.link {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #0044aa;
+}

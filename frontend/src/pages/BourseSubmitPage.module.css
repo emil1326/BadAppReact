@@ -3,6 +3,80 @@
   margin: 0;
 }
 
+.instructions {
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.reminder {
+  font-size: 11px;
+  background: #fffacd;
+  padding: 8px;
+  border: 1px solid #daa520;
+  margin: 12px 0;
+}
+
+.codeBForm {
+  margin: 20px 0;
+}
+
+.row {
+  margin-bottom: 12px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  max-width: 300px;
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid var(--color-button-border);
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+.inputError {
+  border-color: #b22222;
+  background: #fff5f5;
+}
+
+.error {
+  margin: 8px 0;
+  padding: 8px;
+  background: #ffebee;
+  border: 1px solid #b22222;
+  color: #b22222;
+  font-size: 11px;
+}
+
+.actions {
+  margin-top: 16px;
+}
+
+.notice {
+  margin-top: 20px;
+  padding: 10px;
+  background: #f7f7f7;
+  border: 1px solid #ccc;
+  font-size: 11px;
+}
+
+.notice ul {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+.notice li {
+  margin-bottom: 6px;
+}
+
 .modal {
   width: 480px;
   max-width: calc(100vw - 32px);

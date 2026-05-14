@@ -19,8 +19,8 @@ export const bourseApi = api.injectEndpoints({
       query: (body) => ({ url: '/api/bourse/course-selection', method: 'POST', body }),
     }),
 
-    submitBourse: builder.mutation<{ ok: true }, void>({
-      query: () => ({ url: '/api/bourse/submit', method: 'POST' }),
+    submitBourse: builder.mutation<{ ok: true }, { codeB: string }>({
+      query: (body) => ({ url: '/api/bourse/submit', method: 'POST', body }),
     }),
 
     cancelBourse: builder.mutation<{ ok: true }, void>({

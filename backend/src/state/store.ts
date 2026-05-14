@@ -28,6 +28,14 @@ export type CodesState = {
   active: string | null;
 };
 
+export type EmailCodesState = {
+  code2FA: string | null;
+  codeA: string | null;
+  codeB: string | null;
+  used2FA: boolean;
+  usedA: boolean;
+};
+
 export type BourseState = {
   balance: number;
   formDone: boolean;
@@ -57,6 +65,7 @@ export type GameState = {
   profile: ProfileState;
   flow: FlowState | null;
   codes: CodesState;
+  emailCodes?: EmailCodesState;
   bourse: BourseState;
   vignette: VignetteState;
   notes: NotesState;

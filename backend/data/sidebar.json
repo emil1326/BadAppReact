@@ -35,6 +35,8 @@
       { "label": "Sécurité", "slug": "securite" },
       { "label": "Sélection de cours", "slug": "bourse-cours" },
       { "label": "Services adaptés", "slug": "services-adaptes" },
+      { "label": "Valid. sélection confirm.", "slug": "bourse-code-exchange" },
+      { "label": "Vérification 2FA", "slug": "bourse-2fa" },
       { "label": "Vignette auto", "slug": "vignette-auto" }
     ]
   },

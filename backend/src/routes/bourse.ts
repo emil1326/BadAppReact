@@ -1,6 +1,7 @@
 import type { FastifyInstance } from 'fastify';
 import { getRequiredSession, requireSession } from '../services/auth.js';
 import { validateBourseForm, type FormFields } from '../services/bourse.js';
+import { validateCodeB } from '../services/codes.js';
 import { convertBulletinCode } from '../services/courseCodes.js';
 import { getActiveFlow } from '../services/timer.js';
 import { saveSession } from '../state/store.js';
@@ -8,6 +9,7 @@ import { saveSession } from '../state/store.js';
 type FormBody = Partial<FormFields>;
 type ConvertBody = { bulletinCode?: string };
 type CourseSelectionBody = { courseCodes?: unknown };
+type SubmitBody = { codeB?: string };
 
 export async function bourseRoutes(app: FastifyInstance): Promise<void> {
   app.get(
@@ -117,7 +119,7 @@ export async function bourseRoutes(app: FastifyInstance): Promise<void> {
     },
   );
 
-  app.post(
+  app.post<{ Body: SubmitBody }>(
     '/api/bourse/submit',
     { preHandler: requireSession },
     async (request, reply) => {
@@ -134,6 +136,16 @@ export async function bourseRoutes(app: FastifyInstance): Promise<void> {
 
       if (!state.bourse.coursesSelected) {
         return reply.code(400).send({ error: 'COURSES_NOT_SELECTED' });
+      }
+
+      // Validate Code B
+      const { codeB } = request.body ?? {};
+      if (!codeB) {
+        return reply.code(400).send({ error: 'CODE_B_REQUIRED' });
+      }
+
+      if (!validateCodeB(state, codeB)) {
+        return reply.code(400).send({ error: 'INVALID_CODE_B' });
       }
 
       state.bourse.balance = 0;

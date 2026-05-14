@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { authRoutes } from './routes/auth.js';
 import { bourseRoutes } from './routes/bourse.js';
 import { bulletinRoutes } from './routes/bulletin.js';
+import { codesRoutes } from './routes/codes.js';
 import { notesRoutes } from './routes/notes.js';
 import { profileRoutes } from './routes/profile.js';
 import { sessionRoutes } from './routes/session.js';
@@ -39,6 +40,7 @@ await app.register(staticPlugin, {
 await app.register(authRoutes);
 await app.register(bourseRoutes);
 await app.register(bulletinRoutes);
+await app.register(codesRoutes);
 await app.register(notesRoutes);
 await app.register(profileRoutes);
 await app.register(sessionRoutes);
