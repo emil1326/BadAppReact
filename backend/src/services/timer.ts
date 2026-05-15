@@ -1,7 +1,7 @@
 import svgCaptcha from 'svg-captcha';
 import type { FlowState, GameState } from '../state/store.js';
 
-const FLOW_DURATION_MS = 3 * 60 * 1000; // 3 minutes
+const FLOW_DURATION_MS = 15 * 60 * 1000; // 15 minutes
 
 function generateCaptcha(): { text: string; data: string } {
   return svgCaptcha.create({
