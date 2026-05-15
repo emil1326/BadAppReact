@@ -130,6 +130,7 @@
   font-weight: bold;
   color: #0066cc;
   letter-spacing: 4px;
+  -webkit-user-select: all;
   user-select: all;
 }
 
