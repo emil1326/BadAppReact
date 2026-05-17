@@ -1,0 +1,78 @@
+.intro {
+  font-size: 11px;
+  margin: 0 0 8px;
+}
+
+.sousTitre {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--color-muted);
+  margin: 0 0 6px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-top: 6px;
+}
+
+.tab {
+  font-family: inherit;
+  font-size: 11px;
+  padding: 3px 10px;
+  border: 1px solid var(--color-border);
+  border-bottom: none;
+  background: var(--color-button-bg);
+  cursor: pointer;
+  margin-right: -1px;
+  position: relative;
+  top: 1px;
+}
+
+.tab:hover {
+  background: var(--color-button-bg-hover);
+}
+
+.tabActive {
+  background: white;
+  border-bottom: 1px solid white;
+  font-weight: bold;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--color-border);
+  padding: 3px 6px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table thead th {
+  background: var(--color-panel-header);
+  font-weight: bold;
+}
+
+.refCol {
+  white-space: nowrap;
+  width: 22%;
+}
+
+.dateCol {
+  white-space: nowrap;
+  width: 14%;
+  color: var(--color-muted);
+}
+
+.statutCol {
+  width: 28%;
+  font-style: italic;
+}

@@ -3,7 +3,7 @@ import type { AdminMessage } from '../../types/message';
 import type { WelcomeData } from '../../types/welcome';
 import type { Job } from '../../types/job';
 import type { RendezVousSlot } from '../../types/rendezVous';
-import type { VignetteContent, ModeHelp } from '../../types/content';
+import type { VignetteContent, ModeHelp, Casier } from '../../types/content';
 import type { Consentement } from '../../types/consentement';
 import type { SignalementFantome } from '../../types/signalement';
 import type { CourseList } from '../../types/bourse';
@@ -65,6 +65,11 @@ export const dataApi = api.injectEndpoints({
       query: () => '/data/course-codes.json',
       keepUnusedDataFor: Infinity,
     }),
+
+    getCasiers: builder.query<Casier[], void>({
+      query: () => '/data/casiers.json',
+      keepUnusedDataFor: Infinity,
+    }),
   }),
 });
 
@@ -79,4 +84,5 @@ export const {
   useGetConsentementsQuery,
   useGetSignalementsFantomesQuery,
   useGetCourseListQuery,
+  useGetCasiersQuery,
 } = dataApi;

@@ -12,6 +12,7 @@ import { BourseFormulairePage } from './pages/BourseFormulairePage';
 import { BourseSubmitPage } from './pages/BourseSubmitPage';
 import { BulletinPage } from './pages/BulletinPage';
 import { CarteEtudiantePage } from './pages/CarteEtudiantePage';
+import { CasierPage } from './pages/CasierPage';
 import { ConsentementsPage } from './pages/ConsentementsPage';
 import { CoursPage } from './pages/CoursPage';
 import { EtatDeComptePage } from './pages/EtatDeComptePage';
@@ -67,6 +68,7 @@ export default function App() {
           <Route path="bourse-soumission" element={<BourseSubmitPage />} />
           <Route path="bulletin" element={<BulletinPage />} />
           <Route path="carte-etudiante" element={<CarteEtudiantePage />} />
+          <Route path="casier" element={<CasierPage />} />
           <Route path="consentements" element={<ConsentementsPage />} />
           <Route path="cours" element={<CoursPage />} />
           <Route path="etat-de-compte" element={<EtatDeComptePage />} />

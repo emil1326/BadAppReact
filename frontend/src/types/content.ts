@@ -18,3 +18,18 @@ export type ModeHelp = {
   title: string;
   paragraphs: string[];
 };
+
+export type CasierEntree = {
+  ref: string;
+  date: string;
+  objet: string;
+  statut: string;
+};
+
+export type Casier = {
+  id: string;
+  nom: string;
+  sousTitre: string;
+  intro: string;
+  entrees: CasierEntree[];
+};

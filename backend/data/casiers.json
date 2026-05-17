@@ -1,0 +1,170 @@
+[
+  {
+    "id": "casier-judiciaire",
+    "nom": "Casier judiciaire",
+    "sousTitre": "Service de la sécurité — registre disciplinaire institutionnel",
+    "intro": "Le présent casier consigne les manquements disciplinaires constatés à votre endroit dans l'enceinte du collège ou en lien avec ses activités. Conservation : 47 ans à compter de la date de classement (politique #PV-2003-14, art. 31).",
+    "entrees": [
+      {
+        "ref": "Dossier #2024-0871",
+        "date": "2024-03-12",
+        "objet": "Utilisation non-autorisée de l'ascenseur B durant la période d'entretien hebdomadaire (2018-en-cours).",
+        "statut": "Réponse de l'étudiant attendue depuis 14 mois."
+      },
+      {
+        "ref": "Dossier #2018-1142",
+        "date": "2018-11-04",
+        "objet": "Présence à la cafétéria, table 14, entre 11h45 et 12h00 le 4 novembre 2018.",
+        "statut": "Classé sans suite — voir SIG-2025-00018."
+      },
+      {
+        "ref": "Dossier #2025-0033",
+        "date": "2025-01-22",
+        "objet": "Consultation excessive de la section 614.2 de la bibliothèque (3 visites en 14 jours, dépassant le seuil non-communiqué).",
+        "statut": "Ouvert — convocation au bureau 14-B prévue le mardi impair suivant."
+      }
+    ]
+  },
+  {
+    "id": "casier-maternelle",
+    "nom": "Casier de maternelle",
+    "sousTitre": "Archives préscolaires — Garderie Les Petits Soleils inc. (transférées au collège en 2017)",
+    "intro": "Les archives préscolaires de tous les étudiants inscrits ont été centralisées au bureau 14-B en 2017 conformément à la directive d'archivage culturel ARCH-CULT-2014-Q4. Conservation : 47 ans à compter de la fin de la fréquentation préscolaire.",
+    "entrees": [
+      {
+        "ref": "Évaluation comportementale n° 4",
+        "date": "2001-03-12",
+        "objet": "Partage difficile des jouets durant l'atelier blocs Lego (témoin : éducatrice stagiaire Mme N. Tremblay).",
+        "statut": "Reconduit sans modification chaque session."
+      },
+      {
+        "ref": "Note interne n° 17",
+        "date": "2003-05-08",
+        "objet": "Refus catégorique de la sieste à trois reprises au cours de la semaine du 5 mai 2003.",
+        "statut": "Archivé pour fins de continuité comportementale."
+      },
+      {
+        "ref": "Frais de rétention",
+        "date": "annuel",
+        "objet": "Frais de conservation des archives préscolaires.",
+        "statut": "12,50 $ / an, facturé jusqu'en 2050."
+      }
+    ]
+  },
+  {
+    "id": "casier-medical",
+    "nom": "Casier médical",
+    "sousTitre": "Service de santé étudiante — sous la supervision conjointe du Dr. Hannibal Lecter et du Dr. Hannibal Lecteur",
+    "intro": "Le casier médical contient les informations de santé pertinentes à votre parcours académique. En raison d'un dédoublement administratif non-résolu (voir directive DGA-2014-04), votre dossier est consultable sous deux entrées distinctes qui ne sont jamais synchronisées.",
+    "entrees": [
+      {
+        "ref": "Allergies déclarées",
+        "date": "à l'admission",
+        "objet": "Aucune (refus de répondre — case laissée vide sur le formulaire d'admission).",
+        "statut": "Confirmé par défaut."
+      },
+      {
+        "ref": "Vaccination obligatoire 2025-Q3",
+        "date": "2025-07-01",
+        "objet": "Vaccination contre l'hépatite institutionnelle (souche locale, identifiée en 2003).",
+        "statut": "Preuve à fournir au bureau 14-B — délai de 14 mois à compter de la date de notification."
+      },
+      {
+        "ref": "Évaluation Dr. Lecter",
+        "date": "2024-09-15",
+        "objet": "Consultation de routine — médecine générale.",
+        "statut": "Synthèse non transmise au Dr. Lecteur (entrées non-synchronisées)."
+      },
+      {
+        "ref": "Évaluation Dr. Lecteur",
+        "date": "2024-10-02",
+        "objet": "Consultation littéraire et soutien psychologique.",
+        "statut": "Synthèse non transmise au Dr. Lecter (entrées non-synchronisées)."
+      }
+    ]
+  },
+  {
+    "id": "casier-postal",
+    "nom": "Casier postal",
+    "sousTitre": "Boîte aux lettres institutionnelle B-214-47 (Pavillon B, même couloir que le Registraire)",
+    "intro": "Chaque étudiant·e dispose d'une boîte aux lettres institutionnelle au Pavillon B. Le courrier institutionnel y est déposé sans préavis. Frais de location annuels : 47,50 $, obligatoires que la boîte soit utilisée ou non.",
+    "entrees": [
+      {
+        "ref": "Boîte B-214-47",
+        "date": "depuis 2019",
+        "objet": "Boîte attribuée à votre dossier — vide depuis la dernière levée du 14 février 2019.",
+        "statut": "Active — frais de location facturés annuellement."
+      },
+      {
+        "ref": "Dernière levée",
+        "date": "2019-02-14",
+        "objet": "Aucun pli trouvé dans la boîte.",
+        "statut": "Rapport de levée n° LEV-2019-B214-047 archivé."
+      },
+      {
+        "ref": "Procédure d'accès",
+        "date": "—",
+        "objet": "L'accès à la boîte requiert la clé institutionnelle remise lors de l'admission. Toute clé perdue doit être déclarée au bureau 14-B (frais de réémission : 95,00 $).",
+        "statut": "Aucune clé n'a été remise lors de votre admission."
+      }
+    ]
+  },
+  {
+    "id": "casier-scolaire",
+    "nom": "Casier d'école",
+    "sousTitre": "Service du registrariat — dossier académique consolidé",
+    "intro": "Le casier d'école regroupe l'ensemble des éléments de votre cheminement académique au collège. Pour le détail des résultats du trimestre en cours, consultez le bulletin officiel (page Bulletin, lien actif sous réserve de fonctionnement du module d'impression).",
+    "entrees": [
+      {
+        "ref": "Cheminement actuel",
+        "date": "Hiver 2026",
+        "objet": "Régulier-conditionnel — statut actif sous réserve du paiement de la cotisation rétroactive depuis 2003.",
+        "statut": "En cours."
+      },
+      {
+        "ref": "Moyenne pondérée du trimestre",
+        "date": "Hiver 2026",
+        "objet": "76,4 / 100.",
+        "statut": "Ajustement automatique possible à la baisse en tout temps (voir consentement c007)."
+      },
+      {
+        "ref": "Cote R provisoire",
+        "date": "Hiver 2026",
+        "objet": "28,12 — non-officielle, non-contestable, néanmoins définitive.",
+        "statut": "Reconduite par défaut."
+      },
+      {
+        "ref": "Cours sans enseignant",
+        "date": "depuis Automne 2019",
+        "objet": "340-AEB-SBDL — Éthique de l'attente prolongée.",
+        "statut": "Réussite reconduite automatiquement, frais maintenus à plein tarif."
+      }
+    ]
+  },
+  {
+    "id": "cassier-doublon",
+    "nom": "Cassier d'école",
+    "sousTitre": "Entrée alternative — orthographe non-officielle (coquille créée à la saisie en 2019)",
+    "intro": "Cette entrée fait doublon avec le casier d'école principal en raison d'une coquille survenue lors de la migration des dossiers en 2019. La fusion avec l'entrée principale nécessite un formulaire AUTH-2009-P3 signé par le Bureau du Registraire (B-214). La demande de fusion est en attente depuis avril 2019.",
+    "entrees": [
+      {
+        "ref": "Statut du doublon",
+        "date": "2019-04-11",
+        "objet": "Entrée « Cassier d'école » créée par erreur lors de la migration COLNET v0.5 → v0.5 (correction des accents).",
+        "statut": "Non-fusionnée — voir directive DGA-2014-04."
+      },
+      {
+        "ref": "Données disponibles",
+        "date": "—",
+        "objet": "Aucune donnée n'est consignée dans cette entrée. Toute consultation est néanmoins enregistrée au registre d'audit.",
+        "statut": "Vide (audité)."
+      },
+      {
+        "ref": "Procédure de fusion",
+        "date": "en attente",
+        "objet": "Formulaire AUTH-2009-P3 à imprimer (photocopieur B-214 en panne depuis 2021 — redirection vers bureau 14-B, qui ne dispose pas d'imprimante).",
+        "statut": "Bloquée."
+      }
+    ]
+  }
+]
