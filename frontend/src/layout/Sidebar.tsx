@@ -31,7 +31,6 @@ export function Sidebar() {
   const [dossierItems, setDossierItems] = useState<SidebarItem[] | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Initialize local copy of MON DOSSIER items once data arrives.
   useEffect(() => {
     if (!sections) return;
     setDossierItems((prev) => {
@@ -41,7 +40,6 @@ export function Sidebar() {
     });
   }, [sections]);
 
-  // Start the shuffle loop once items are available.
   const isLoaded = dossierItems !== null;
   useEffect(() => {
     if (!isLoaded) return;

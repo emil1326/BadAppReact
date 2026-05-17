@@ -12,8 +12,6 @@ type CourseCodesData = {
 
 const courseCodesData = JSON.parse(readFileSync(dataPath, 'utf-8')) as CourseCodesData;
 
-// Bulletin codes look like "BRS-2026-A17293" / "CONF-4481-SBRLAC" / "VHD-93012-2026".
-// We accept any 3 dash-separated alphanumeric groups of >=2 chars as "valid syntax".
 const BULLETIN_CODE_PATTERN = /^[A-Z0-9]{2,}-[A-Z0-9]{2,}-[A-Z0-9]{2,}$/;
 
 const REAL_COURSE_CODES = new Set(Object.values(courseCodesData.mapping));
@@ -23,8 +21,6 @@ export function isValidBulletinSyntax(code: string): boolean {
   return BULLETIN_CODE_PATTERN.test(code);
 }
 
-// Stable djb2 hash → same wrong input always yields the same wrong course code,
-// so the player can't brute-force a different result by re-submitting.
 function djb2(s: string): number {
   let hash = 5381;
   for (let i = 0; i < s.length; i += 1) {

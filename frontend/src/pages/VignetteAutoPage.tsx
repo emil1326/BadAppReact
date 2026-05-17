@@ -62,7 +62,6 @@ export function VignetteAutoPage() {
     try {
       await recordSpin({ prizeIndex: prizeNumber, result: outcome?.result ?? '' }).unwrap();
     } catch {
-      // Spin is already shown locally — a save failure doesn't break the UX.
     }
   };
 
@@ -82,7 +81,6 @@ export function VignetteAutoPage() {
     try {
       await resetVignette().unwrap();
     } catch {
-      // No-op.
     }
   };
 
@@ -101,7 +99,6 @@ export function VignetteAutoPage() {
         <div
           className={styles.wheelHolder}
           onClick={handleWheelClick}
-          role="presentation"
         >
           {wheelData.length > 0 && (
             <Wheel
@@ -156,11 +153,7 @@ export function VignetteAutoPage() {
       </p>
 
       {activeWarning && (
-        <div
-          className="colnet-modal-overlay colnet-modal-overlay--page"
-          role="alertdialog"
-          aria-modal="true"
-        >
+        <div className="colnet-modal-overlay colnet-modal-overlay--page">
           <div className={`colnet-panel ${styles.modal}`}>
             <div className="colnet-panel__header">{activeWarning.title}</div>
             <div className="colnet-panel__body">

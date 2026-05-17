@@ -90,7 +90,7 @@ export function loadSessions(): void {
       const id = file.slice(0, -5);
       sessions.set(id, state);
     } catch {
-      // Corrupted file — skip.
+      // Corrupted file skip.
     }
   }
   if (sessions.size > 0) {
@@ -137,7 +137,7 @@ export function destroySession(sessionId: string): boolean {
     try {
       unlinkSync(sessionFilePath(sessionId));
     } catch {
-      // Already gone — fine.
+      // Already gone fine.
     }
   }
   return deleted;

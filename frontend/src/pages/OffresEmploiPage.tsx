@@ -6,8 +6,6 @@ import styles from './OffresEmploiPage.module.css';
 export function OffresEmploiPage() {
   const { data: jobs } = useGetJobsQuery();
 
-  // Re-shuffled on each mount of the page so the order is "random" between
-  // visits. Within a single visit, the order is stable across re-renders.
   const shuffledJobs = useMemo(() => {
     if (!jobs) return undefined;
     return [...jobs].sort(() => Math.random() - 0.5);

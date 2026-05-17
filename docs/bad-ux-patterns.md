@@ -186,29 +186,25 @@ La page 6 du bulletin liste les coordonnées du Service du registrariat — mais
 
 ## 8. Pages et interactions parasites
 
-### 8.1. La page État de compte est recouverte d'un tissu interactif
-Un canvas plein écran simule un tissu (cloth simulation) avec gravité, friction et déchirure. L'utilisateur doit littéralement **déchirer le tissu** avec le clic-glisser pour atteindre le bouton « Démarrer la procédure » en-dessous. Les clics ne passent qu'à travers les zones déchirées.
-`frontend/src/components/ClothOverlay.tsx`
-
-### 8.2. Le bouton « ne pas cliquer » sur la page de login
+### 8.1. Le bouton « ne pas cliquer » sur la page de login
 En haut à droite de la page de login, un petit bouton discret affiche « ne pas cliquer ». Cliquer ferme la fenêtre courante et redirige vers un Rickroll YouTube. Branding du « Ne pas cliquer », directeur principal.
 `frontend/src/pages/LoginPage.tsx:13, 39-42`
 
-### 8.3. Le placeholder du Code B est trompeur
+### 8.2. Le placeholder du Code B est trompeur
 Le champ Code B affiche le placeholder `XXXX123456` — suggérant 4 lettres + 6 chiffres. Aucune indication réelle du format attendu, et le placeholder n'a aucun rapport avec la vraie structure du code (qui dépend de ce qui a été soumis dans le formulaire).
 `frontend/src/pages/BourseSubmitPage.tsx:208`
 
-### 8.4. La page Bulletin a une typo « de l'session »
+### 8.3. La page Bulletin a une typo « de l'session »
 La page Bulletin écrit « Votre bulletin officiel **de l'session** Hiver 2026 ». Conservée intentionnellement comme touche de finition bureaucratique imparfaite.
 `frontend/src/pages/BulletinPage.tsx:14-17`
 
-### 8.5. Une boîte aux lettres facturée sans clé
+### 8.4. Une boîte aux lettres facturée sans clé
 Le Casier postal documente que chaque étudiant a une boîte aux lettres institutionnelle (B-214-47) facturée 47,50 $/an, mais **aucune clé n'est remise à l'admission**. La procédure de demande de clé requiert une déclaration de perte au bureau 14-B (95,00 $ de réémission) — pour une clé qui n'a jamais existé.
 `backend/data/casiers.json` (casier-postal)
 
-### 8.6. Le login n'a qu'un seul champ : nom d'utilisateur
-La page de login propose un unique champ texte « Nom d'utilisateur », sans mot de passe, sans 2FA, sans validation. L'utilisateur tape n'importe quel nom et entre. Aucune notion d'authentification — le « compte » est créé à la volée à partir de la chaîne saisie. Le portail prétend pourtant être un système institutionnel sécurisé (politique #SI-2007-14 mentionnée partout dans le bulletin et les consentements).
-`frontend/src/pages/LoginPage.tsx:25-37`
+### 8.5. Le login exige une chaîne littérale précise sans donner aucun indice
+La page de login propose un unique champ texte « Nom d'utilisateur », sans mot de passe, sans 2FA. L'utilisateur croit pouvoir entrer n'importe quoi — mais en réalité le backend rejette tout sauf la chaîne exacte **« un nom d'utilisateur »** (avec l'espace, l'apostrophe et les minuscules). Aucun placeholder, aucun message d'aide, aucun hint dans le DOM : tout ce que l'utilisateur reçoit est « Échec de la connexion. Veuillez réessayer. » Il faut littéralement deviner la phrase exacte que le champ attend de soi.
+`frontend/src/pages/LoginPage.tsx` + `backend/src/routes/auth.ts:6,15-17`
 
 ---
 

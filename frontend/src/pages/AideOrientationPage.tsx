@@ -3,8 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import { PageShell } from '../layout/PageShell';
 import styles from './AideOrientationPage.module.css';
 
-// Real coordinates of Collège Lionel-Groulx (100 rue Duquet, Sainte-Thérèse,
-// Rive-Nord), which the fictional in-game institution borrows the name from.
+// Real coordinates of Collège Lionel-Groulx (100 rue Duquet, Sainte-Thérèse, Rive-Nord).
 const CAMPUS_COORDS: [number, number] = [45.643909, -73.841011];
 
 export function AideOrientationPage() {

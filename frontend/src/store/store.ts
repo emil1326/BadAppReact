@@ -22,9 +22,6 @@ type StoreState = ReturnType<typeof rootReducer>;
 const persistConfig: PersistConfig<StoreState> = {
   key: 'root',
   storage: localStorageAdapter,
-  // `ui` is intentionally NOT persisted — `logoutLocked` resets to its
-  // factory default (`true`) on every page load, so the user has to unblock
-  // logout each session regardless of browser cache state.
   whitelist: ['auth', 'flow', 'profile'],
 };
 

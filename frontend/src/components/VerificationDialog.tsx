@@ -29,7 +29,6 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
   const { endTime } = useTimer();
   const [checkTimer, { isLoading }] = useCheckTimerMutation();
 
-  // Reset to input phase whenever the dialog is freshly opened.
   useEffect(() => {
     if (open) {
       setCode('');
@@ -38,9 +37,6 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
     }
   }, [open]);
 
-  // While displaying the timer, poll the cached endTime and only re-render
-  // when the formatted string actually changes (once per second), and
-  // auto-close the dialog after 10 seconds.
   useEffect(() => {
     if (!open || phase !== 'displaying' || endTime === null) return;
 
@@ -78,7 +74,7 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
   };
 
   return (
-    <div className="colnet-modal-overlay" role="dialog" aria-modal="true">
+    <div className="colnet-modal-overlay">
       <div className={`colnet-panel ${styles.dialog}`}>
         <div className="colnet-panel__header">Vérification de session</div>
         <div className={`colnet-panel__body ${styles.body}`}>
@@ -99,7 +95,6 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
                 onChange={(event) => setCode(event.target.value)}
                 autoFocus
                 disabled={isLoading}
-                aria-label="Code de vérification"
               />
               {error && <p className={styles.error}>{error}</p>}
               <div className={styles.buttonRow}>

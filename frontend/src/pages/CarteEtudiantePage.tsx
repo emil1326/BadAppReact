@@ -15,7 +15,7 @@ const BARCODE_PATTERN = [2, 1, 3, 1, 2, 4, 1, 2, 1, 3, 2, 1, 4, 2, 1, 3, 1, 2, 3
 
 function SpongebobPortrait() {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Photo de Bob l’Éponge">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <rect x="6" y="6" width="88" height="88" fill="#FCE03A" stroke="#000000" strokeWidth="2" />
       <circle cx="18" cy="22" r="3" fill="#D0B020" />
       <circle cx="78" cy="18" r="2.5" fill="#D0B020" />
@@ -40,7 +40,7 @@ function SpongebobPortrait() {
 
 function Barcode() {
   return (
-    <div className={styles.barcode} aria-hidden="true">
+    <div className={styles.barcode}>
       {BARCODE_PATTERN.map((width, index) => (
         <span key={index} style={{ width: `${width}px` }} />
       ))}

@@ -39,7 +39,6 @@ function ConsentementRow({ consentement }: { consentement: Consentement }) {
         checked={!pending}
         disabled
         className={styles.checkbox}
-        aria-label={consentement.titre}
       />
       <div className={styles.body}>
         <div className={styles.title}>{consentement.titre}</div>
@@ -89,8 +88,7 @@ function PendingForm() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Always fails — pure BadApp move. The error references the archives so
-    // the user has no way to actually verify what went wrong.
+    // Always fails -> th epoint
     setError(
       "Erreur : la couleur des nuages saisie ne correspond pas aux archives météorologiques internes pour la date d'admission indiquée. Veuillez vérifier auprès du bureau 14-B (mardis impairs entre 10 h 12 et 10 h 47) avant de soumettre à nouveau.",
     );

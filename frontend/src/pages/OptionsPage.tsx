@@ -142,8 +142,6 @@ const SECTIONS: readonly Section[] = [
         defaultValue: 'Personnel',
         options: ['Personnel', 'Membres du collège', 'Public'],
       },
-      // Buried here, between two unrelated privacy toggles, with a label that
-      // gives no hint about what this actually controls.
       { kind: 'mode-toggle' },
       {
         kind: 'toggle',
@@ -228,8 +226,6 @@ function buildInitialDecoyState(): Record<string, string | boolean> {
 }
 
 export function OptionsPage() {
-  // Pull profile from server on mount so the mode toggle reflects reality
-  // even if Redux was empty (first visit) or out of sync.
   useGetProfileQuery();
   const { mode, studentNumber } = useProfile();
   const [setProfileMode, { isLoading: isUpdatingMode }] =
@@ -240,9 +236,6 @@ export function OptionsPage() {
   );
   const [dirtyIds, setDirtyIds] = useState<ReadonlySet<string>>(new Set());
 
-  // Decoys never get persisted. We pretend to "save" them after a beat so the
-  // UI feels real — institutional bad-UX without forcing the user to click
-  // "Save" on every row.
   useEffect(() => {
     if (dirtyIds.size === 0) return;
     const id = window.setTimeout(() => setDirtyIds(new Set()), 1500);
@@ -263,7 +256,6 @@ export function OptionsPage() {
     try {
       await setProfileMode({ mode: next }).unwrap();
     } catch {
-      // Backend currently always accepts the toggle; nothing to surface.
     }
   };
 

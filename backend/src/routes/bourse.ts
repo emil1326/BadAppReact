@@ -74,10 +74,6 @@ export async function bourseRoutes(app: FastifyInstance): Promise<void> {
 
       await new Promise<void>((resolve) => setTimeout(resolve, 1500));
 
-      // Only "REAL" conversions persist in convertedCodes — decoys are not
-      // recorded server-side, so course-selection later will reject them as
-      // "pas inscrit à ce cours". The player sees a course code, doesn't
-      // realize it's wrong, and only discovers the lie at submission time.
       if (result.kind === 'REAL' && !state.bourse.convertedCodes.includes(result.courseCode)) {
         state.bourse.convertedCodes.push(result.courseCode);
         await saveSession(id);
@@ -138,7 +134,6 @@ export async function bourseRoutes(app: FastifyInstance): Promise<void> {
         return reply.code(400).send({ error: 'COURSES_NOT_SELECTED' });
       }
 
-      // Validate Code B
       const { codeB } = request.body ?? {};
       if (!codeB) {
         return reply.code(400).send({ error: 'CODE_B_REQUIRED' });

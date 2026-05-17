@@ -27,8 +27,6 @@ export function Header() {
   const today = useMemo(formatTodayInFrench, []);
 
   const relockIntervalRef = useRef<number | null>(null);
-  // Tenths of a second remaining on the relock countdown. Stored as an integer
-  // so identical-displayed-value ticks don't trigger spurious re-renders.
   const [relockTenthsLeft, setRelockTenthsLeft] = useState<number | null>(null);
 
   useEffect(() => {
@@ -57,7 +55,6 @@ export function Header() {
         dispatch(updateUi({ logoutLocked: true }));
         return;
       }
-      // Round up so the user never sees "0.0s" while the lock is still off.
       const tenths = Math.ceil(remainingMs / 100);
       setRelockTenthsLeft((previous) =>
         previous === tenths ? previous : tenths,
@@ -69,7 +66,6 @@ export function Header() {
     cancelPendingRelock();
 
     if (logoutLocked) {
-      // Unlocking — start the visible 2s countdown that auto-relocks at zero.
       dispatch(updateUi({ logoutLocked: false }));
       setRelockTenthsLeft(Math.ceil(RELOCK_DELAY_MS / 100));
       startRelockCountdown();
@@ -104,7 +100,6 @@ export function Header() {
             logoutLocked ? ' colnet-header__action--locked' : ''
           }`}
           onClick={handleToggleLock}
-          aria-pressed={logoutLocked}
         >
           {lockLabel}
         </button>

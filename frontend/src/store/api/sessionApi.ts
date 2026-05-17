@@ -23,11 +23,8 @@ export const sessionApi = api.injectEndpoints({
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
-          // Successful verification burns the code server-side; clear the
-          // cached SVG so the UI reflects the same state.
           dispatch(updateFlow({ latestCodeSvg: null }));
         } catch {
-          // Leave the cached code untouched on failure.
         }
       },
     }),

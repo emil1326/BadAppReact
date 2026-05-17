@@ -64,15 +64,13 @@ export function CasierPage() {
             consultation est enregistrée au registre d&apos;audit conformément
             à la directive SI-2007-14.
           </p>
-          <div className={styles.tabs} role="tablist">
+          <div className={styles.tabs}>
             {sorted.map((c) => {
               const isActive = active?.id === c.id;
               return (
                 <button
                   key={c.id}
                   type="button"
-                  role="tab"
-                  aria-selected={isActive}
                   className={`${styles.tab} ${isActive ? styles.tabActive : ''}`}
                   onClick={() => setSelectedId(c.id)}
                 >

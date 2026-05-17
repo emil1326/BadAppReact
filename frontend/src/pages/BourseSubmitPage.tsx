@@ -69,7 +69,6 @@ export function BourseSubmitPage() {
     try {
       await cancelBourse().unwrap();
     } catch {
-      // best-effort
     }
     dispatch(resetFlow());
     setPhase('fail');
@@ -257,11 +256,7 @@ export function BourseSubmitPage() {
       </section>
 
       {phase === 'modal1' && (
-        <div
-          className="colnet-modal-overlay colnet-modal-overlay--page"
-          role="dialog"
-          aria-modal="true"
-        >
+        <div className="colnet-modal-overlay colnet-modal-overlay--page">
           <div className={`colnet-panel ${styles.modal}`}>
             <div className="colnet-panel__header">Confirmation requise</div>
             <div className="colnet-panel__body">
@@ -292,11 +287,7 @@ export function BourseSubmitPage() {
       )}
 
       {phase === 'modal2' && (
-        <div
-          className="colnet-modal-overlay colnet-modal-overlay--page"
-          role="dialog"
-          aria-modal="true"
-        >
+        <div className="colnet-modal-overlay colnet-modal-overlay--page">
           <div className={`colnet-panel ${styles.modal}`}>
             <div className="colnet-panel__header">ATTENTION — Action irréversible</div>
             <div className="colnet-panel__body">
@@ -331,11 +322,7 @@ export function BourseSubmitPage() {
       )}
 
       {phase === 'modal3' && (
-        <div
-          className="colnet-modal-overlay colnet-modal-overlay--page"
-          role="dialog"
-          aria-modal="true"
-        >
+        <div className="colnet-modal-overlay colnet-modal-overlay--page">
           <div className={`colnet-panel ${styles.modal}`}>
             <div className="colnet-panel__header">Validation finale</div>
             <div className="colnet-panel__body">

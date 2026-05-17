@@ -17,7 +17,6 @@ export function NotesPersonnellesPage() {
     try {
       await requestNotes().unwrap();
     } catch {
-      // No-op — if the request fails the button stays available.
     }
   };
 

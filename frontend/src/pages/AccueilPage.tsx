@@ -59,8 +59,6 @@ export function AccueilPage() {
       {selected && (
         <div
           className="colnet-modal-overlay colnet-modal-overlay--page"
-          role="dialog"
-          aria-modal="true"
           onClick={() => setSelected(null)}
         >
           <div

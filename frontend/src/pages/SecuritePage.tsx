@@ -18,7 +18,6 @@ export function SecuritePage() {
     try {
       await regenerateCode().unwrap();
     } catch {
-      // No-op: the page reflects the previous code if regeneration fails.
     }
   };
 

@@ -20,13 +20,9 @@ const secretsPath = path.resolve(
   'bulletin-secrets.json',
 );
 
-// Letter format at 96 DPI (CSS pixels) — must match what the template uses
-// via `@page { size: Letter }` and per-page padding.
 const PAGE_WIDTH_PX = 816; // 8.5in × 96
 const PAGE_HEIGHT_PX = 1056; // 11in × 96
 
-// PDF points (72 per inch). Final image PDF embeds each PNG screenshot into
-// a Letter-sized PDF page.
 const PDF_PAGE_WIDTH_PT = 612;
 const PDF_PAGE_HEIGHT_PT = 792;
 
@@ -56,8 +52,6 @@ export async function closeBulletinBrowser(): Promise<void> {
   }
 }
 
-// Decoys are derived from the real codes so that editing bulletin-secrets.json
-// at runtime keeps the near-miss tripwires aligned with the answers.
 function deriveDecoyBRS(real: string): string {
   return real.replace(/-(\d{4})-/, (_, y) => `-${Number(y) - 1}-`);
 }
@@ -96,7 +90,6 @@ export async function generateBulletinPdf(): Promise<Buffer> {
   const browser = await getBrowser();
   const page = await browser.newPage();
   try {
-    // 2x device pixel ratio = sharper PNGs without doubling DOM layout size.
     await page.setViewport({
       width: PAGE_WIDTH_PX,
       height: PAGE_HEIGHT_PX,
@@ -104,9 +97,6 @@ export async function generateBulletinPdf(): Promise<Buffer> {
     });
     await page.setContent(html, { waitUntil: 'load' });
 
-    // Screenshot each .page element separately — this gives us one PNG per
-    // logical page, which we then embed into the output PDF as an image.
-    // Result: a true raster PDF (no selectable text, codes can't be copied).
     const pageHandles = await page.$$('.page');
     if (pageHandles.length === 0) {
       throw new Error('Bulletin template contains no .page sections');

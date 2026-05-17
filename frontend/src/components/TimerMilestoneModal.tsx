@@ -43,11 +43,7 @@ export function TimerMilestoneModal() {
   if (active === null) return null;
 
   return (
-    <div
-      className="colnet-modal-overlay colnet-modal-overlay--milestone"
-      role="dialog"
-      aria-modal="true"
-    >
+    <div className="colnet-modal-overlay colnet-modal-overlay--milestone">
       <div className={styles.banner}>
         <h2 className={styles.title}>RAPPEL DE TEMPS</h2>
         <p className={styles.message}>{formatRemaining(active)}</p>
