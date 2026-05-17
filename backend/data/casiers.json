@@ -54,8 +54,8 @@
   {
     "id": "casier-medical",
     "nom": "Casier médical",
-    "sousTitre": "Service de santé étudiante — sous la supervision conjointe du Dr. Hannibal Lecter et du Dr. Hannibal Lecteur",
-    "intro": "Le casier médical contient les informations de santé pertinentes à votre parcours académique. En raison d'un dédoublement administratif non-résolu (voir directive DGA-2014-04), votre dossier est consultable sous deux entrées distinctes qui ne sont jamais synchronisées.",
+    "sousTitre": "Service de santé étudiante — dossier de santé institutionnel",
+    "intro": "Le casier médical contient les informations de santé pertinentes à votre parcours académique. Les rendez-vous consignés ci-dessous sont ceux pris par votre intermédiaire dans le module Prise de rendez-vous, indépendamment de la nature réelle de la consultation.",
     "entrees": [
       {
         "ref": "Allergies déclarées",
@@ -70,16 +70,16 @@
         "statut": "Preuve à fournir au bureau 14-B — délai de 14 mois à compter de la date de notification."
       },
       {
-        "ref": "Évaluation Dr. Lecter",
+        "ref": "Rendez-vous pris par erreur",
         "date": "2024-09-15",
-        "objet": "Consultation de routine — médecine générale.",
-        "statut": "Synthèse non transmise au Dr. Lecteur (entrées non-synchronisées)."
+        "objet": "Rendez-vous de 11h00 avec le Dr. Hannibal Lecter (conseiller pédagogique — alimentation), pris par erreur en croyant cibler le Dr. Hannibal Lecteur (conseiller en littérature, plage 11h30).",
+        "statut": "Consultation honorée. Aucune suite. Le nom reste consigné au dossier."
       },
       {
-        "ref": "Évaluation Dr. Lecteur",
-        "date": "2024-10-02",
-        "objet": "Consultation littéraire et soutien psychologique.",
-        "statut": "Synthèse non transmise au Dr. Lecter (entrées non-synchronisées)."
+        "ref": "Avis — confusion de noms",
+        "date": "permanent",
+        "objet": "Le Dr. Hannibal Lecter et le Dr. Hannibal Lecteur sont deux personnes distinctes. Veuillez vérifier l'orthographe complète au moment de prendre rendez-vous.",
+        "statut": "Avis non-fermable, affiché à perpétuité."
       }
     ]
   },
