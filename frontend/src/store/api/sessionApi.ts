@@ -25,6 +25,7 @@ export const sessionApi = api.injectEndpoints({
           await queryFulfilled;
           dispatch(updateFlow({ latestCodeSvg: null }));
         } catch {
+          void 0;
         }
       },
     }),

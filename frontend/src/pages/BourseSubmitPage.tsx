@@ -69,6 +69,7 @@ export function BourseSubmitPage() {
     try {
       await cancelBourse().unwrap();
     } catch {
+      void 0;
     }
     dispatch(resetFlow());
     setPhase('fail');

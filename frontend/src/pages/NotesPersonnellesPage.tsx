@@ -17,6 +17,7 @@ export function NotesPersonnellesPage() {
     try {
       await requestNotes().unwrap();
     } catch {
+      void 0;
     }
   };
 

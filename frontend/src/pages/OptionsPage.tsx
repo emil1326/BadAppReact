@@ -256,6 +256,7 @@ export function OptionsPage() {
     try {
       await setProfileMode({ mode: next }).unwrap();
     } catch {
+      void 0;
     }
   };
 

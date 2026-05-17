@@ -31,17 +31,19 @@ function isPending(c: Consentement): c is Consentement & { enAttente: true } {
 
 function ConsentementRow({ consentement }: { consentement: Consentement }) {
   const pending = isPending(consentement);
+  const checkboxId = `consent-${consentement.id}`;
 
   return (
     <li className={`${styles.row} ${pending ? styles.rowPending : ''}`}>
       <input
+        id={checkboxId}
         type="checkbox"
         checked={!pending}
         disabled
         className={styles.checkbox}
       />
       <div className={styles.body}>
-        <div className={styles.title}>{consentement.titre}</div>
+        <label htmlFor={checkboxId} className={styles.title}>{consentement.titre}</label>
         <div className={styles.description}>{consentement.description}</div>
         <div className={styles.meta}>
           {pending ? (

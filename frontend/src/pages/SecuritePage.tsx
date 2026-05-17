@@ -18,6 +18,7 @@ export function SecuritePage() {
     try {
       await regenerateCode().unwrap();
     } catch {
+      void 0;
     }
   };
 
@@ -76,10 +77,9 @@ export function SecuritePage() {
         </div>
       </section>
 
-      <VerificationDialog
-        open={dialogOpen}
-        onClose={() => setDialogOpen(false)}
-      />
+      {dialogOpen && (
+        <VerificationDialog onClose={() => setDialogOpen(false)} />
+      )}
     </PageShell>
   );
 }

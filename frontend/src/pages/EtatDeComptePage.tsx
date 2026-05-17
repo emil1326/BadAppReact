@@ -27,6 +27,7 @@ export function EtatDeComptePage() {
       await startFlow().unwrap();
       navigate('/bourse-formulaire');
     } catch {
+      void 0;
     }
   };
 

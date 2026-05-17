@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useGetSidebarQuery } from '../store/api';
 import type { SidebarItem } from '../types/sidebar';
@@ -28,35 +28,36 @@ function shuffleSubset(items: SidebarItem[]): SidebarItem[] {
 
 export function Sidebar() {
   const { data: sections } = useGetSidebarQuery();
-  const [dossierItems, setDossierItems] = useState<SidebarItem[] | null>(null);
+
+  const dossierSection = useMemo(
+    () => sections?.find((s) => s.title === DOSSIER_TITLE),
+    [sections],
+  );
+
+  const [shuffledItems, setShuffledItems] = useState<SidebarItem[] | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (!sections) return;
-    setDossierItems((prev) => {
-      if (prev !== null) return prev;
-      const section = sections.find((s) => s.title === DOSSIER_TITLE);
-      return section ? [...section.items] : null;
-    });
-  }, [sections]);
-
-  const isLoaded = dossierItems !== null;
-  useEffect(() => {
-    if (!isLoaded) return;
+    if (!dossierSection) return;
 
     const tick = () => {
-      setDossierItems((prev) => (prev ? shuffleSubset(prev) : prev));
+      setShuffledItems((prev) => {
+        const base = prev ?? [...dossierSection.items];
+        return shuffleSubset(base);
+      });
       const delay = SHUFFLE_MIN_MS + Math.random() * (SHUFFLE_MAX_MS - SHUFFLE_MIN_MS);
       timerRef.current = setTimeout(tick, delay);
     };
 
-    const delay = SHUFFLE_MIN_MS + Math.random() * (SHUFFLE_MAX_MS - SHUFFLE_MIN_MS);
-    timerRef.current = setTimeout(tick, delay);
+    const initialDelay = SHUFFLE_MIN_MS + Math.random() * (SHUFFLE_MAX_MS - SHUFFLE_MIN_MS);
+    timerRef.current = setTimeout(tick, initialDelay);
 
     return () => {
       if (timerRef.current !== null) clearTimeout(timerRef.current);
     };
-  }, [isLoaded]);
+  }, [dossierSection]);
+
+  const dossierItems = shuffledItems ?? dossierSection?.items ?? null;
 
   return (
     <aside className="colnet-sidebar">

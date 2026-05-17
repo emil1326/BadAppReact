@@ -9,7 +9,6 @@ const TICK_INTERVAL_MS = 200;
 type Phase = 'input' | 'displaying';
 
 type VerificationDialogProps = {
-  open: boolean;
   onClose: () => void;
 };
 
@@ -20,7 +19,7 @@ function formatRemaining(ms: number): string {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
-export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
+export function VerificationDialog({ onClose }: VerificationDialogProps) {
   const [code, setCode] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>('input');
@@ -30,15 +29,7 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
   const [checkTimer, { isLoading }] = useCheckTimerMutation();
 
   useEffect(() => {
-    if (open) {
-      setCode('');
-      setError(null);
-      setPhase('input');
-    }
-  }, [open]);
-
-  useEffect(() => {
-    if (!open || phase !== 'displaying' || endTime === null) return;
+    if (phase !== 'displaying' || endTime === null) return;
 
     const tick = () => {
       const remaining = Math.max(0, endTime - Date.now());
@@ -53,9 +44,7 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
       window.clearTimeout(closeId);
       window.clearInterval(tickId);
     };
-  }, [open, phase, onClose, endTime]);
-
-  if (!open) return null;
+  }, [phase, onClose, endTime]);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -80,12 +69,13 @@ export function VerificationDialog({ open, onClose }: VerificationDialogProps) {
         <div className={`colnet-panel__body ${styles.body}`}>
           {phase === 'input' ? (
             <form className={styles.body} onSubmit={handleSubmit}>
-              <p className={styles.intro}>
+              <label htmlFor="verification-code" className={styles.intro}>
                 Veuillez entrer votre code de vérification à 6 chiffres pour
                 afficher le temps restant de votre session pendant 10 secondes.
                 Chaque code n&apos;est utilisable qu&apos;une seule fois.
-              </p>
+              </label>
               <input
+                id="verification-code"
                 className={styles.codeInput}
                 type="text"
                 inputMode="numeric"

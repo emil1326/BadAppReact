@@ -24,7 +24,7 @@ export function Header() {
   const dispatch = useAppDispatch();
   const { logoutAndRedirect, isLoggingOut } = useLogoutAndRedirect();
 
-  const today = useMemo(formatTodayInFrench, []);
+  const today = useMemo(() => formatTodayInFrench(), []);
 
   const relockIntervalRef = useRef<number | null>(null);
   const [relockTenthsLeft, setRelockTenthsLeft] = useState<number | null>(null);

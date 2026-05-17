@@ -62,6 +62,7 @@ export function VignetteAutoPage() {
     try {
       await recordSpin({ prizeIndex: prizeNumber, result: outcome?.result ?? '' }).unwrap();
     } catch {
+      void 0;
     }
   };
 
@@ -81,6 +82,7 @@ export function VignetteAutoPage() {
     try {
       await resetVignette().unwrap();
     } catch {
+      void 0;
     }
   };
 

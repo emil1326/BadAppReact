@@ -1,15 +1,27 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useGetJobsQuery } from '../store/api';
 import { PageShell } from '../layout/PageShell';
 import styles from './OffresEmploiPage.module.css';
 
+function shuffleWithSeed<T>(items: T[], seed: number): T[] {
+  const result = [...items];
+  let s = seed | 0;
+  for (let i = result.length - 1; i > 0; i--) {
+    s = (s * 1664525 + 1013904223) | 0;
+    const j = Math.abs(s) % (i + 1);
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 export function OffresEmploiPage() {
   const { data: jobs } = useGetJobsQuery();
+  const [seed] = useState(() => (Math.random() * 0x7fffffff) | 0);
 
   const shuffledJobs = useMemo(() => {
     if (!jobs) return undefined;
-    return [...jobs].sort(() => Math.random() - 0.5);
-  }, [jobs]);
+    return shuffleWithSeed(jobs, seed);
+  }, [jobs, seed]);
 
   return (
     <PageShell title="Offres d'emploi">

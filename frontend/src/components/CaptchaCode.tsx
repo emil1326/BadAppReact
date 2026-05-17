@@ -12,7 +12,6 @@ export function CaptchaCode({ svgMarkup, className }: CaptchaCodeProps) {
   return (
     <div
       className={className}
-      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: svgMarkup }}
     />
   );

@@ -15,19 +15,15 @@ const MILESTONES_MS: readonly number[] = [
   10_000,
 ];
 
-/**
- * Schedules local setTimeout calls so that `onMilestone` fires when the active
- * flow crosses each remaining-time milestone. The callback receives the
- * remaining time in ms so the consumer can format its own label. The callback
- * is read from a ref so callers don't have to memoize it; only `endTime`
- * changes re-schedule.
- */
 export function useTimerMilestones(
   onMilestone: (remainingMs: number) => void,
 ): void {
   const { endTime } = useTimer();
   const onMilestoneRef = useRef(onMilestone);
-  onMilestoneRef.current = onMilestone;
+
+  useEffect(() => {
+    onMilestoneRef.current = onMilestone;
+  });
 
   useEffect(() => {
     if (endTime === null) return;
