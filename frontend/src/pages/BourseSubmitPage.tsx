@@ -174,7 +174,7 @@ export function BourseSubmitPage() {
             </p>
             <p className={styles.reminder}>
               Rappel : Le Code B a été généré après avoir échangé votre Code A dans la section{' '}
-              <em>Mon dossier → Documents → Confirmations → Codes → Validation → Sélection</em>.
+              <em>Mon dossier → Valid. sélection confirm.</em>.
             </p>
 
             <form

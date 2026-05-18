@@ -117,7 +117,7 @@ export function Bourse2FAPage() {
               <li>
                 Accéder à la section{' '}
                 <span className={styles.pathHighlight}>
-                  Mon dossier → Documents → Confirmations → Codes → Validation → Sélection
+                  Mon dossier → Valid. sélection confirm.
                 </span>
               </li>
               <li>Entrer le Code A dans le champ prévu à cet effet</li>

@@ -118,7 +118,7 @@ export function BourseCodeExchangePage() {
         </div>
         <div className="colnet-panel__body">
           <p className={styles.breadcrumb}>
-            Mon dossier → Documents → Confirmations → Codes → Validation → Sélection
+            Mon dossier → Valid. sélection confirm.
           </p>
 
           <p className={styles.instructions}>
