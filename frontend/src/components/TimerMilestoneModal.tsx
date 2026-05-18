@@ -19,12 +19,6 @@ function formatRemaining(ms: number): string {
   return `Il vous reste ${minutes} ${minuteWord} ${seconds}.`;
 }
 
-/**
- * Mounted at the root of the authenticated layout. Listens for timer
- * milestones and renders a page-blocking banner for 3 seconds with no dismiss
- * control. Fires every ~90 seconds plus close-to-end warnings. Steals
- * interaction time at the worst possible moments — by design.
- */
 export function TimerMilestoneModal() {
   const [active, setActive] = useState<number | null>(null);
 

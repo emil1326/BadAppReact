@@ -90,7 +90,6 @@ function PendingForm() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Always fails -> th epoint
     setError(
       "Erreur : la couleur des nuages saisie ne correspond pas aux archives météorologiques internes pour la date d'admission indiquée. Veuillez vérifier auprès du bureau 14-B (mardis impairs entre 10 h 12 et 10 h 47) avant de soumettre à nouveau.",
     );

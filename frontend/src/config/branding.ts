@@ -1,8 +1,3 @@
-/**
- * Centralized branding for the (fictional) institution and portal.
- * Parody of a Quebec CÉGEP — fictional location, fictional campus details.
- */
-
 export const COLLEGE_NAME =
   "COLLÈGE-LIONEL-GROULX-DE-SAINT-BRUNO-DU-LAC-CAMPUS-PRINCIPAL-PAVILLON-A-INSTITUT-DES-TECHNOLOGIES-DE-L'INFORMATION-ET-DES-COMMUNICATIONS-DIVISION-ENSEIGNEMENT-RÉGULIER-COHORTE-2026-2027-RÉGION-MÉTROPOLITAINE-AGRÉÉ-PAR-LE-MINISTÈRE";
 export const COLLEGE_NAME_LONG =

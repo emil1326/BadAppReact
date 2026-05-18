@@ -9,11 +9,6 @@ import type { SignalementFantome } from '../../types/signalement';
 import type { CourseList } from '../../types/bourse';
 import { api } from './baseApi';
 
-/**
- * Static JSON endpoints — data never changes within a session, so we never
- * want RTK Query to evict and re-fetch. `keepUnusedDataFor: Infinity` keeps
- * the cache alive even when no component is currently subscribed.
- */
 export const dataApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getSidebar: builder.query<SidebarSection[], void>({

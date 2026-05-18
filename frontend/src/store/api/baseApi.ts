@@ -3,12 +3,6 @@ import type { RootState } from '../store';
 
 const API_BASE_URL = 'http://localhost:3001';
 
-/**
- * Base RTK Query api. Endpoints are injected by per-domain modules
- * (`authApi.ts`, `profileApi.ts`, etc.) via `injectEndpoints`. Importing the
- * domain modules from anywhere triggers the injection — the barrel
- * `store/api.ts` does this once at app startup.
- */
 export const api = createApi({
   reducerPath: 'api',
   tagTypes: ['Vignette', 'Notes'],

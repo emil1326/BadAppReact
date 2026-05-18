@@ -18,11 +18,6 @@ export type SendEmailParams = {
   vars?: Record<string, string>;
 };
 
-/**
- * Sends a real email through EmailJS. Templates are configured in the EmailJS
- * dashboard; only the templateId, recipient, and variables are passed from
- * here. The private key never leaves the backend.
- */
 export async function sendEmail(params: SendEmailParams): Promise<void> {
   if (!isConfigured) {
     throw new Error('EmailJS not configured (check backend/.env)');

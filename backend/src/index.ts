@@ -23,8 +23,6 @@ const HOST = process.env.HOST ?? '127.0.0.1';
 
 const app = Fastify({ logger: true });
 
-// Accept any localhost origin so the Vite dev server works regardless of which
-// port it picks (5173 / 5174 / 5175 if previous instances are still running).
 const LOCALHOST_DEV_ORIGIN = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
 
 await app.register(cors, {
